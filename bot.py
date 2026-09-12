@@ -18,13 +18,22 @@ ALLOWED_LEAGUES = {
 }
 
 
+def get_mmt_date():
+    return datetime.now(MMT).strftime("%Y-%m-%d")
+
+
 def get_fixtures():
-    today = datetime.now(MMT).strftime("%Y-%m-%d")
+    today = get_mmt_date()
+
+    if not FOOTBALL_API_KEY:
+        raise RuntimeError("FOOTBALL_API_KEY is missing")
+
 
     url = "https://v3.football.api-sports.io/fixtures"
 
     headers = {
-        "x-apisports-key": FOOTBALL_API_KEY
+        "x-apisports-key": FOOTBALL_API_KEY,
+        "Accept": "application/json",
     }
 
     all_matches = []
@@ -44,43 +53,58 @@ def get_fixtures():
             timeout=30,
         )
 
-        response.raise_for_status()
+        if response.status_code != 200:
+            raise RuntimeError(
+                f"API request failed: HTTP {response.status_code}"
+            )
 
         data = response.json()
 
-        for match in data.get("response", []):
-            fixture = match["fixture"]
-            teams = match["teams"]
+        # Never trust an unsuccessful API response.
+        if data.get("errors"):
+            raise RuntimeError(
+                f"API returned an error for {league_name}"
+            )
+
+        if "response" not in data:
+            raise RuntimeError(
+                f"Invalid API response for {league_name}"
+            )
+
+        for match in data["response"]:
+
+            fixture = match.get("fixture")
+            teams = match.get("teams")
+
+            if not fixture or not teams:
+                raise RuntimeError(
+                    f"Incomplete fixture data for {league_name}"
+                )
+
+            home = teams.get("home", {}).get("name")
+            away = teams.get("away", {}).get("name")
+
+            if not home or not away:
+                raise RuntimeError(
+                    f"Incomplete team data for {league_name}"
+                )
 
             all_matches.append({
                 "league": league_name,
                 "time": fixture["date"],
-                "home": teams["home"]["name"],
-                "away": teams["away"]["name"],
+                "home": home,
+                "away": away,
             })
 
     return all_matches
-
-
-def send_message(text):
-    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
-
-    response = requests.post(
-        url,
-        json={
-            "chat_id": CHANNEL_USERNAME,
-            "text": text,
-        },
-        timeout=30,
-    )
-
-    response.raise_for_status()
 
 
 def create_output(matches):
 
     today = datetime.now(MMT).strftime("%d %B %Y")
 
+    # Only after ALL six league requests succeeded
+    # can we safely say there are no matches.
     if not matches:
         return (
             "⚽ ယနေ့ဘောလုံးပွဲ\n\n"
@@ -117,7 +141,30 @@ def create_output(matches):
     return "\n".join(lines)
 
 
+def send_message(text):
+
+    if not text:
+        return
+
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+
+    response = requests.post(
+        url,
+        json={
+            "chat_id": CHANNEL_USERNAME,
+            "text": text,
+        },
+        timeout=30,
+    )
+
+    response.raise_for_status()
+
+
 if __name__ == "__main__":
+
+    # FAIL-CLOSED:
+    # If anything is wrong with the data,
+    # NOTHING is sent to Telegram.
 
     matches = get_fixtures()
 
@@ -125,4 +172,4 @@ if __name__ == "__main__":
 
     send_message(message)
 
-    print("Football fixture data sent successfully.")
+    print("Verified fixture data sent successfully.")
