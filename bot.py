@@ -1,17 +1,33 @@
 import os
-from telegram import Update
-from telegram.ext import Application, CommandHandler, ContextTypes
+import requests
 
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+CHANNEL_USERNAME = os.getenv("CHANNEL_USERNAME")
 
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(
-        "⚽ Analysis Football Bot\n\n"
-        "Bot is online.\n"
-        "Allowed: EPL • La Liga • Serie A • Bundesliga • Ligue 1 • UCL"
+def send_message(text):
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+
+    response = requests.post(
+        url,
+        json={
+            "chat_id": CHANNEL_USERNAME,
+            "text": text
+        },
+        timeout=30
     )
 
-app = Application.builder().token(BOT_TOKEN).build()
-app.add_handler(CommandHandler("start", start))
+    response.raise_for_status()
+    print("Message sent successfully.")
 
-app.run_polling()
+if __name__ == "__main__":
+    send_message(
+        "⚽ Analysis Football Bot\n\n"
+        "✅ Bot connection test successful.\n\n"
+        "Allowed Competitions:\n"
+        "• EPL\n"
+        "• La Liga\n"
+        "• Serie A\n"
+        "• Bundesliga\n"
+        "• Ligue 1\n"
+        "• UEFA Champions League"
+    )
