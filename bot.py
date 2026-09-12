@@ -46,29 +46,55 @@ def get_fixtures():
             "date": today,
         }
 
-        response = requests.get(
-            url,
-            headers=headers,
-            params=params,
-            timeout=30,
-        )
+        print(f"\n========== {league_name} ==========")
+        print(f"Request date: {today}")
+        print(f"League ID: {league_id}")
+        print("Sending request...")
 
-        if response.status_code != 200:
+        try:
+            response = requests.get(
+                url,
+                headers=headers,
+                params=params,
+                timeout=30,
+            )
+        except requests.RequestException as e:
             raise RuntimeError(
-                f"API request failed: HTTP {response.status_code}"
+                f"NETWORK ERROR for {league_name}: {e}"
             )
 
-        data = response.json()
+        print(f"HTTP Status: {response.status_code}")
 
-        # Never trust an unsuccessful API response.
+        try:
+            data = response.json()
+        except ValueError:
+            raise RuntimeError(
+                f"INVALID JSON from API for {league_name}: "
+                f"{response.text[:500]}"
+            )
+
+        print("API errors:", data.get("errors"))
+        print("API results:", data.get("results"))
+
+        # Show the exact API error
         if data.get("errors"):
             raise RuntimeError(
-                f"API returned an error for {league_name}"
+                f"API ERROR for {league_name}: "
+                f"{data.get('errors')}"
+            )
+
+        # HTTP error
+        if response.status_code != 200:
+            raise RuntimeError(
+                f"HTTP ERROR for {league_name}: "
+                f"HTTP {response.status_code} | "
+                f"{data}"
             )
 
         if "response" not in data:
             raise RuntimeError(
-                f"Invalid API response for {league_name}"
+                f"INVALID API RESPONSE for {league_name}: "
+                f"{data}"
             )
 
         for match in data["response"]:
@@ -78,7 +104,8 @@ def get_fixtures():
 
             if not fixture or not teams:
                 raise RuntimeError(
-                    f"Incomplete fixture data for {league_name}"
+                    f"INCOMPLETE FIXTURE DATA for {league_name}: "
+                    f"{match}"
                 )
 
             home = teams.get("home", {}).get("name")
@@ -86,7 +113,8 @@ def get_fixtures():
 
             if not home or not away:
                 raise RuntimeError(
-                    f"Incomplete team data for {league_name}"
+                    f"INCOMPLETE TEAM DATA for {league_name}: "
+                    f"{match}"
                 )
 
             all_matches.append({
@@ -103,8 +131,6 @@ def create_output(matches):
 
     today = datetime.now(MMT).strftime("%d %B %Y")
 
-    # Only after ALL six league requests succeeded
-    # can we safely say there are no matches.
     if not matches:
         return (
             "⚽ ယနေ့ဘောလုံးပွဲ\n\n"
@@ -143,8 +169,14 @@ def create_output(matches):
 
 def send_message(text):
 
+    if not BOT_TOKEN:
+        raise RuntimeError("TELEGRAM_BOT_TOKEN is missing")
+
+    if not CHANNEL_USERNAME:
+        raise RuntimeError("CHANNEL_USERNAME is missing")
+
     if not text:
-        return
+        raise RuntimeError("Message is empty")
 
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
 
@@ -157,19 +189,26 @@ def send_message(text):
         timeout=30,
     )
 
+    print("Telegram HTTP Status:", response.status_code)
+    print("Telegram response:", response.text)
+
     response.raise_for_status()
 
 
 if __name__ == "__main__":
 
-    # FAIL-CLOSED:
-    # If anything is wrong with the data,
-    # NOTHING is sent to Telegram.
+    print("========================================")
+    print("ANALYSIS FOOTBALL BOT - API DEBUG TEST")
+    print("========================================")
+
+    print("MMT Date:", get_mmt_date())
 
     matches = get_fixtures()
+
+    print("\nTotal verified matches:", len(matches))
 
     message = create_output(matches)
 
     send_message(message)
 
-    print("Verified fixture data sent successfully.")
+    print("\nVerified fixture data sent successfully.")
