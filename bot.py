@@ -1,26 +1,22 @@
 import os
 import requests
 from datetime import datetime, timezone, timedelta
+from collections import defaultdict
 
 
 # ============================================================
 # ANALYSIS FOOTBALL BOT
-# PRIMARY SOURCE : Football-Data.org
-# TIMEZONE        : Myanmar Standard Time (UTC+6:30)
 # ============================================================
-
 
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 CHANNEL_USERNAME = os.getenv("CHANNEL_USERNAME")
 FDO_API_KEY = os.getenv("FOOTBALL_DATA_API_KEY")
-
 
 MMT = timezone(timedelta(hours=6, minutes=30))
 
 
 # ============================================================
 # ALLOWED COMPETITIONS
-# Bot MUST NOT analyze other leagues.
 # ============================================================
 
 COMPETITIONS = {
@@ -35,11 +31,7 @@ COMPETITIONS = {
 
 # ============================================================
 # MYANMAR ODDS CONVERSION
-#
-# Asian / Malaysian Line  ->  Myanmar Odds
-#
-# This table follows the user's supplied Myanmar reference.
-# DO NOT change these mappings without user approval.
+# LOCKED REFERENCE
 # ============================================================
 
 MYANMAR_ODDS = {
@@ -73,93 +65,50 @@ MYANMAR_ODDS = {
 }
 
 
-# ============================================================
-# ASIAN LINE NORMALIZATION
-# ============================================================
-
-def normalize_line(line):
-    """
-    Convert an Asian line into a standard float.
-    Examples:
-        0       -> 0.0
-        "0.25"  -> 0.25
-        2.5     -> 2.5
-    """
+def asian_to_myanmar(line):
 
     try:
-        return round(float(line), 2)
+        line = round(float(line), 2)
     except (TypeError, ValueError):
-        raise ValueError(f"Invalid Asian line: {line}")
-
-
-def asian_to_myanmar(line):
-    """
-    Convert Asian/Malaysian line to Myanmar odds.
-
-    IMPORTANT:
-    If the line is not in the locked table,
-    do NOT guess.
-    """
-
-    line = normalize_line(line)
-
-    if line not in MYANMAR_ODDS:
         return None
 
-    return MYANMAR_ODDS[line]
+    return MYANMAR_ODDS.get(line)
 
 
-def format_line(line):
-    """
-    Display Asian Line + Myanmar Odds together.
+def format_odds(line):
 
-    Example:
-        Asian 2.25 | Myanmar 2-50
-    """
-
-    line = normalize_line(line)
     myanmar = asian_to_myanmar(line)
 
     if myanmar is None:
-        return "Asian Line: UNVERIFIED | Myanmar Odds: UNVERIFIED"
+        return (
+            f"Asian Line: {line} | "
+            "Myanmar Odds: UNVERIFIED"
+        )
 
-    return f"Asian Line: {line:g} | Myanmar Odds: {myanmar}"
-
-
-# ============================================================
-# SPECIAL MYANMAR ODDS EXAMPLES
-#
-# These are explanatory examples only.
-# They are NOT live odds.
-# ============================================================
-
-MYANMAR_EXAMPLES = {
-    "1-40": "1-goal line, 40% loss; at 2 goals = full win",
-    "2+60": "2-goal line, 60% win; at 3 goals = full win",
-    "2-20": "2-goal line, 20% loss; at 3 goals = full win",
-}
+    return (
+        f"Asian Line: {line:g} | "
+        f"Myanmar Odds: {myanmar}"
+    )
 
 
 # ============================================================
-# CURRENT MMT DATE / TIME
+# TIME
 # ============================================================
 
 def now_mmt():
     return datetime.now(MMT)
 
 
-def today_mmt():
-    return now_mmt().date()
-
-
 # ============================================================
-# GET TODAY'S VERIFIED FIXTURES
+# GET TODAY'S UPCOMING MATCHES
 #
 # IMPORTANT:
-# FDO gives UTC dates.
-# We query around the MMT calendar day and then convert
-# every match back to MMT before deciding whether it belongs
-# to "today".
+# 1. Determine TODAY using MMT.
+# 2. Convert every FDO UTC kickoff to MMT.
+# 3. Keep ONLY matches:
+#       - on today's MMT date
+#       - not already started
+# 4. Therefore finished matches are never shown as upcoming.
 # ============================================================
 
 def get_fixtures():
@@ -169,33 +118,36 @@ def get_fixtures():
             "FOOTBALL_DATA_API_KEY is missing"
         )
 
-    today = today_mmt()
+    now = now_mmt()
+    today = now.date()
 
-    # Start of today in Myanmar time
+    # --------------------------------------------------------
+    # Query UTC dates covering the complete MMT day.
+    # --------------------------------------------------------
+
     start_mmt = datetime.combine(
         today,
         datetime.min.time(),
         tzinfo=MMT
     )
 
-    # Start of tomorrow in Myanmar time
     end_mmt = start_mmt + timedelta(days=1)
 
-    # Convert MMT boundaries to UTC
     start_utc = start_mmt.astimezone(timezone.utc)
     end_utc = end_mmt.astimezone(timezone.utc)
 
-    # FDO accepts calendar dates
     date_from = start_utc.strftime("%Y-%m-%d")
     date_to = end_utc.strftime("%Y-%m-%d")
 
     print("================================")
     print("ANALYSIS FOOTBALL BOT")
-    print("PRIMARY SOURCE: FDO")
     print("================================")
-    print("MMT Today :", today)
-    print("FDO From  :", date_from)
-    print("FDO To    :", date_to)
+    print("Current MMT:", now.strftime(
+        "%Y-%m-%d %I:%M:%S %p"
+    ))
+    print("MMT Today:", today)
+    print("FDO dateFrom:", date_from)
+    print("FDO dateTo:", date_to)
 
     url = "https://api.football-data.org/v4/matches"
 
@@ -205,7 +157,9 @@ def get_fixtures():
     }
 
     params = {
-        "competitions": ",".join(COMPETITIONS.keys()),
+        "competitions": ",".join(
+            COMPETITIONS.keys()
+        ),
         "dateFrom": date_from,
         "dateTo": date_to,
     }
@@ -233,7 +187,7 @@ def get_fixtures():
 
     if data.get("error"):
         raise RuntimeError(
-            f"FDO API ERROR: {data.get('error')}"
+            f"FDO API ERROR: {data['error']}"
         )
 
     matches = data.get("matches")
@@ -254,7 +208,7 @@ def get_fixtures():
 
         code = competition.get("code")
 
-        # Strict allowed-league filter
+        # Only allowed 6 competitions
         if code not in COMPETITIONS:
             continue
 
@@ -272,22 +226,39 @@ def get_fixtures():
         status = match.get("status")
         match_id = match.get("id")
 
-        # Never accept incomplete data
         if not home or not away or not utc_date:
             continue
 
         try:
             match_dt = datetime.fromisoformat(
-                utc_date.replace("Z", "+00:00")
+                utc_date.replace(
+                    "Z",
+                    "+00:00"
+                )
             )
         except ValueError:
             continue
 
-        # Convert UTC -> Myanmar Time
+        # UTC -> MMT
         match_mmt = match_dt.astimezone(MMT)
 
-        # Strict MMT calendar-day filter
+        # ----------------------------------------------------
+        # CRITICAL FILTER #1
+        # Must belong to TODAY in Myanmar.
+        # ----------------------------------------------------
+
         if match_mmt.date() != today:
+            continue
+
+        # ----------------------------------------------------
+        # CRITICAL FILTER #2
+        # Must NOT already have started.
+        #
+        # This prevents yesterday / finished matches from
+        # appearing as today's upcoming matches.
+        # ----------------------------------------------------
+
+        if match_mmt <= now:
             continue
 
         verified.append({
@@ -297,19 +268,61 @@ def get_fixtures():
             "home": home,
             "away": away,
             "utc_date": utc_date,
-            "mmt_date": match_mmt.strftime("%Y-%m-%d"),
-            "mmt_time": match_mmt.strftime("%I:%M %p"),
+            "mmt_datetime": match_mmt,
+            "mmt_time": match_mmt.strftime(
+                "%I:%M %p"
+            ),
             "status": status,
         })
 
+    # --------------------------------------------------------
     # Sort by kickoff time
+    # --------------------------------------------------------
+
     verified.sort(
-        key=lambda x: x["utc_date"]
+        key=lambda x: x["mmt_datetime"]
     )
 
-    print("Verified MMT matches:", len(verified))
+    print(
+        "Upcoming verified matches:",
+        len(verified)
+    )
 
     return verified
+
+
+# ============================================================
+# GROUP MATCHES BY LEAGUE
+# ============================================================
+
+def group_by_league(matches):
+
+    grouped = defaultdict(list)
+
+    for match in matches:
+        grouped[match["league"]].append(match)
+
+    # Keep official order
+    league_order = [
+        "EPL",
+        "La Liga",
+        "Serie A",
+        "Bundesliga",
+        "Ligue 1",
+        "UCL",
+    ]
+
+    result = {}
+
+    for league in league_order:
+
+        if league in grouped:
+            result[league] = sorted(
+                grouped[league],
+                key=lambda x: x["mmt_datetime"]
+            )
+
+    return result
 
 
 # ============================================================
@@ -320,67 +333,58 @@ def create_message(matches):
 
     now = now_mmt()
 
-    header = (
-        "⚽ ANALYSIS FOOTBALL\n"
-        "📅 Football Analysis System\n"
-        f"🕐 {now.strftime('%d %b %Y')} | "
-        f"{now.strftime('%I:%M %p')} MMT\n"
-        "🔄 System is ready.\n"
-        "📊 Match data and analysis will be published here."
-    )
-
     lines = [
-        header,
+        "⚽ ANALYSIS FOOTBALL",
+        "📅 Football Analysis System",
+        (
+            f"🕐 {now.strftime('%d %b %Y')} | "
+            f"{now.strftime('%I:%M %p')} MMT"
+        ),
+        "🔄 System is ready.",
+        "📊 Match data and analysis will be published here.",
         "",
         "━━━━━━━━━━━━━━━━━━",
-        "⚽ TODAY'S MATCHES",
+        "⚽ TODAY'S UPCOMING MATCHES",
         "━━━━━━━━━━━━━━━━━━",
         "",
     ]
 
     # --------------------------------------------------------
-    # IMPORTANT:
-    # If FDO returned ZERO matches, we do NOT automatically
-    # claim "ယနေ့ပွဲမရှိပါ" unless the source response itself
-    # was successfully verified.
-    #
-    # Here the FDO request itself was successful.
-    # Therefore zero verified MMT matches means no matches
-    # in the six allowed competitions for that MMT day.
+    # NO UPCOMING MATCHES
     # --------------------------------------------------------
 
     if not matches:
 
         lines.append(
-            "ယနေ့ခွင့်ပြုထားသော ၆ ပြိုင်ပွဲအတွင်း "
-            "ပွဲမရှိပါ။"
+            "ယနေ့အတွက် လက်ကျန်ပွဲ မရှိပါ။"
         )
 
         return "\n".join(lines)
 
-    current_league = None
+    # --------------------------------------------------------
+    # GROUP BY LEAGUE
+    # --------------------------------------------------------
 
-    for match in matches:
+    grouped = group_by_league(matches)
 
-        league = match["league"]
+    for league, league_matches in grouped.items():
 
-        if league != current_league:
+        lines.append(
+            f"🏆 {league}"
+        )
 
-            current_league = league
+        for match in league_matches:
 
             lines.append(
-                f"🏆 {league}"
+                f"🕐 {match['mmt_time']} MMT"
             )
 
-        lines.append(
-            f"🕐 {match['mmt_time']} MMT"
-        )
+            lines.append(
+                f"⚽ {match['home']} vs "
+                f"{match['away']}"
+            )
 
-        lines.append(
-            f"⚽ {match['home']} vs {match['away']}"
-        )
-
-        lines.append("")
+            lines.append("")
 
     return "\n".join(lines)
 
@@ -403,11 +407,11 @@ def send_telegram(message):
 
     if not message:
         raise RuntimeError(
-            "Empty Telegram message blocked"
+            "Empty message blocked"
         )
 
     url = (
-        f"https://api.telegram.org/"
+        "https://api.telegram.org/"
         f"bot{BOT_TOKEN}/sendMessage"
     )
 
@@ -433,7 +437,6 @@ def send_telegram(message):
     )
 
     if response.status_code != 200:
-
         raise RuntimeError(
             f"Telegram send failed: "
             f"{response.text}"
@@ -450,8 +453,9 @@ if __name__ == "__main__":
 
         matches = get_fixtures()
 
-        print("\n==============================")
-        print("VERIFIED MATCHES")
+        print("")
+        print("==============================")
+        print("UPCOMING MATCHES")
         print("==============================")
 
         for match in matches:
@@ -465,7 +469,8 @@ if __name__ == "__main__":
 
         message = create_message(matches)
 
-        print("\n==============================")
+        print("")
+        print("==============================")
         print("TELEGRAM MESSAGE")
         print("==============================")
         print(message)
@@ -474,18 +479,21 @@ if __name__ == "__main__":
         send_telegram(message)
 
         print(
-            "\nMessage sent successfully."
+            "Message sent successfully."
         )
 
     except Exception as error:
 
+        # ----------------------------------------------------
         # FAIL CLOSED
         #
-        # If verification fails, do NOT send anything
-        # to Telegram. This prevents fake information.
+        # If verification fails:
+        # DO NOT SEND ANYTHING.
+        # ----------------------------------------------------
 
+        print("")
         print(
-            "\nBOT STOPPED - "
+            "BOT STOPPED - "
             "NO UNVERIFIED DATA SENT"
         )
 
