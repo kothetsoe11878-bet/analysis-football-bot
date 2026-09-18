@@ -16,5 +16,8 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install requests
+        run: pip install requests
+
       - name: Run local Myanmar odds test
         run: python myanmar_odds_local_test.py
