@@ -1,20 +1,16 @@
-ANALYSIS FOOTBALL — GEMINI ANALYSIS MODULE
+ODDS API — ASIAN MARKET TEST
 
-This module is intentionally separate from bot.py.
-DO NOT modify bot.py while testing.
+This test does NOT modify bot.py.
 
-Upload/copy these files into the root of analysis-football-bot:
-- gemini_analysis.py
-- gemini_test.py
-- .github/workflows/gemini-test.yml
-- README.txt
+It checks current EPL:
+- spreads (handicap)
+- totals (Over/Under)
 
-Then GitHub Actions -> Gemini Analysis Module Test -> Run workflow.
-Expected output: GEMINI MODULE TEST: PASS
+Required lines to investigate:
+AH: -0.25, -0.50, -0.75, -1.00
+O/U: 2.25, 2.50, 2.75, 3.00
 
-GEMINI_API_KEY must already exist as a GitHub repository secret.
-Never paste the secret into chat or source code.
+Use the existing GitHub Secret:
+ODDS_API_KEY
 
-Missing/weak/contradictory evidence => PASS.
-The locked Asian Line -> Myanmar Odds mapping is preserved.
-Do not connect to bot.py until this isolated test passes.
+Do not paste the API key into chat.
