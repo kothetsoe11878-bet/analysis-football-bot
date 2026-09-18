@@ -4,12 +4,13 @@ import time
 import requests
 
 
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
+GEMINI_MODEL = "gemini-3.6-flash"
 
 GEMINI_URL = (
     f"https://generativelanguage.googleapis.com/v1beta/"
     f"models/{GEMINI_MODEL}:generateContent"
 )
+
 
 ALLOWED_COMPETITIONS = {
     "EPL",
@@ -52,18 +53,18 @@ You are the Analysis Football Gemini module.
 1. Analyze only EPL, La Liga, Serie A, Bundesliga, Ligue 1, UCL.
 2. Use only supplied evidence.
 3. Never invent injuries, lineups, odds, form, xG, H2H,
-   news, statistics, market movement or other facts.
+   news, statistics, market movement or any other facts.
 4. Insufficient, weak or contradictory evidence => PASS.
 5. Never alter the supplied Asian line.
 6. Never alter the supplied Myanmar odds.
 7. Keep Asian line and Myanmar odds paired exactly.
 8. Never promise profit.
-9. Never force a pick.
+9. Never force a PICK.
 10. Return JSON only.
 """
 
 
-def validate_input(m):
+def validate_input(match):
     required = (
         "competition",
         "home",
@@ -74,16 +75,19 @@ def validate_input(m):
     )
 
     for key in required:
-        if m.get(key) in (None, ""):
+        if match.get(key) in (None, ""):
             return False, f"Missing required field: {key}"
 
-    if m["competition"] not in ALLOWED_COMPETITIONS:
+    if match["competition"] not in ALLOWED_COMPETITIONS:
         return False, "Competition is outside the allowed six."
 
-    if m["market"] not in {"OU", "AH"}:
+    if match["market"] not in {"OU", "AH"}:
         return False, "Market must be OU or AH."
 
-    if not isinstance(m.get("evidence"), dict) or not m["evidence"]:
+    if not isinstance(match.get("evidence"), dict):
+        return False, "Evidence must be a non-empty object."
+
+    if not match["evidence"]:
         return False, "Evidence must be a non-empty object."
 
     return True, "OK"
@@ -101,6 +105,7 @@ def _json(text):
 
     try:
         return json.loads(text)
+
     except json.JSONDecodeError:
         start = text.find("{")
         end = text.rfind("}")
@@ -112,25 +117,20 @@ def _json(text):
 
 
 def _call_gemini(payload, api_key):
-    """
-    Call Gemini with retry/backoff for temporary server errors.
 
-    Retry statuses:
-    429 = rate limit
-    500 = internal server error
-    502 = bad gateway
-    503 = service unavailable
-    504 = gateway timeout
-    """
-
-    retry_statuses = {429, 500, 502, 503, 504}
+    retry_statuses = {
+        429,
+        500,
+        502,
+        503,
+        504,
+    }
 
     max_attempts = 4
     delays = [5, 10, 20]
 
-    last_response = None
-
     for attempt in range(max_attempts):
+
         try:
             response = requests.post(
                 GEMINI_URL,
@@ -142,16 +142,16 @@ def _call_gemini(payload, api_key):
                 timeout=60,
             )
 
-            last_response = response
-
             if response.status_code in retry_statuses:
+
                 if attempt < max_attempts - 1:
+
                     delay = delays[attempt]
 
                     print(
                         f"Gemini temporary HTTP "
                         f"{response.status_code}. "
-                        f"Retry {attempt + 1}/{max_attempts - 1} "
+                        f"Retry {attempt + 1}/3 "
                         f"in {delay}s..."
                     )
 
@@ -159,7 +159,7 @@ def _call_gemini(payload, api_key):
                     continue
 
                 raise RuntimeError(
-                    f"Gemini API temporary error after "
+                    "Gemini API temporary error after "
                     f"{max_attempts} attempts: "
                     f"HTTP {response.status_code}: "
                     f"{response.text[:1000]}"
@@ -169,13 +169,15 @@ def _call_gemini(payload, api_key):
 
             return response.json()
 
-        except requests.RequestException as exc:
+        except requests.RequestException as error:
+
             if attempt < max_attempts - 1:
+
                 delay = delays[attempt]
 
                 print(
-                    f"Gemini request error: {exc}. "
-                    f"Retry {attempt + 1}/{max_attempts - 1} "
+                    f"Gemini request error: {error}. "
+                    f"Retry {attempt + 1}/3 "
                     f"in {delay}s..."
                 )
 
@@ -183,46 +185,44 @@ def _call_gemini(payload, api_key):
                 continue
 
             raise RuntimeError(
-                f"Gemini request failed after "
-                f"{max_attempts} attempts: {exc}"
-            ) from exc
-
-    if last_response is not None:
-        raise RuntimeError(
-            f"Gemini request failed: "
-            f"HTTP {last_response.status_code}"
-        )
+                "Gemini request failed after "
+                f"{max_attempts} attempts: {error}"
+            ) from error
 
     raise RuntimeError("Gemini request failed.")
 
 
-def analyze_match(m):
-    ok, reason = validate_input(m)
+def analyze_match(match):
+
+    ok, reason = validate_input(match)
 
     if not ok:
+
         return {
             "status": "PASS",
             "reason": reason,
-            "competition": m.get("competition"),
-            "home": m.get("home"),
-            "away": m.get("away"),
-            "market": m.get("market"),
-            "line": m.get("line"),
-            "myanmar_odds": m.get("myanmar_odds"),
+            "competition": match.get("competition"),
+            "home": match.get("home"),
+            "away": match.get("away"),
+            "market": match.get("market"),
+            "line": match.get("line"),
+            "myanmar_odds": match.get("myanmar_odds"),
             "strength": "PASS",
         }
 
     api_key = os.getenv("GEMINI_API_KEY")
 
     if not api_key:
-        raise RuntimeError("GEMINI_API_KEY is not set.")
+        raise RuntimeError(
+            "GEMINI_API_KEY is not set."
+        )
 
     prompt = {
         "task": (
             "Analyze this football match using only "
             "the supplied evidence."
         ),
-        "match": m,
+        "match": match,
         "required_output_fields": [
             "status",
             "competition",
@@ -272,19 +272,28 @@ def analyze_match(m):
         },
     }
 
-    data = _call_gemini(payload, api_key)
+    data = _call_gemini(
+        payload,
+        api_key
+    )
 
     try:
-        text = data["candidates"][0]["content"]["parts"][0]["text"]
-    except (KeyError, IndexError, TypeError) as exc:
+
+        text = (
+            data["candidates"][0]
+            ["content"]["parts"][0]["text"]
+        )
+
+    except (KeyError, IndexError, TypeError) as error:
+
         raise RuntimeError(
             f"Unexpected Gemini response: {data}"
-        ) from exc
+        ) from error
 
     output = _json(text)
 
-    # SECURITY LOCK:
-    # Gemini is never allowed to modify these fields.
+    # SECURITY LOCK
+    # Gemini cannot change these fields.
     locked_fields = (
         "competition",
         "home",
@@ -295,19 +304,46 @@ def analyze_match(m):
     )
 
     for key in locked_fields:
-        output[key] = m[key]
+        output[key] = match[key]
 
-    output.setdefault("status", "PASS")
-    output.setdefault("strength", "PASS")
-    output.setdefault("analysis_mm", "")
-    output.setdefault("risk_mm", "")
-    output.setdefault("final_pick_mm", "")
-    output.setdefault("evidence_used", [])
+    output.setdefault(
+        "status",
+        "PASS"
+    )
+
+    output.setdefault(
+        "strength",
+        "PASS"
+    )
+
+    output.setdefault(
+        "analysis_mm",
+        ""
+    )
+
+    output.setdefault(
+        "risk_mm",
+        ""
+    )
+
+    output.setdefault(
+        "final_pick_mm",
+        ""
+    )
+
+    output.setdefault(
+        "evidence_used",
+        []
+    )
 
     if output["status"] == "PASS":
         output["strength"] = "PASS"
 
-    if output["status"] not in {"PICK", "PASS"}:
+    if output["status"] not in {
+        "PICK",
+        "PASS",
+    }:
+
         output["status"] = "PASS"
         output["strength"] = "PASS"
 
@@ -317,6 +353,7 @@ def analyze_match(m):
         "Moderate",
         "PASS",
     }:
+
         output["status"] = "PASS"
         output["strength"] = "PASS"
 
@@ -324,6 +361,7 @@ def analyze_match(m):
 
 
 def run_connection_test():
+
     test_match = {
         "competition": "EPL",
         "home": "TEST HOME",
@@ -339,7 +377,9 @@ def run_connection_test():
         },
     }
 
-    output = analyze_match(test_match)
+    output = analyze_match(
+        test_match
+    )
 
     assert output["status"] == "PASS"
     assert output["line"] == 2.5
