@@ -1,4 +1,4 @@
-import os
+pimport os
 import requests
 from datetime import datetime, timezone, timedelta
 
@@ -118,18 +118,15 @@ def get_one_fdo_match():
             match_mmt.strftime("%Y-%m-%d %H:%M"),
         )
 
-        if match_mmt.date() != today:
-            continue
-
-        if match_mmt <= now:
+    if match_mmt <= now:
             continue
 
         candidates.append((match_mmt, match))
 
     if not candidates:
         raise RuntimeError(
-            "FDO returned matches, but no future match remains in MMT today."
-        )
+    "FDO returned matches, but no future match remains in the next 7 days."
+)
 
     candidates.sort(key=lambda x: x[0])
 
