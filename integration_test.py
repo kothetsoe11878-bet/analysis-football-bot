@@ -69,13 +69,8 @@ def get_one_fdo_match():
     now = datetime.now(MMT)
     today = now.date()
 
-    start_mmt = datetime.combine(
-        today,
-        datetime.min.time(),
-        tzinfo=MMT
-    )
-
-    end_mmt = start_mmt + timedelta(days=1)
+    # Query today's date directly.
+    date_str = today.strftime("%Y-%m-%d")
 
     url = "https://api.football-data.org/v4/matches"
 
@@ -86,8 +81,8 @@ def get_one_fdo_match():
 
     params = {
         "competitions": ",".join(COMPETITIONS.keys()),
-        "dateFrom": start_mmt.astimezone(timezone.utc).strftime("%Y-%m-%d"),
-        "dateTo": end_mmt.astimezone(timezone.utc).strftime("%Y-%m-%d"),
+        "dateFrom": date_str,
+        "dateTo": date_str,
     }
 
     response = requests.get(
@@ -98,6 +93,7 @@ def get_one_fdo_match():
     )
 
     print("FDO HTTP:", response.status_code)
+    print("FDO DATE:", date_str)
 
     if response.status_code != 200:
         raise RuntimeError(
@@ -105,6 +101,8 @@ def get_one_fdo_match():
         )
 
     data = response.json()
+
+    candidates = []
 
     for match in data.get("matches", []):
 
@@ -130,24 +128,37 @@ def get_one_fdo_match():
 
         match_mmt = match_dt.astimezone(MMT)
 
+        # Only today's matches in Myanmar time
         if match_mmt.date() != today:
             continue
 
+        # Only matches that have not started
         if match_mmt <= now:
             continue
 
-        return {
+        candidates.append({
             "id": match.get("id"),
             "league": COMPETITIONS[code],
             "home": home,
             "away": away,
             "utc_date": utc_date,
-            "mmt_time": match_mmt.strftime("%I:%M %p"),
-        }
+            "mmt_time": match_mmt.strftime(
+                "%I:%M %p"
+            ),
+            "mmt_datetime": match_mmt,
+        })
 
-    raise RuntimeError(
-        "No suitable upcoming match found today"
+    candidates.sort(
+        key=lambda x: x["mmt_datetime"]
     )
+
+    if not candidates:
+        raise RuntimeError(
+            "FDO returned today's matches, "
+            "but no future match remains in MMT."
+        )
+
+    return candidates[0]
 
 
 # ============================================================
