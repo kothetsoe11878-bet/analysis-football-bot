@@ -2,10 +2,6 @@ import os
 import requests
 from datetime import datetime, timezone, timedelta
 
-# ============================================================
-# CONFIG
-# ============================================================
-
 MMT = timezone(timedelta(hours=6, minutes=30))
 
 FDO_API_KEY = os.getenv("FOOTBALL_DATA_API_KEY")
@@ -23,7 +19,6 @@ COMPETITIONS = {
     "CL": "UCL",
 }
 
-# LOCKED Myanmar Odds Mapping
 MYANMAR_ODDS = {
     0.00: "D",
     0.25: "L-50",
@@ -57,32 +52,6 @@ def asian_to_myanmar(line):
     return MYANMAR_ODDS.get(line)
 
 
-# ============================================================
-# 1. GET ONE UPCOMING MATCH FROM FDO
-# ============================================================
-
-ဟုတ်ဗျ။ အခု code အပြည့်ကို မြင်ရပြီ။ မှားနေတဲ့နေရာကို တိတိကျကျတွေ့ပြီ။
-အရင်က ထည့်ခိုင်းခဲ့တဲ့ print() နဲ့ if နှစ်ခုက indentation ပျက်ပြီး for match အပြင်ကို ထွက်သွားတာကြောင့်—
-IndentationError: unexpected indent
-ဖြစ်တာပါ။
-အခု အရေးကြီးဆုံး
-ဖိုင်တစ်ခုလုံးကို မပြင်ပါနဲ့။
-get_one_fdo_match() function တစ်ခုလုံးကိုပဲ အစားထိုးပါ။
-1️⃣ ဘယ်ကနေ ဘယ်အထိ ဖျက်ရမလဲ
-integration_test.py ထဲမှာ ဒီစာကြောင်းကိုရှာပါ။
-def get_one_fdo_match():
-အဲဒီကနေစပြီး—
-# ============================================================
-# 2. GET CURRENT ODDS FROM ODDS API
-# ============================================================
-အဲဒီ comment မတိုင်ခင်အထိ အကုန်ဖျက်ပါ။
-ဆိုလိုတာက Section 1 တစ်ခုလုံးပဲ ဖျက်တာ ဖြစ်ပါတယ်။
-Section 2 ကနေ အောက်ပိုင်းကို မထိပါနဲ့။
-2️⃣ အဲဒီနေရာမှာ ဒီ code ကို အတိအကျ Paste လုပ်ပါ
-# ============================================================
-# 1. GET ONE UPCOMING MATCH FROM FDO
-# ============================================================
-
 def get_one_fdo_match():
 
     if not FDO_API_KEY:
@@ -90,7 +59,6 @@ def get_one_fdo_match():
 
     now = datetime.now(MMT)
     today = now.date()
-
     date_str = today.strftime("%Y-%m-%d")
 
     url = "https://api.football-data.org/v4/matches"
@@ -122,7 +90,6 @@ def get_one_fdo_match():
         )
 
     data = response.json()
-
     candidates = []
 
     for match in data.get("matches", []):
@@ -149,7 +116,6 @@ def get_one_fdo_match():
 
         match_mmt = match_dt.astimezone(MMT)
 
-        # Show exactly what FDO returned
         print(
             "FDO MATCH RAW:",
             home,
@@ -161,11 +127,9 @@ def get_one_fdo_match():
             match_mmt.strftime("%Y-%m-%d %I:%M %p")
         )
 
-        # Only today's matches in Myanmar time
         if match_mmt.date() != today:
             continue
 
-        # Only matches that have not started
         if match_mmt <= now:
             continue
 
@@ -190,44 +154,7 @@ def get_one_fdo_match():
         )
 
     return candidates[0]
-3️⃣ ဘာတွေပြင်ပြီးသွားပြီလဲ
-အဓိကက ဒီလိုဖြစ်သွားပါပြီ—
-FDO
- ↓
-ဒီနေ့ပွဲတွေယူ
- ↓
-Myanmar Time ပြောင်း
- ↓
-FDO MATCH RAW ပြ
- ↓
-ဒီနေ့မဟုတ်ရင် Skip
- ↓
-စပြီးသားပွဲဆို Skip
- ↓
-မစသေးတဲ့ပွဲကို candidates ထဲထည့်
- ↓
-အနီးဆုံး upcoming ပွဲ ၁ ပွဲရွေး
-အရေးကြီးတာတစ်ခု — ဒီတစ်ခါ if match_mmt <= now: ကို comment မလုပ်ထားပါဘူး။ အဲဒါက မစသေးတဲ့ပွဲကိုပဲရွေးဖို့လိုတာပါ။
-4️⃣ ဒီနေ့အတွက် ဘာဖြစ်မလဲ
-ဒီနေ့ EPL မှာ ပွဲတွေရှိတာမှန်ပါတယ်။ အခု Myanmar time အရ စောစောကပွဲတွေ စပြီးသားဖြစ်နေရင် bot က အဲဒီပွဲတွေကို မရွေးဘဲ နောက်ထပ်မစသေးတဲ့ပွဲ ကို ရွေးပါလိမ့်မယ်။
-ဒီနေ့ remaining EPL schedule ကိုလည်း စစ်ထားပြီးသားပါ။
-5️⃣ အခု Run လုပ်ရမယ့်အရာ
-GitHub Actions → Integration Test workflow → Run workflow
-ပြီးရင် output ကို ဒီ chat ထဲ အကုန်ပို့ပါ။
-ဒီတစ်ခါ အရေးကြီးတာက အောက်ကလိုမျိုး output ထွက်လာရင် အရမ်းကောင်းပါတယ်—
-FDO HTTP: 200
-FDO DATE: 2026-09-19
-FDO MATCH RAW: ...
-FDO MATCH RAW: ...
-FDO MATCH RAW: ...
 
-FDO MATCH
-EPL | 08:30 PM MMT | ... vs ...
-ပြီးရင် အဲဒီအဆင့်က အောင်တာနဲ့ Odds API → Myanmar Odds → Gemini 3.6 ကို ဆက်သွားမယ်။
-အခုတော့ code တခြားနေရာ မပြင်ပါနဲ့။ ဒီ function တစ်ခုတည်းပဲ အစားထိုးပြီး Run ပါ။
-# ============================================================
-# 2. GET CURRENT ODDS FROM ODDS API
-# ============================================================
 
 def get_odds_events():
 
@@ -266,11 +193,8 @@ def get_odds_events():
     return data
 
 
-# ============================================================
-# 3. FIND MATCH IN ODDS DATA
-# ============================================================
-
 def normalize_name(name):
+
     if not name:
         return ""
 
@@ -310,10 +234,6 @@ def find_odds_match(fdo_match, odds_events):
 
     return None
 
-
-# ============================================================
-# 4. EXTRACT AVAILABLE LINES
-# ============================================================
 
 def extract_market_lines(event):
 
@@ -357,21 +277,19 @@ def extract_market_lines(event):
     return spreads, totals
 
 
-# ============================================================
-# 5. SELECT ONE VERIFIED BETTING LINE
-# ============================================================
-
 def choose_line(spreads, totals):
 
     wanted_ah = [-0.25, -0.50, -0.75, -1.00]
     wanted_ou = [2.25, 2.50, 2.75, 3.00]
 
-    # Prefer O/U 2.5 for the first integration test
-    for item in totals:
+    for preferred_line in wanted_ou:
 
-        line = round(item["line"], 2)
+        for item in totals:
 
-        if line in wanted_ou:
+            line = round(item["line"], 2)
+
+            if line != preferred_line:
+                continue
 
             myanmar = asian_to_myanmar(line)
 
@@ -385,14 +303,15 @@ def choose_line(spreads, totals):
                     "price": item["price"],
                 }
 
-    # If O/U unavailable, try AH
-    for item in spreads:
+    for preferred_line in wanted_ah:
 
-        line = round(item["line"], 2)
+        for item in spreads:
 
-        if line in wanted_ah:
+            line = round(item["line"], 2)
 
-            # Myanmar mapping uses absolute line
+            if line != preferred_line:
+                continue
+
             myanmar = asian_to_myanmar(abs(line))
 
             if myanmar:
@@ -408,17 +327,13 @@ def choose_line(spreads, totals):
     return None
 
 
-# ============================================================
-# 6. GEMINI — ONE REQUEST ONLY
-# ============================================================
-
 def ask_gemini(match, bet):
 
     if not GEMINI_API_KEY:
         raise RuntimeError("GEMINI_API_KEY is missing")
 
     url = (
-        f"https://generativelanguage.googleapis.com/"
+        "https://generativelanguage.googleapis.com/"
         f"v1beta/models/{GEMINI_MODEL}:generateContent"
     )
 
@@ -499,17 +414,12 @@ Required JSON:
     return text
 
 
-# ============================================================
-# MAIN
-# ============================================================
-
 if __name__ == "__main__":
 
     print("=" * 50)
     print("ANALYSIS FOOTBALL INTEGRATION TEST")
     print("=" * 50)
 
-    # Step 1
     match = get_one_fdo_match()
 
     print("\nFDO MATCH")
@@ -519,10 +429,8 @@ if __name__ == "__main__":
         f"{match['home']} vs {match['away']}"
     )
 
-    # Step 2
     odds_events = get_odds_events()
 
-    # Step 3
     odds_match = find_odds_match(
         match,
         odds_events
@@ -535,9 +443,7 @@ if __name__ == "__main__":
             "FDO match found, but matching Odds API "
             "event was not found."
         )
-        print(
-            "NO GEMINI REQUEST SENT."
-        )
+        print("NO GEMINI REQUEST SENT.")
 
         raise SystemExit(0)
 
@@ -547,7 +453,6 @@ if __name__ == "__main__":
         f"{odds_match.get('away_team')}"
     )
 
-    # Step 4
     spreads, totals = extract_market_lines(
         odds_match
     )
@@ -555,7 +460,6 @@ if __name__ == "__main__":
     print("\nSPREAD COUNT:", len(spreads))
     print("TOTAL COUNT:", len(totals))
 
-    # Step 5
     bet = choose_line(
         spreads,
         totals
@@ -567,9 +471,7 @@ if __name__ == "__main__":
         print(
             "No verified wanted Asian line found."
         )
-        print(
-            "NO GEMINI REQUEST SENT."
-        )
+        print("NO GEMINI REQUEST SENT.")
 
         raise SystemExit(0)
 
@@ -589,7 +491,6 @@ if __name__ == "__main__":
         f"Price: {bet['price']}"
     )
 
-    # Step 6 — ONE Gemini request
     print("\nCalling Gemini once...")
 
     result = ask_gemini(
