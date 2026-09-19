@@ -133,8 +133,24 @@ def get_one_fdo_match():
             continue
 
         # Only matches that have not started
-        if match_mmt <= now:
-            continue
+        match_mmt = match_dt.astimezone(MMT)
+
+print(
+    "FDO MATCH RAW:",
+    home,
+    "vs",
+    away,
+    "| UTC:",
+    utc_date,
+    "| MMT:",
+    match_mmt.strftime("%Y-%m-%d %I:%M %p")
+)
+
+if match_mmt.date() != today:
+    continue
+
+# if match_mmt <= now:
+#     continue
 
         candidates.append({
             "id": match.get("id"),
