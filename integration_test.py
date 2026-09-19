@@ -68,11 +68,14 @@ def get_one_fdo_match():
         "Accept": "application/json",
     }
 
-    params = {
-        "competitions": ",".join(COMPETITIONS.keys()),
-        "dateFrom": date_str,
-        "dateTo": date_str,
-    }
+    from_date = today.strftime("%Y-%m-%d")
+to_date = (today + timedelta(days=7)).strftime("%Y-%m-%d")
+
+params = {
+    "competitions": ",".join(COMPETITIONS.keys()),
+    "dateFrom": from_date,
+    "dateTo": to_date,
+}
 
     response = requests.get(
         url,
@@ -82,7 +85,7 @@ def get_one_fdo_match():
     )
 
     print("FDO HTTP:", response.status_code)
-    print("FDO DATE:", date_str)
+  print("FDO DATE RANGE:", from_date, "to", to_date)  
 
     if response.status_code != 200:
         raise RuntimeError(
