@@ -61,6 +61,28 @@ def asian_to_myanmar(line):
 # 1. GET ONE UPCOMING MATCH FROM FDO
 # ============================================================
 
+ဟုတ်ဗျ။ အခု code အပြည့်ကို မြင်ရပြီ။ မှားနေတဲ့နေရာကို တိတိကျကျတွေ့ပြီ။
+အရင်က ထည့်ခိုင်းခဲ့တဲ့ print() နဲ့ if နှစ်ခုက indentation ပျက်ပြီး for match အပြင်ကို ထွက်သွားတာကြောင့်—
+IndentationError: unexpected indent
+ဖြစ်တာပါ။
+အခု အရေးကြီးဆုံး
+ဖိုင်တစ်ခုလုံးကို မပြင်ပါနဲ့။
+get_one_fdo_match() function တစ်ခုလုံးကိုပဲ အစားထိုးပါ။
+1️⃣ ဘယ်ကနေ ဘယ်အထိ ဖျက်ရမလဲ
+integration_test.py ထဲမှာ ဒီစာကြောင်းကိုရှာပါ။
+def get_one_fdo_match():
+အဲဒီကနေစပြီး—
+# ============================================================
+# 2. GET CURRENT ODDS FROM ODDS API
+# ============================================================
+အဲဒီ comment မတိုင်ခင်အထိ အကုန်ဖျက်ပါ။
+ဆိုလိုတာက Section 1 တစ်ခုလုံးပဲ ဖျက်တာ ဖြစ်ပါတယ်။
+Section 2 ကနေ အောက်ပိုင်းကို မထိပါနဲ့။
+2️⃣ အဲဒီနေရာမှာ ဒီ code ကို အတိအကျ Paste လုပ်ပါ
+# ============================================================
+# 1. GET ONE UPCOMING MATCH FROM FDO
+# ============================================================
+
 def get_one_fdo_match():
 
     if not FDO_API_KEY:
@@ -69,7 +91,6 @@ def get_one_fdo_match():
     now = datetime.now(MMT)
     today = now.date()
 
-    # Query today's date directly.
     date_str = today.strftime("%Y-%m-%d")
 
     url = "https://api.football-data.org/v4/matches"
@@ -128,29 +149,25 @@ def get_one_fdo_match():
 
         match_mmt = match_dt.astimezone(MMT)
 
+        # Show exactly what FDO returned
+        print(
+            "FDO MATCH RAW:",
+            home,
+            "vs",
+            away,
+            "| UTC:",
+            utc_date,
+            "| MMT:",
+            match_mmt.strftime("%Y-%m-%d %I:%M %p")
+        )
+
         # Only today's matches in Myanmar time
         if match_mmt.date() != today:
             continue
 
         # Only matches that have not started
-        match_mmt = match_dt.astimezone(MMT)
-
-print(
-    "FDO MATCH RAW:",
-    home,
-    "vs",
-    away,
-    "| UTC:",
-    utc_date,
-    "| MMT:",
-    match_mmt.strftime("%Y-%m-%d %I:%M %p")
-)
-
-if match_mmt.date() != today:
-    continue
-
-# if match_mmt <= now:
-#     continue
+        if match_mmt <= now:
+            continue
 
         candidates.append({
             "id": match.get("id"),
@@ -158,9 +175,7 @@ if match_mmt.date() != today:
             "home": home,
             "away": away,
             "utc_date": utc_date,
-            "mmt_time": match_mmt.strftime(
-                "%I:%M %p"
-            ),
+            "mmt_time": match_mmt.strftime("%I:%M %p"),
             "mmt_datetime": match_mmt,
         })
 
@@ -175,8 +190,41 @@ if match_mmt.date() != today:
         )
 
     return candidates[0]
+3️⃣ ဘာတွေပြင်ပြီးသွားပြီလဲ
+အဓိကက ဒီလိုဖြစ်သွားပါပြီ—
+FDO
+ ↓
+ဒီနေ့ပွဲတွေယူ
+ ↓
+Myanmar Time ပြောင်း
+ ↓
+FDO MATCH RAW ပြ
+ ↓
+ဒီနေ့မဟုတ်ရင် Skip
+ ↓
+စပြီးသားပွဲဆို Skip
+ ↓
+မစသေးတဲ့ပွဲကို candidates ထဲထည့်
+ ↓
+အနီးဆုံး upcoming ပွဲ ၁ ပွဲရွေး
+အရေးကြီးတာတစ်ခု — ဒီတစ်ခါ if match_mmt <= now: ကို comment မလုပ်ထားပါဘူး။ အဲဒါက မစသေးတဲ့ပွဲကိုပဲရွေးဖို့လိုတာပါ။
+4️⃣ ဒီနေ့အတွက် ဘာဖြစ်မလဲ
+ဒီနေ့ EPL မှာ ပွဲတွေရှိတာမှန်ပါတယ်။ အခု Myanmar time အရ စောစောကပွဲတွေ စပြီးသားဖြစ်နေရင် bot က အဲဒီပွဲတွေကို မရွေးဘဲ နောက်ထပ်မစသေးတဲ့ပွဲ ကို ရွေးပါလိမ့်မယ်။
+ဒီနေ့ remaining EPL schedule ကိုလည်း စစ်ထားပြီးသားပါ။
+5️⃣ အခု Run လုပ်ရမယ့်အရာ
+GitHub Actions → Integration Test workflow → Run workflow
+ပြီးရင် output ကို ဒီ chat ထဲ အကုန်ပို့ပါ။
+ဒီတစ်ခါ အရေးကြီးတာက အောက်ကလိုမျိုး output ထွက်လာရင် အရမ်းကောင်းပါတယ်—
+FDO HTTP: 200
+FDO DATE: 2026-09-19
+FDO MATCH RAW: ...
+FDO MATCH RAW: ...
+FDO MATCH RAW: ...
 
-
+FDO MATCH
+EPL | 08:30 PM MMT | ... vs ...
+ပြီးရင် အဲဒီအဆင့်က အောင်တာနဲ့ Odds API → Myanmar Odds → Gemini 3.6 ကို ဆက်သွားမယ်။
+အခုတော့ code တခြားနေရာ မပြင်ပါနဲ့။ ဒီ function တစ်ခုတည်းပဲ အစားထိုးပြီး Run ပါ။
 # ============================================================
 # 2. GET CURRENT ODDS FROM ODDS API
 # ============================================================
