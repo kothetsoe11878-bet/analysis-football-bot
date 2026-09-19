@@ -4,9 +4,9 @@ from datetime import datetime, timezone, timedelta
 
 MMT = timezone(timedelta(hours=6, minutes=30))
 
-FDO_API_KEY = os.getenv("FOOTBALL_DATA_API_KEY")
-ODDS_API_KEY = os.getenv("ODDS_API_KEY")
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+FDO_KEY = os.environ["FOOTBALL_DATA_API_KEY"]
+ODDS_KEY = os.environ["ODDS_API_KEY"]
+GEMINI_KEY = os.environ["GEMINI_API_KEY"]
 
 GEMINI_MODEL = "gemini-3.6-flash"
 
@@ -20,62 +20,57 @@ COMPETITIONS = {
 }
 
 MYANMAR_ODDS = {
-    0.00: "D",
+    0.0: "D",
     0.25: "L-50",
-    0.50: "L-100",
+    0.5: "L-100",
     0.75: "1+50",
-    1.00: "1D",
+    1.0: "1D",
     1.25: "1-50",
-    1.50: "1-100",
+    1.5: "1-100",
     1.75: "2+50",
-    2.00: "2D",
+    2.0: "2D",
     2.25: "2-50",
-    2.50: "2-100",
+    2.5: "2-100",
     2.75: "3+50",
-    3.00: "3D",
+    3.0: "3D",
     3.25: "3-50",
-    3.50: "3-100",
+    3.5: "3-100",
     3.75: "4+50",
-    4.00: "4D",
-    4.25: "4-50",
-    4.50: "4-100",
-    5.00: "5D",
+    4.0: "4D",
 }
 
 
 def asian_to_myanmar(line):
-    try:
-        line = round(float(line), 2)
-    except (TypeError, ValueError):
+    if line is None:
         return None
 
-    return MYANMAR_ODDS.get(line)
+    line = abs(float(line))
+
+    for key, value in MYANMAR_ODDS.items():
+        if abs(key - line) < 0.001:
+            return value
+
+    return None
 
 
 def get_one_fdo_match():
-
-    if not FDO_API_KEY:
-        raise RuntimeError("FOOTBALL_DATA_API_KEY is missing")
-
     now = datetime.now(MMT)
     today = now.date()
-    date_str = today.strftime("%Y-%m-%d")
+
+    from_date = today.strftime("%Y-%m-%d")
+    to_date = (today + timedelta(days=7)).strftime("%Y-%m-%d")
 
     url = "https://api.football-data.org/v4/matches"
 
     headers = {
-        "X-Auth-Token": FDO_API_KEY,
-        "Accept": "application/json",
+        "X-Auth-Token": FDO_KEY
     }
 
-    from_date = today.strftime("%Y-%m-%d")
-to_date = (today + timedelta(days=7)).strftime("%Y-%m-%d")
-
-params = {
-    "competitions": ",".join(COMPETITIONS.keys()),
-    "dateFrom": from_date,
-    "dateTo": to_date,
-}
+    params = {
+        "competitions": ",".join(COMPETITIONS.keys()),
+        "dateFrom": from_date,
+        "dateTo": to_date,
+    }
 
     response = requests.get(
         url,
@@ -85,49 +80,42 @@ params = {
     )
 
     print("FDO HTTP:", response.status_code)
-  print("FDO DATE RANGE:", from_date, "to", to_date)  
+    print("FDO DATE RANGE:", from_date, "to", to_date)
 
-    if response.status_code != 200:
-        raise RuntimeError(
-            f"FDO ERROR: {response.text}"
-        )
+    response.raise_for_status()
 
     data = response.json()
+    matches = data.get("matches", [])
+
+    print("FDO MATCH COUNT:", len(matches))
+
     candidates = []
 
-    for match in data.get("matches", []):
-
+    for match in matches:
         competition = match.get("competition", {})
         code = competition.get("code")
 
         if code not in COMPETITIONS:
             continue
 
-        home = match.get("homeTeam", {}).get("name")
-        away = match.get("awayTeam", {}).get("name")
         utc_date = match.get("utcDate")
 
-        if not home or not away or not utc_date:
+        if not utc_date:
             continue
 
-        try:
-            match_dt = datetime.fromisoformat(
-                utc_date.replace("Z", "+00:00")
-            )
-        except ValueError:
-            continue
-
-        match_mmt = match_dt.astimezone(MMT)
+        match_mmt = datetime.fromisoformat(
+            utc_date.replace("Z", "+00:00")
+        ).astimezone(MMT)
 
         print(
             "FDO MATCH RAW:",
-            home,
+            competition.get("name"),
+            "|",
+            match.get("homeTeam", {}).get("name"),
             "vs",
-            away,
-            "| UTC:",
-            utc_date,
-            "| MMT:",
-            match_mmt.strftime("%Y-%m-%d %I:%M %p")
+            match.get("awayTeam", {}).get("name"),
+            "|",
+            match_mmt.strftime("%Y-%m-%d %H:%M"),
         )
 
         if match_mmt.date() != today:
@@ -136,41 +124,37 @@ params = {
         if match_mmt <= now:
             continue
 
-        candidates.append({
-            "id": match.get("id"),
-            "league": COMPETITIONS[code],
-            "home": home,
-            "away": away,
-            "utc_date": utc_date,
-            "mmt_time": match_mmt.strftime("%I:%M %p"),
-            "mmt_datetime": match_mmt,
-        })
-
-    candidates.sort(
-        key=lambda x: x["mmt_datetime"]
-    )
+        candidates.append((match_mmt, match))
 
     if not candidates:
         raise RuntimeError(
-            "FDO returned today's matches, "
-            "but no future match remains in MMT."
+            "FDO returned matches, but no future match remains in MMT today."
         )
 
-    return candidates[0]
+    candidates.sort(key=lambda x: x[0])
+
+    return candidates[0][1]
 
 
-def get_odds_events():
+def normalize_name(name):
+    if not name:
+        return ""
 
-    if not ODDS_API_KEY:
-        raise RuntimeError("ODDS_API_KEY is missing")
-
-    url = (
-        "https://api.the-odds-api.com/v4/sports/"
-        "soccer_epl/odds"
+    return (
+        name.lower()
+        .replace("fc", "")
+        .replace("afc", "")
+        .replace("cf", "")
+        .replace("  ", " ")
+        .strip()
     )
 
+
+def get_odds_match(home, away):
+    url = "https://api.the-odds-api.com/v4/sports/soccer_epl/odds"
+
     params = {
-        "apiKey": ODDS_API_KEY,
+        "apiKey": ODDS_KEY,
         "regions": "eu",
         "markets": "spreads,totals",
         "oddsFormat": "decimal",
@@ -182,200 +166,104 @@ def get_odds_events():
         timeout=30,
     )
 
-    print("ODDS API HTTP:", response.status_code)
+    print("ODDS HTTP:", response.status_code)
 
-    if response.status_code != 200:
-        raise RuntimeError(
-            f"ODDS API ERROR: {response.text}"
-        )
+    response.raise_for_status()
 
-    data = response.json()
+    events = response.json()
 
-    print("Odds events:", len(data))
+    home_n = normalize_name(home)
+    away_n = normalize_name(away)
 
-    return data
+    for event in events:
+        event_home = normalize_name(event.get("home_team"))
+        event_away = normalize_name(event.get("away_team"))
 
-
-def normalize_name(name):
-
-    if not name:
-        return ""
-
-    return (
-        name.lower()
-        .replace("fc", "")
-        .replace("cf", "")
-        .replace("afc", "")
-        .replace(".", "")
-        .strip()
-    )
-
-
-def find_odds_match(fdo_match, odds_events):
-
-    home = normalize_name(fdo_match["home"])
-    away = normalize_name(fdo_match["away"])
-
-    for event in odds_events:
-
-        odds_home = normalize_name(
-            event.get("home_team")
-        )
-
-        odds_away = normalize_name(
-            event.get("away_team")
-        )
-
-        if (
-            home in odds_home
-            or odds_home in home
-        ) and (
-            away in odds_away
-            or odds_away in away
-        ):
+        if event_home == home_n and event_away == away_n:
             return event
 
     return None
 
 
-def extract_market_lines(event):
+def choose_line(event):
+    preferred_totals = [2.25, 2.5, 2.75, 3.0]
+    preferred_handicaps = [-0.25, -0.5, -0.75, -1.0]
 
-    spreads = []
-    totals = []
+    if not event:
+        return None
 
     for bookmaker in event.get("bookmakers", []):
-
         for market in bookmaker.get("markets", []):
 
-            market_key = market.get("key")
+            if market.get("key") == "totals":
+                outcomes = market.get("outcomes", [])
 
-            if market_key == "spreads":
+                for line in preferred_totals:
+                    for outcome in outcomes:
+                        point = outcome.get("point")
 
-                for outcome in market.get("outcomes", []):
+                        if point is not None and abs(point - line) < 0.001:
+                            return {
+                                "market": "O/U",
+                                "line": line,
+                                "myanmar_odds": asian_to_myanmar(line),
+                            }
 
-                    point = outcome.get("point")
+            if market.get("key") == "spreads":
+                outcomes = market.get("outcomes", [])
 
-                    if point is not None:
-                        spreads.append({
-                            "bookmaker": bookmaker.get("title"),
-                            "team": outcome.get("name"),
-                            "line": float(point),
-                            "price": outcome.get("price"),
-                        })
+                for line in preferred_handicaps:
+                    for outcome in outcomes:
+                        point = outcome.get("point")
 
-            elif market_key == "totals":
-
-                for outcome in market.get("outcomes", []):
-
-                    point = outcome.get("point")
-
-                    if point is not None:
-                        totals.append({
-                            "bookmaker": bookmaker.get("title"),
-                            "name": outcome.get("name"),
-                            "line": float(point),
-                            "price": outcome.get("price"),
-                        })
-
-    return spreads, totals
-
-
-def choose_line(spreads, totals):
-
-    wanted_ah = [-0.25, -0.50, -0.75, -1.00]
-    wanted_ou = [2.25, 2.50, 2.75, 3.00]
-
-    for preferred_line in wanted_ou:
-
-        for item in totals:
-
-            line = round(item["line"], 2)
-
-            if line != preferred_line:
-                continue
-
-            myanmar = asian_to_myanmar(line)
-
-            if myanmar:
-                return {
-                    "market": "O/U",
-                    "line": line,
-                    "myanmar_odds": myanmar,
-                    "bookmaker": item["bookmaker"],
-                    "side": item["name"],
-                    "price": item["price"],
-                }
-
-    for preferred_line in wanted_ah:
-
-        for item in spreads:
-
-            line = round(item["line"], 2)
-
-            if line != preferred_line:
-                continue
-
-            myanmar = asian_to_myanmar(abs(line))
-
-            if myanmar:
-                return {
-                    "market": "AH",
-                    "line": line,
-                    "myanmar_odds": myanmar,
-                    "bookmaker": item["bookmaker"],
-                    "side": item["team"],
-                    "price": item["price"],
-                }
+                        if point is not None and abs(point - abs(line)) < 0.001:
+                            return {
+                                "market": "AH",
+                                "line": line,
+                                "myanmar_odds": asian_to_myanmar(line),
+                            }
 
     return None
 
 
-def ask_gemini(match, bet):
-
-    if not GEMINI_API_KEY:
-        raise RuntimeError("GEMINI_API_KEY is missing")
-
+def call_gemini(home, away, competition, market, line, myanmar_odds):
     url = (
-        "https://generativelanguage.googleapis.com/"
-        f"v1beta/models/{GEMINI_MODEL}:generateContent"
+        "https://generativelanguage.googleapis.com/v1beta/"
+        f"models/{GEMINI_MODEL}:generateContent"
     )
 
     prompt = f"""
 You are a football analysis assistant.
 
-Analyze ONLY the verified information below.
+Competition: {competition}
+Home: {home}
+Away: {away}
+Market: {market}
+Asian Line: {line}
+Myanmar Odds: {myanmar_odds}
 
-Competition: {match['league']}
-Home: {match['home']}
-Away: {match['away']}
+Allowed competitions only:
+EPL, La Liga, Serie A, Bundesliga, Ligue 1, UCL.
 
-Market: {bet['market']}
-Asian Line: {bet['line']}
-Myanmar Odds: {bet['myanmar_odds']}
-Bookmaker: {bet['bookmaker']}
-Side: {bet['side']}
-Decimal Price: {bet['price']}
+Rules:
+- Do not invent injuries, lineups, news, statistics, odds or evidence.
+- If reliable evidence is insufficient, return PASS.
+- Do not change the supplied competition, teams, market, line or Myanmar odds.
+- Historical BT is only supporting evidence, not a guarantee.
+- Output JSON only.
 
-IMPORTANT RULES:
-1. Do not invent injuries, lineups, form, statistics or news.
-2. Do not invent evidence that was not provided.
-3. The Asian Line and Myanmar Odds are LOCKED.
-4. If evidence is insufficient, return PASS.
-5. Do not guarantee profit.
-6. Return JSON only.
+Return exactly:
 
-Required JSON:
 {{
   "status": "PICK or PASS",
-  "strength": "Strong, Good, Moderate or PASS",
-  "competition": "{match['league']}",
-  "home": "{match['home']}",
-  "away": "{match['away']}",
-  "market": "{bet['market']}",
-  "line": {bet['line']},
-  "myanmar_odds": "{bet['myanmar_odds']}",
+  "strength": "Strong, Good, Moderate, or PASS",
   "reason": "short factual reason",
-  "risk": "short risk statement"
+  "competition": "{competition}",
+  "home": "{home}",
+  "away": "{away}",
+  "market": "{market}",
+  "asian_line": {line},
+  "myanmar_odds": "{myanmar_odds}"
 }}
 """
 
@@ -391,119 +279,101 @@ Required JSON:
         ]
     }
 
+    headers = {
+        "Content-Type": "application/json",
+        "x-goog-api-key": GEMINI_KEY,
+    }
+
     response = requests.post(
         url,
-        params={"key": GEMINI_API_KEY},
+        headers=headers,
         json=payload,
         timeout=60,
     )
 
     print("GEMINI HTTP:", response.status_code)
 
-    if response.status_code != 200:
-        raise RuntimeError(
-            f"GEMINI ERROR: {response.text}"
-        )
+    response.raise_for_status()
 
     data = response.json()
 
-    try:
-        text = data["candidates"][0]["content"]["parts"][0]["text"]
-    except (KeyError, IndexError):
-        raise RuntimeError(
-            f"Gemini returned unexpected response: {data}"
-        )
+    text = (
+        data["candidates"][0]["content"]["parts"][0]["text"]
+        .strip()
+    )
 
-    return text
+    if text.startswith("```"):
+        text = text.replace("```json", "").replace("```", "").strip()
+
+    import json
+
+    result = json.loads(text)
+
+    # Lock critical fields
+    result["competition"] = competition
+    result["home"] = home
+    result["away"] = away
+    result["market"] = market
+    result["asian_line"] = line
+    result["myanmar_odds"] = myanmar_odds
+
+    return result
 
 
-if __name__ == "__main__":
-
+def main():
     print("=" * 50)
     print("ANALYSIS FOOTBALL INTEGRATION TEST")
     print("=" * 50)
 
     match = get_one_fdo_match()
 
-    print("\nFDO MATCH")
-    print(
-        f"{match['league']} | "
-        f"{match['mmt_time']} MMT | "
-        f"{match['home']} vs {match['away']}"
-    )
+    competition_code = match["competition"]["code"]
+    competition = COMPETITIONS[competition_code]
 
-    odds_events = get_odds_events()
+    home = match["homeTeam"]["name"]
+    away = match["awayTeam"]["name"]
 
-    odds_match = find_odds_match(
-        match,
-        odds_events
-    )
+    print()
+    print("SELECTED MATCH:")
+    print(competition)
+    print(home, "vs", away)
 
-    if not odds_match:
+    odds_event = get_odds_match(home, away)
 
-        print("\nRESULT: PASS")
-        print(
-            "FDO match found, but matching Odds API "
-            "event was not found."
+    if not odds_event:
+        raise RuntimeError(
+            "No matching Odds API event found for selected match."
         )
-        print("NO GEMINI REQUEST SENT.")
 
-        raise SystemExit(0)
+    line_info = choose_line(odds_event)
 
-    print("\nODDS MATCH FOUND")
-    print(
-        f"{odds_match.get('home_team')} vs "
-        f"{odds_match.get('away_team')}"
-    )
-
-    spreads, totals = extract_market_lines(
-        odds_match
-    )
-
-    print("\nSPREAD COUNT:", len(spreads))
-    print("TOTAL COUNT:", len(totals))
-
-    bet = choose_line(
-        spreads,
-        totals
-    )
-
-    if not bet:
-
-        print("\nRESULT: PASS")
-        print(
-            "No verified wanted Asian line found."
+    if not line_info:
+        raise RuntimeError(
+            "No supported Asian line found."
         )
-        print("NO GEMINI REQUEST SENT.")
 
-        raise SystemExit(0)
+    print()
+    print("SELECTED MARKET:")
+    print(line_info)
 
-    print("\nVERIFIED BET")
-    print(
-        f"{bet['market']} | "
-        f"{bet['line']} | "
-        f"{bet['myanmar_odds']}"
-    )
-    print(
-        f"Bookmaker: {bet['bookmaker']}"
-    )
-    print(
-        f"Side: {bet['side']}"
-    )
-    print(
-        f"Price: {bet['price']}"
+    result = call_gemini(
+        home=home,
+        away=away,
+        competition=competition,
+        market=line_info["market"],
+        line=line_info["line"],
+        myanmar_odds=line_info["myanmar_odds"],
     )
 
-    print("\nCalling Gemini once...")
-
-    result = ask_gemini(
-        match,
-        bet
-    )
-
-    print("\nGEMINI RESULT")
+    print()
+    print("GEMINI RESULT:")
     print(result)
 
-    print("\n" + "=" * 50)
-    print("INTEGRATION TEST FINISHED")
+    print()
     print("=" * 50)
+    print("INTEGRATION TEST COMPLETE")
+    print("=" * 50)
+
+
+if __name__ == "__main__":
+    main()
