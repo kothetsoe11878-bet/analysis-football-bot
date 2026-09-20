@@ -1,6 +1,19 @@
 # Analysis Football Bot
-# Dynamic match-specific Asian O/U + Myanmar Odds
-# 2.5 is NOT hard-coded.
+# Verified Fixtures + Dynamic Asian O/U + Myanmar Odds
+#
+# Workflow:
+#   09:00 MMT -> Result Review (not enabled yet)
+#   10:00 MMT -> T-1 analysis candidates, next 7 days, max 12
+#   18:00 MMT -> Final analysis, today's matches, max 4
+#
+# IMPORTANT:
+#   - Only six allowed competitions
+#   - No fixed 2.5 O/U line
+#   - No invented fixture
+#   - No invented odds
+#   - No forced PICK
+#   - If evidence is insufficient -> PASS
+
 
 import os
 import requests
@@ -9,6 +22,11 @@ from collections import Counter
 
 from odds import display_line
 from gemini_analysis import analyze_match
+from sources import (
+    get_today_verified_matches,
+    get_t1_verified_matches,
+)
+from rules import workflow_stage
 
 
 # ============================================================
@@ -17,14 +35,26 @@ from gemini_analysis import analyze_match
 
 MMT = timezone(timedelta(hours=6, minutes=30))
 
-TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-CHANNEL_USERNAME = os.getenv("CHANNEL_USERNAME")
-FOOTBALL_DATA_API_KEY = os.getenv("FOOTBALL_DATA_API_KEY")
-ODDS_API_KEY = os.getenv("ODDS_API_KEY")
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+TELEGRAM_BOT_TOKEN = os.getenv(
+    "TELEGRAM_BOT_TOKEN"
+)
 
-FDO_URL = "https://api.football-data.org/v4/matches"
-ODDS_URL = "https://api.the-odds-api.com/v4/sports"
+CHANNEL_USERNAME = os.getenv(
+    "CHANNEL_USERNAME"
+)
+
+ODDS_API_KEY = os.getenv(
+    "ODDS_API_KEY"
+)
+
+GEMINI_API_KEY = os.getenv(
+    "GEMINI_API_KEY"
+)
+
+ODDS_URL = (
+    "https://api.the-odds-api.com/v4/sports"
+)
+
 
 # ONLY these six competitions
 COMPETITIONS = {
@@ -35,6 +65,7 @@ COMPETITIONS = {
     "FL1": "Ligue 1",
     "CL": "UCL",
 }
+
 
 # The Odds API sport keys
 ODDS_SPORTS = {
@@ -56,148 +87,11 @@ def now_mmt():
 
 
 # ============================================================
-# FOOTBALL-DATA.ORG
-# ============================================================
-
-def get_fixtures():
-    """
-    Get today's upcoming fixtures in Myanmar time
-    from the six allowed competitions only.
-    """
-
-    if not FOOTBALL_DATA_API_KEY:
-        raise RuntimeError(
-            "FOOTBALL_DATA_API_KEY is missing."
-        )
-
-    now = now_mmt()
-    today = now.date()
-
-    start_mmt = datetime.combine(
-        today,
-        datetime.min.time(),
-        tzinfo=MMT,
-    )
-
-    end_mmt = start_mmt + timedelta(days=1)
-
-    date_from = start_mmt.astimezone(
-        timezone.utc
-    ).strftime("%Y-%m-%d")
-
-    date_to = end_mmt.astimezone(
-        timezone.utc
-    ).strftime("%Y-%m-%d")
-
-    headers = {
-        "X-Auth-Token": FOOTBALL_DATA_API_KEY,
-        "Accept": "application/json",
-    }
-
-    params = {
-        "competitions": ",".join(
-            COMPETITIONS.keys()
-        ),
-        "dateFrom": date_from,
-        "dateTo": date_to,
-    }
-
-    response = requests.get(
-        FDO_URL,
-        headers=headers,
-        params=params,
-        timeout=30,
-    )
-
-    try:
-        data = response.json()
-    except ValueError:
-        raise RuntimeError(
-            f"FDO returned invalid JSON: "
-            f"{response.text[:500]}"
-        )
-
-    if response.status_code != 200:
-        raise RuntimeError(
-            f"FDO API ERROR: {data}"
-        )
-
-    matches = data.get("matches")
-
-    if matches is None:
-        raise RuntimeError(
-            "FDO response has no matches field."
-        )
-
-    fixtures = []
-
-    for match in matches:
-
-        competition = match.get(
-            "competition", {}
-        )
-
-        code = competition.get("code")
-
-        if code not in COMPETITIONS:
-            continue
-
-        home = match.get(
-            "homeTeam", {}
-        ).get("name")
-
-        away = match.get(
-            "awayTeam", {}
-        ).get("name")
-
-        utc_date = match.get("utcDate")
-
-        if not home or not away or not utc_date:
-            continue
-
-        try:
-            match_dt = datetime.fromisoformat(
-                utc_date.replace(
-                    "Z",
-                    "+00:00"
-                )
-            )
-        except ValueError:
-            continue
-
-        match_mmt = match_dt.astimezone(MMT)
-
-        if match_mmt.date() != today:
-            continue
-
-        if match_mmt <= now:
-            continue
-
-        fixtures.append({
-            "id": match.get("id"),
-            "competition_code": code,
-            "competition": COMPETITIONS[code],
-            "home": home,
-            "away": away,
-            "utc_date": utc_date,
-            "mmt_datetime": match_mmt,
-            "mmt_time": match_mmt.strftime(
-                "%I:%M %p"
-            ),
-        })
-
-    fixtures.sort(
-        key=lambda x: x["mmt_datetime"]
-    )
-
-    return fixtures
-
-
-# ============================================================
 # TEAM NAME NORMALIZATION
 # ============================================================
 
 def normalize_name(name):
+
     if not name:
         return ""
 
@@ -210,11 +104,13 @@ def normalize_name(name):
         "ac": "",
         "sc": "",
         "1. fc": "",
-        "real ": "real ",
     }
 
     for old, new in replacements.items():
-        value = value.replace(old, new)
+        value = value.replace(
+            old,
+            new
+        )
 
     return (
         value
@@ -232,24 +128,78 @@ def teams_match(
     home_b,
     away_b,
 ):
+
     ha = normalize_name(home_a)
     aa = normalize_name(away_a)
+
     hb = normalize_name(home_b)
     ab = normalize_name(away_b)
 
-    return (
-        (ha == hb and aa == ab)
-        or
+    if not ha or not aa or not hb or not ab:
+        return False
+
+    direct_match = (
+        ha == hb
+        and
+        aa == ab
+    )
+
+    partial_match = (
         (
             ha in hb
-            or hb in ha
+            or
+            hb in ha
         )
         and
         (
             aa in ab
-            or ab in aa
+            or
+            ab in aa
         )
     )
+
+    return (
+        direct_match
+        or
+        partial_match
+    )
+
+
+# ============================================================
+# WORKFLOW FIXTURES
+# ============================================================
+
+def get_fixtures_for_stage(stage):
+
+    """
+    Get verified fixtures from sources.py.
+
+    09:00 MMT:
+        Result review is intentionally disabled
+        until prediction history is stored.
+
+    10:00 MMT:
+        Next 7 days.
+
+    18:00 MMT:
+        Today's matches only.
+    """
+
+    if stage == "RESULT_REVIEW_9AM":
+
+        return []
+
+    if stage == "T1_10AM":
+
+        return get_t1_verified_matches(
+            days=7
+        )
+
+    if stage == "FINAL_6PM":
+
+        return get_today_verified_matches()
+
+    return []
 
 
 # ============================================================
@@ -257,15 +207,14 @@ def teams_match(
 # ============================================================
 
 def get_odds_events(competition):
-    """
-    Get current odds for one allowed competition.
 
-    IMPORTANT:
-    We request totals/spreads from the Odds API.
-    We do NOT set O/U line to 2.5.
+    """
+    Get current totals/spreads odds for
+    one allowed competition.
     """
 
     if not ODDS_API_KEY:
+
         raise RuntimeError(
             "ODDS_API_KEY is missing."
         )
@@ -275,6 +224,7 @@ def get_odds_events(competition):
     )
 
     if not sport_key:
+
         raise RuntimeError(
             f"No Odds API sport key for "
             f"{competition}"
@@ -299,19 +249,24 @@ def get_odds_events(competition):
     )
 
     try:
+
         data = response.json()
+
     except ValueError:
+
         raise RuntimeError(
-            f"Odds API returned invalid JSON: "
+            "Odds API returned invalid JSON: "
             f"{response.text[:500]}"
         )
 
     if response.status_code != 200:
+
         raise RuntimeError(
             f"Odds API ERROR: {data}"
         )
 
     if not isinstance(data, list):
+
         raise RuntimeError(
             "Odds API returned unexpected data."
         )
@@ -320,18 +275,18 @@ def get_odds_events(competition):
 
 
 # ============================================================
-# MATCH-SPECIFIC O/U LINE
+# EXTRACT REAL O/U POINTS
 # ============================================================
 
 def extract_total_points(event):
-    """
-    Extract every actual O/U point supplied by bookmakers
-    for this specific match.
 
-    Example:
-        [2.5, 2.5, 3.0, 3.0, 3.0]
+    """
+    Extract real O/U points supplied by bookmakers.
 
     Nothing is invented.
+
+    Example:
+        [2.5, 2.5, 3.0, 3.0]
     """
 
     points = []
@@ -366,12 +321,15 @@ def extract_total_points(event):
                 }:
                     continue
 
-                point = outcome.get("point")
+                point = outcome.get(
+                    "point"
+                )
 
                 if isinstance(
                     point,
                     (int, float)
                 ):
+
                     points.append(
                         float(point)
                     )
@@ -379,19 +337,19 @@ def extract_total_points(event):
     return points
 
 
+# ============================================================
+# DYNAMIC O/U LINE
+# ============================================================
+
 def choose_dynamic_ou_line(event):
+
     """
-    Choose the consensus/main current O/U line.
+    Choose the most common real bookmaker O/U line.
 
-    We DO NOT assume 2.5.
+    2.5 is NOT hard-coded.
 
-    Method:
-      1. Collect all bookmaker total-goal points.
-      2. Find the most common point.
-      3. If multiple points have equal frequency,
-         choose the median among the tied points.
-
-    Returns None if no real totals line exists.
+    If several lines have equal frequency,
+    use the median of the tied lines.
     """
 
     points = extract_total_points(
@@ -399,6 +357,7 @@ def choose_dynamic_ou_line(event):
     )
 
     if not points:
+
         return None
 
     counts = Counter(points)
@@ -409,38 +368,33 @@ def choose_dynamic_ou_line(event):
 
     candidates = sorted(
         point
-        for point, count in counts.items()
+        for point, count
+        in counts.items()
         if count == highest_count
     )
 
     middle = len(candidates) // 2
 
     if len(candidates) % 2 == 1:
+
         return candidates[middle]
 
     return (
         candidates[middle - 1]
-        + candidates[middle]
+        +
+        candidates[middle]
     ) / 2
 
 
 # ============================================================
-# GET ODDS FOR ONE MATCH
+# MATCH ODDS
 # ============================================================
 
 def get_match_odds(fixture):
+
     """
-    Find the Odds API event corresponding to one FDO fixture.
-
-    Returns:
-      {
-        "market": "OU",
-        "line": actual line,
-        "myanmar_odds": actual mapped Myanmar notation,
-        "bookmakers": ...
-      }
-
-    No fixed 2.5.
+    Find current Odds API event for one
+    verified FDO fixture.
     """
 
     competition = fixture[
@@ -459,6 +413,7 @@ def get_match_odds(fixture):
             event.get("home_team"),
             event.get("away_team"),
         ):
+
             continue
 
         line = choose_dynamic_ou_line(
@@ -466,38 +421,52 @@ def get_match_odds(fixture):
         )
 
         if line is None:
+
             return {
                 "status": "PASS",
                 "reason": (
-                    "No current O/U totals line "
-                    "was supplied by Odds API."
+                    "No current O/U totals "
+                    "line was supplied "
+                    "by Odds API."
                 ),
-                "event_id": event.get("id"),
+                "event_id": event.get(
+                    "id"
+                ),
             }
 
         try:
+
             display = display_line(
                 line
             )
+
         except ValueError as error:
+
             return {
                 "status": "PASS",
                 "reason": (
-                    f"Odds API supplied unsupported "
-                    f"O/U line {line}: {error}"
+                    f"Odds API supplied "
+                    f"unsupported O/U line "
+                    f"{line}: {error}"
                 ),
-                "event_id": event.get("id"),
+                "event_id": event.get(
+                    "id"
+                ),
             }
 
         return {
             "status": "OK",
-            "event_id": event.get("id"),
+            "event_id": event.get(
+                "id"
+            ),
             "market": "OU",
             "line": line,
-            "myanmar_odds": display.split(
-                " | ",
-                1
-            )[1],
+            "myanmar_odds": (
+                display.split(
+                    " | ",
+                    1
+                )[1]
+            ),
             "display_line": display,
             "raw_points": sorted(
                 set(
@@ -521,13 +490,20 @@ def get_match_odds(fixture):
 # GEMINI
 # ============================================================
 
-def run_gemini(fixture, odds):
+def run_gemini(
+    fixture,
+    odds,
+):
+
     """
-    Send only verified fixture + current odds
-    to the tested Gemini module.
+    Send verified fixture + current odds
+    to gemini_analysis.py.
+
+    No invented football evidence.
     """
 
     if odds.get("status") != "OK":
+
         return {
             "status": "PASS",
             "reason": odds.get(
@@ -537,6 +513,7 @@ def run_gemini(fixture, odds):
         }
 
     line = odds["line"]
+
     myanmar_odds = odds[
         "myanmar_odds"
     ]
@@ -545,25 +522,41 @@ def run_gemini(fixture, odds):
         "competition": fixture[
             "competition"
         ],
-        "home": fixture["home"],
-        "away": fixture["away"],
+        "home": fixture[
+            "home"
+        ],
+        "away": fixture[
+            "away"
+        ],
         "market": "OU",
         "line": line,
         "myanmar_odds": myanmar_odds,
+
         "evidence": {
+
             "fixture": {
-                "source": "Football-Data.org",
+                "source": (
+                    "Football-Data.org"
+                ),
+                "mmt_date": fixture[
+                    "mmt_date"
+                ],
                 "mmt_time": fixture[
                     "mmt_time"
                 ],
             },
+
             "current_odds": {
-                "source": "The Odds API",
+                "source": (
+                    "The Odds API"
+                ),
                 "market": "totals",
                 "consensus_line": line,
-                "available_lines": odds.get(
-                    "raw_points",
-                    []
+                "available_lines": (
+                    odds.get(
+                        "raw_points",
+                        []
+                    )
                 ),
             },
         },
@@ -573,10 +566,14 @@ def run_gemini(fixture, odds):
         match
     )
 
+    # --------------------------------------------------------
     # SECURITY CHECK
-    # These must remain exactly equal
-    # to the actual supplied market line.
-    if result.get("line") != line:
+    # --------------------------------------------------------
+
+    if result.get(
+        "line"
+    ) != line:
+
         raise RuntimeError(
             "SECURITY ERROR: Gemini changed "
             "the supplied O/U line."
@@ -585,6 +582,7 @@ def run_gemini(fixture, odds):
     if result.get(
         "myanmar_odds"
     ) != myanmar_odds:
+
         raise RuntimeError(
             "SECURITY ERROR: Gemini changed "
             "the supplied Myanmar odds."
@@ -600,18 +598,21 @@ def run_gemini(fixture, odds):
 def send_telegram(message):
 
     if not TELEGRAM_BOT_TOKEN:
+
         raise RuntimeError(
             "TELEGRAM_BOT_TOKEN is missing."
         )
 
     if not CHANNEL_USERNAME:
+
         raise RuntimeError(
             "CHANNEL_USERNAME is missing."
         )
 
     url = (
         "https://api.telegram.org/bot"
-        f"{TELEGRAM_BOT_TOKEN}/sendMessage"
+        f"{TELEGRAM_BOT_TOKEN}"
+        "/sendMessage"
     )
 
     payload = {
@@ -626,8 +627,9 @@ def send_telegram(message):
     )
 
     if response.status_code != 200:
+
         raise RuntimeError(
-            f"Telegram API ERROR: "
+            "Telegram API ERROR: "
             f"{response.text[:1000]}"
         )
 
@@ -635,7 +637,7 @@ def send_telegram(message):
 
 
 # ============================================================
-# MESSAGE
+# TELEGRAM MESSAGE
 # ============================================================
 
 def build_message(
@@ -648,21 +650,37 @@ def build_message(
         "competition"
     ]
 
-    home = fixture["home"]
-    away = fixture["away"]
+    home = fixture[
+        "home"
+    ]
+
+    away = fixture[
+        "away"
+    ]
+
     time_text = fixture[
         "mmt_time"
     ]
 
-    if odds.get("status") != "OK":
+    # --------------------------------------------------------
+    # ODDS PASS
+    # --------------------------------------------------------
+
+    if odds.get(
+        "status"
+    ) != "OK":
 
         return (
             f"⚽ {competition}\n"
             f"{home} vs {away}\n"
             f"🕒 {time_text} MMT\n\n"
             f"⏭️ O/U PASS\n"
-            f"Reason: {odds.get('reason', '')}"
+            f"{odds.get('reason', '')}"
         )
+
+    # --------------------------------------------------------
+    # ANALYSIS
+    # --------------------------------------------------------
 
     line_text = odds[
         "display_line"
@@ -693,6 +711,10 @@ def build_message(
         ""
     )
 
+    # --------------------------------------------------------
+    # PICK
+    # --------------------------------------------------------
+
     if status == "PICK":
 
         return (
@@ -705,6 +727,10 @@ def build_message(
             f"⚠️ Risk: {risk_mm}\n"
             f"✅ {final_pick_mm}"
         )
+
+    # --------------------------------------------------------
+    # PASS
+    # --------------------------------------------------------
 
     return (
         f"⚽ {competition}\n"
@@ -724,116 +750,317 @@ def build_message(
 def main():
 
     print(
-        "=== ANALYSIS FOOTBALL BOT ==="
+        "========================================"
     )
 
     print(
-        "Dynamic O/U line mode: ENABLED"
+        "     ANALYSIS FOOTBALL BOT"
+    )
+
+    print(
+        "========================================"
+    )
+
+    print(
+        "Dynamic O/U line: ENABLED"
     )
 
     print(
         "Fixed 2.5 line: DISABLED"
     )
 
-    fixtures = get_fixtures()
+    # --------------------------------------------------------
+    # WORKFLOW
+    # --------------------------------------------------------
+
+    stage = workflow_stage()
 
     print(
-        f"FDO upcoming fixtures: "
+        f"[WORKFLOW] Stage: {stage}"
+    )
+
+    # --------------------------------------------------------
+    # FIXTURES
+    # --------------------------------------------------------
+
+    try:
+
+        fixtures = (
+            get_fixtures_for_stage(
+                stage
+            )
+        )
+
+    except Exception as error:
+
+        print(
+            "[FIXTURE ERROR]",
+            error
+        )
+
+        return
+
+    print(
+        f"[FIXTURE CHECK] "
+        f"Matches found: "
         f"{len(fixtures)}"
     )
 
-    if not fixtures:
+    for fixture in fixtures:
+
         print(
-            "No upcoming allowed match today."
+            f"[FIXTURE] "
+            f"{fixture['competition']} | "
+            f"{fixture['home']} vs "
+            f"{fixture['away']} | "
+            f"{fixture['mmt_date']} "
+            f"{fixture['mmt_time']}"
         )
+
+    # --------------------------------------------------------
+    # RESULT REVIEW
+    # --------------------------------------------------------
+
+    if stage == "RESULT_REVIEW_9AM":
+
+        print(
+            "[RESULT REVIEW] "
+            "Prediction history is not "
+            "enabled yet."
+        )
+
         return
 
-    # For the first integration stage,
-    # process ONE match only.
-    #
-    # This deliberately limits API usage
-    # while we verify the dynamic-line flow.
-    fixture = fixtures[0]
+    # --------------------------------------------------------
+    # NO MATCHES
+    # --------------------------------------------------------
+
+    if not fixtures:
+
+        print(
+            "[NO MATCHES] "
+            "No verified fixtures found "
+            "for this workflow stage."
+        )
+
+        return
+
+    # --------------------------------------------------------
+    # MATCH LIMIT
+    # --------------------------------------------------------
+
+    if stage == "T1_10AM":
+
+        max_matches = 12
+
+    elif stage == "FINAL_6PM":
+
+        max_matches = 4
+
+    else:
+
+        max_matches = 0
+
+    fixtures = fixtures[
+        :max_matches
+    ]
 
     print(
-        f"\nMATCH: "
-        f"{fixture['competition']} | "
-        f"{fixture['home']} vs "
-        f"{fixture['away']}"
+        f"[WORKFLOW] "
+        f"Processing maximum "
+        f"{max_matches} matches."
     )
 
-    odds = get_match_odds(
-        fixture
-    )
+    # --------------------------------------------------------
+    # PROCESS
+    # --------------------------------------------------------
 
-    print(
-        "ODDS RESULT:",
-        odds
-    )
+    processed = 0
 
-    if odds.get("status") != "OK":
+    for fixture in fixtures:
+
+        print(
+            "\n----------------------------------------"
+        )
+
+        print(
+            f"[MATCH {processed + 1}] "
+            f"{fixture['competition']} | "
+            f"{fixture['home']} vs "
+            f"{fixture['away']}"
+        )
+
+        # ----------------------------------------------------
+        # ODDS
+        # ----------------------------------------------------
+
+        try:
+
+            odds = get_match_odds(
+                fixture
+            )
+
+        except Exception as error:
+
+            print(
+                "[ODDS ERROR]",
+                error
+            )
+
+            continue
+
+        print(
+            "[ODDS RESULT]",
+            odds
+        )
+
+        # ----------------------------------------------------
+        # NO ODDS -> PASS
+        # ----------------------------------------------------
+
+        if odds.get(
+            "status"
+        ) != "OK":
+
+            message = build_message(
+                fixture,
+                odds,
+                {
+                    "status": "PASS",
+                    "strength": "PASS",
+                },
+            )
+
+            try:
+
+                send_telegram(
+                    message
+                )
+
+                print(
+                    "[TELEGRAM] PASS sent."
+                )
+
+            except Exception as error:
+
+                print(
+                    "[TELEGRAM ERROR]",
+                    error
+                )
+
+            processed += 1
+
+            continue
+
+        # ----------------------------------------------------
+        # CURRENT REAL LINE
+        # ----------------------------------------------------
+
+        print(
+            "[O/U LINE]",
+            odds["line"]
+        )
+
+        print(
+            "[MYANMAR ODDS]",
+            odds["myanmar_odds"]
+        )
+
+        print(
+            "[DISPLAY]",
+            odds["display_line"]
+        )
+
+        # ----------------------------------------------------
+        # GEMINI
+        # ----------------------------------------------------
+
+        try:
+
+            analysis = run_gemini(
+                fixture,
+                odds
+            )
+
+        except Exception as error:
+
+            print(
+                "[GEMINI ERROR]",
+                error
+            )
+
+            analysis = {
+                "status": "PASS",
+                "strength": "PASS",
+                "analysis_mm": (
+                    "ယခုအဆင့်တွင် "
+                    "ခိုင်လုံသောသုံးသပ်ချက် "
+                    "မရရှိသေးသောကြောင့် PASS "
+                    "ပြုလုပ်ထားသည်။"
+                ),
+                "risk_mm": (
+                    "အချက်အလက်မပြည့်စုံသေးသဖြင့် "
+                    "လောင်းကြေးမပြုလုပ်သင့်ပါ။"
+                ),
+            }
+
+        print(
+            "[GEMINI RESULT]",
+            analysis
+        )
+
+        # ----------------------------------------------------
+        # TELEGRAM
+        # ----------------------------------------------------
 
         message = build_message(
             fixture,
             odds,
-            {
-                "status": "PASS",
-                "strength": "PASS",
-            },
+            analysis
         )
 
-        send_telegram(
-            message
-        )
+        try:
 
-        print(
-            "Telegram PASS message sent."
-        )
+            send_telegram(
+                message
+            )
 
-        return
+            print(
+                "[TELEGRAM] SENT"
+            )
+
+        except Exception as error:
+
+            print(
+                "[TELEGRAM ERROR]",
+                error
+            )
+
+        processed += 1
+
+    # --------------------------------------------------------
+    # COMPLETE
+    # --------------------------------------------------------
 
     print(
-        "ACTUAL O/U LINE:",
-        odds["line"]
-    )
-
-    print(
-        "MYANMAR ODDS:",
-        odds["myanmar_odds"]
-    )
-
-    print(
-        "DISPLAY:",
-        odds["display_line"]
-    )
-
-    analysis = run_gemini(
-        fixture,
-        odds
+        "\n========================================"
     )
 
     print(
-        "\n=== GEMINI RESULT ==="
+        f"[WORKFLOW COMPLETE] "
+        f"Stage={stage} | "
+        f"Processed={processed}"
     )
 
     print(
-        analysis
+        "========================================"
     )
 
-    message = build_message(
-        fixture,
-        odds,
-        analysis
-    )
 
-    send_telegram(
-        message
-    )
-
-    print(
-        "\nTELEGRAM: SENT"
-    )
-
+# ============================================================
+# START
+# ============================================================
 
 if __name__ == "__main__":
+
     main()
