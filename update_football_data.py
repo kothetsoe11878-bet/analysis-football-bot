@@ -3,41 +3,35 @@ import csv
 import requests
 from pathlib import Path
 
-API_URL = "https://v3.football.api-sports.io/fixtures"
+API_URL = "https://api.football-data.org/v4/competitions"
 
-API_KEY = os.environ.get("FOOTBALL_API_KEY")
+API_TOKEN = os.environ.get("FOOTBALL_DATA_TOKEN")
 
-if not API_KEY:
-    raise RuntimeError("FOOTBALL_API_KEY GitHub Secret မတွေ့ပါ")
+if not API_TOKEN:
+    raise RuntimeError("FOOTBALL_DATA_TOKEN GitHub Secret မတွေ့ပါ")
 
 LEAGUES = {
-    "EPL": 39,
-    "La Liga": 140,
-    "Serie A": 135,
-    "Bundesliga": 78,
-    "Ligue 1": 61,
+    "EPL": "PL",
+    "La_Liga": "PD",
+    "Serie_A": "SA",
+    "Bundesliga": "BL1",
+    "Ligue_1": "FL1",
 }
-
-SEASON = 2026
 
 OUTPUT_DIR = Path("data/results")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 headers = {
-    "x-apisports-key": API_KEY
+    "X-Auth-Token": API_TOKEN
 }
 
 
-def get_fixtures(league_name, league_id):
-    params = {
-        "league": league_id,
-        "season": SEASON
-    }
+def get_matches(league_name, league_code):
+    url = f"{API_URL}/{league_code}/matches"
 
     response = requests.get(
-        API_URL,
+        url,
         headers=headers,
-        params=params,
         timeout=30
     )
 
@@ -45,85 +39,76 @@ def get_fixtures(league_name, league_id):
 
     data = response.json()
 
-    if data.get("errors"):
-        raise RuntimeError(
-            f"{league_name} API error: {data['errors']}"
-        )
-
-    return data.get("response", [])
+    return data.get("matches", [])
 
 
-def save_csv(league_name, fixtures):
-    filename = OUTPUT_DIR / (
-        league_name.lower()
-        .replace(" ", "_")
-        .replace("í", "i")
-        + "_2026_27.csv"
-    )
-
-    rows = []
-
-    for item in fixtures:
-        fixture = item.get("fixture", {})
-        teams = item.get("teams", {})
-        goals = item.get("goals", {})
-        league = item.get("league", {})
-
-        rows.append({
-            "fixture_id": fixture.get("id"),
-            "date": fixture.get("date"),
-            "status": fixture.get("status", {}).get("short"),
-            "league": league.get("name"),
-            "season": league.get("season"),
-            "round": league.get("round"),
-            "home_team": teams.get("home", {}).get("name"),
-            "away_team": teams.get("away", {}).get("name"),
-            "home_goals": goals.get("home"),
-            "away_goals": goals.get("away"),
-            "home_winner": teams.get("home", {}).get("winner"),
-            "away_winner": teams.get("away", {}).get("winner"),
-        })
+def save_csv(league_name, matches):
+    filename = OUTPUT_DIR / f"{league_name.lower()}_current.csv"
 
     fieldnames = [
-        "fixture_id",
+        "match_id",
         "date",
         "status",
-        "league",
-        "season",
-        "round",
+        "matchday",
         "home_team",
         "away_team",
         "home_goals",
         "away_goals",
-        "home_winner",
-        "away_winner",
+        "winner",
     ]
 
-    with open(filename, "w", newline="", encoding="utf-8-sig") as f:
+    with open(
+        filename,
+        "w",
+        newline="",
+        encoding="utf-8-sig"
+    ) as f:
+
         writer = csv.DictWriter(
             f,
             fieldnames=fieldnames
         )
+
         writer.writeheader()
-        writer.writerows(rows)
+
+        for match in matches:
+
+            score = match.get("score", {})
+            full_time = score.get("fullTime", {})
+
+            writer.writerow({
+                "match_id": match.get("id"),
+                "date": match.get("utcDate"),
+                "status": match.get("status"),
+                "matchday": match.get("matchday"),
+                "home_team": match.get("homeTeam", {}).get("name"),
+                "away_team": match.get("awayTeam", {}).get("name"),
+                "home_goals": full_time.get("home"),
+                "away_goals": full_time.get("away"),
+                "winner": score.get("winner"),
+            })
 
     print(
-        f"{league_name}: {len(rows)} matches -> {filename}"
+        f"{league_name}: {len(matches)} matches -> {filename}"
     )
 
 
 def main():
-    for league_name, league_id in LEAGUES.items():
-        print(f"Updating {league_name}...")
 
-        fixtures = get_fixtures(
+    for league_name, league_code in LEAGUES.items():
+
+        print(
+            f"Updating {league_name}..."
+        )
+
+        matches = get_matches(
             league_name,
-            league_id
+            league_code
         )
 
         save_csv(
             league_name,
-            fixtures
+            matches
         )
 
     print("5-League update completed.")
