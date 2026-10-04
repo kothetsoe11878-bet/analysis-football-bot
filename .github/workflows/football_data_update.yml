@@ -23,7 +23,7 @@ jobs:
 
       - name: Update football data
         env:
-          FOOTBALL_API_KEY: ${{ secrets.FOOTBALL_API_KEY }}
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
         run: python update_football_data.py
 
       - name: Save updated data
