@@ -1,0 +1,62 @@
+﻿match_id,commence_time,home_team,away_team,bookmaker,market,home_handicap,home_price,away_handicap,away_price
+17694e68f399fdf9c5030021ec9bb595,2026-10-09T18:45:00Z,RC Lens,Lyon,Pinnacle,spreads,0.0,1.86,-0.0,2.06
+17694e68f399fdf9c5030021ec9bb595,2026-10-09T18:45:00Z,RC Lens,Lyon,1xBet,spreads,0.0,1.81,0.0,2.15
+17694e68f399fdf9c5030021ec9bb595,2026-10-09T18:45:00Z,RC Lens,Lyon,Coolbet,spreads,-1.0,3.8,1.0,1.29
+17694e68f399fdf9c5030021ec9bb595,2026-10-09T18:45:00Z,RC Lens,Lyon,GTbets,spreads,-0.5,2.36,0.5,1.58
+17694e68f399fdf9c5030021ec9bb595,2026-10-09T18:45:00Z,RC Lens,Lyon,BetOnline.ag,spreads,0.0,1.83,0.0,2.01
+2c173b3bd3a1491f17fcad1012019c4f,2026-10-10T15:15:00Z,Lille,Le Havre,Pinnacle,spreads,-1.25,1.99,1.25,1.92
+2c173b3bd3a1491f17fcad1012019c4f,2026-10-10T15:15:00Z,Lille,Le Havre,1xBet,spreads,-1.5,2.27,1.5,1.74
+2c173b3bd3a1491f17fcad1012019c4f,2026-10-10T15:15:00Z,Lille,Le Havre,Coolbet,spreads,-1.5,2.25,1.5,1.68
+2c173b3bd3a1491f17fcad1012019c4f,2026-10-10T15:15:00Z,Lille,Le Havre,GTbets,spreads,-1.5,2.23,1.5,1.63
+2c173b3bd3a1491f17fcad1012019c4f,2026-10-10T15:15:00Z,Lille,Le Havre,BetOnline.ag,spreads,-1.0,1.69,1.0,2.19
+c2c64ebfc5810226f807c1920d580392,2026-10-10T18:45:00Z,AS Monaco,Toulouse,Pinnacle,spreads,-1.0,2.04,1.0,1.87
+c2c64ebfc5810226f807c1920d580392,2026-10-10T18:45:00Z,AS Monaco,Toulouse,1xBet,spreads,-1.5,2.77,1.5,1.53
+c2c64ebfc5810226f807c1920d580392,2026-10-10T18:45:00Z,AS Monaco,Toulouse,Coolbet,spreads,-1.0,2.04,1.0,1.85
+c2c64ebfc5810226f807c1920d580392,2026-10-10T18:45:00Z,AS Monaco,Toulouse,GTbets,spreads,-0.5,1.6,0.5,2.28
+c2c64ebfc5810226f807c1920d580392,2026-10-10T18:45:00Z,AS Monaco,Toulouse,BetOnline.ag,spreads,-1.0,2.02,1.0,1.81
+007dc2ff845c33e3e18f2bd2bc126304,2026-10-10T18:45:00Z,Brest,Angers,Pinnacle,spreads,-0.5,2.02,0.5,1.88
+007dc2ff845c33e3e18f2bd2bc126304,2026-10-10T18:45:00Z,Brest,Angers,1xBet,spreads,0.0,1.53,0.0,2.76
+007dc2ff845c33e3e18f2bd2bc126304,2026-10-10T18:45:00Z,Brest,Angers,Coolbet,spreads,-1.0,2.78,1.0,1.47
+007dc2ff845c33e3e18f2bd2bc126304,2026-10-10T18:45:00Z,Brest,Angers,GTbets,spreads,-0.5,1.93,0.5,1.84
+007dc2ff845c33e3e18f2bd2bc126304,2026-10-10T18:45:00Z,Brest,Angers,BetOnline.ag,spreads,-0.5,1.98,0.5,1.85
+2849460eb4d15adbb20ec15927a0fd4a,2026-10-10T18:45:00Z,Paris Saint Germain,Le Mans FC,Pinnacle,spreads,-2.75,1.84,2.75,2.04
+2849460eb4d15adbb20ec15927a0fd4a,2026-10-10T18:45:00Z,Paris Saint Germain,Le Mans FC,1xBet,spreads,-2.5,1.73,2.5,2.29
+2849460eb4d15adbb20ec15927a0fd4a,2026-10-10T18:45:00Z,Paris Saint Germain,Le Mans FC,Coolbet,spreads,-3.0,2.0,3.0,1.85
+2849460eb4d15adbb20ec15927a0fd4a,2026-10-10T18:45:00Z,Paris Saint Germain,Le Mans FC,GTbets,spreads,-2.5,1.65,2.5,2.2
+2849460eb4d15adbb20ec15927a0fd4a,2026-10-10T18:45:00Z,Paris Saint Germain,Le Mans FC,BetOnline.ag,spreads,-3.0,2.04,3.0,1.8
+3aa72885e0aa107c62843749f7930a9a,2026-10-10T18:45:00Z,Lorient,Paris FC,Pinnacle,spreads,0.25,1.91,-0.25,2.0
+3aa72885e0aa107c62843749f7930a9a,2026-10-10T18:45:00Z,Lorient,Paris FC,1xBet,spreads,0.0,2.27,0.0,1.74
+3aa72885e0aa107c62843749f7930a9a,2026-10-10T18:45:00Z,Lorient,Paris FC,GTbets,spreads,0.5,1.62,-0.5,2.26
+3aa72885e0aa107c62843749f7930a9a,2026-10-10T18:45:00Z,Lorient,Paris FC,BetOnline.ag,spreads,0.0,2.24,0.0,1.65
+5d3606630a2d3a218a6340d082c1bdc6,2026-10-11T13:00:00Z,Nice,Strasbourg,Pinnacle,spreads,-0.25,2.06,0.25,1.85
+5d3606630a2d3a218a6340d082c1bdc6,2026-10-11T13:00:00Z,Nice,Strasbourg,1xBet,spreads,0.0,1.74,0.0,2.27
+5d3606630a2d3a218a6340d082c1bdc6,2026-10-11T13:00:00Z,Nice,Strasbourg,GTbets,spreads,-0.5,2.26,0.5,1.62
+5d3606630a2d3a218a6340d082c1bdc6,2026-10-11T13:00:00Z,Nice,Strasbourg,BetOnline.ag,spreads,0.0,1.71,0.0,2.15
+34f584ab922e220dc4f3b81217959d6d,2026-10-11T15:15:00Z,Rennes,Auxerre,Pinnacle,spreads,-1.25,1.97,1.25,1.93
+34f584ab922e220dc4f3b81217959d6d,2026-10-11T15:15:00Z,Rennes,Auxerre,1xBet,spreads,-1.5,2.22,1.5,1.77
+34f584ab922e220dc4f3b81217959d6d,2026-10-11T15:15:00Z,Rennes,Auxerre,Coolbet,spreads,-1.5,2.15,1.5,1.74
+34f584ab922e220dc4f3b81217959d6d,2026-10-11T15:15:00Z,Rennes,Auxerre,GTbets,spreads,-1.5,2.11,1.5,1.71
+34f584ab922e220dc4f3b81217959d6d,2026-10-11T15:15:00Z,Rennes,Auxerre,BetOnline.ag,spreads,-1.5,2.16,1.5,1.71
+cb7067ac191abf32ad49dad45e46f639,2026-10-11T18:45:00Z,Troyes,Marseille,Pinnacle,spreads,0.5,1.99,-0.5,1.9
+cb7067ac191abf32ad49dad45e46f639,2026-10-11T18:45:00Z,Troyes,Marseille,1xBet,spreads,0.0,3.06,0.0,1.45
+cb7067ac191abf32ad49dad45e46f639,2026-10-11T18:45:00Z,Troyes,Marseille,Coolbet,spreads,1.0,1.52,-1.0,2.62
+cb7067ac191abf32ad49dad45e46f639,2026-10-11T18:45:00Z,Troyes,Marseille,GTbets,spreads,0.5,1.94,-0.5,1.83
+cb7067ac191abf32ad49dad45e46f639,2026-10-11T18:45:00Z,Troyes,Marseille,BetOnline.ag,spreads,0.5,1.94,-0.5,1.89
+66c168c030f3faad3983fcadc3060009,2026-10-16T18:45:00Z,Le Mans FC,Toulouse,Pinnacle,spreads,0.25,1.88,-0.25,1.98
+66c168c030f3faad3983fcadc3060009,2026-10-16T18:45:00Z,Le Mans FC,Toulouse,1xBet,spreads,0.0,2.34,0.0,1.7
+f3034246520a2ee4ff0ac0d5074966f8,2026-10-17T15:15:00Z,Strasbourg,Paris Saint Germain,Pinnacle,spreads,1.25,2.03,-1.25,1.83
+f3034246520a2ee4ff0ac0d5074966f8,2026-10-17T15:15:00Z,Strasbourg,Paris Saint Germain,1xBet,spreads,1.5,1.85,-1.5,2.1
+ad25a350c89b64715e15c59cde5653d3,2026-10-17T18:45:00Z,Lille,Brest,Pinnacle,spreads,-1.0,2.05,1.0,1.81
+ad25a350c89b64715e15c59cde5653d3,2026-10-17T18:45:00Z,Lille,Brest,1xBet,spreads,-1.5,2.71,1.5,1.55
+b077aa049133c0358bcd643bfee48da3,2026-10-17T18:45:00Z,Troyes,RC Lens,Pinnacle,spreads,0.5,2.04,-0.5,1.82
+b077aa049133c0358bcd643bfee48da3,2026-10-17T18:45:00Z,Troyes,RC Lens,1xBet,spreads,0.0,3.02,0.0,1.33
+c7a60aa94470fe959fbf6b0c68060fc1,2026-10-18T13:00:00Z,Angers,Marseille,Pinnacle,spreads,0.25,1.99,-0.25,1.86
+c7a60aa94470fe959fbf6b0c68060fc1,2026-10-18T13:00:00Z,Angers,Marseille,1xBet,spreads,0.0,2.36,0.0,1.69
+53f5fe7ed0ba0fbf6345c73270e4cd00,2026-10-18T15:15:00Z,Lorient,AS Monaco,Pinnacle,spreads,0.25,1.99,-0.25,1.86
+53f5fe7ed0ba0fbf6345c73270e4cd00,2026-10-18T15:15:00Z,Lorient,AS Monaco,1xBet,spreads,0.0,2.65,0.0,1.57
+d637845b9760bb02b55bbbaa32b5c21e,2026-10-18T15:15:00Z,Le Havre,Auxerre,Pinnacle,spreads,-0.25,2.11,0.25,1.78
+d637845b9760bb02b55bbbaa32b5c21e,2026-10-18T15:15:00Z,Le Havre,Auxerre,1xBet,spreads,0.0,1.81,0.0,2.15
+27f7222d2abde93fc6e8d17b5b05b272,2026-10-18T15:15:00Z,Paris FC,Rennes,Pinnacle,spreads,-0.25,2.0,0.25,1.86
+27f7222d2abde93fc6e8d17b5b05b272,2026-10-18T15:15:00Z,Paris FC,Rennes,1xBet,spreads,0.0,1.7,0.0,2.34
+471f891b1f6516a864ad94c8eb649f5e,2026-10-18T18:45:00Z,Lyon,Nice,Pinnacle,spreads,-0.75,1.83,0.75,2.03
+471f891b1f6516a864ad94c8eb649f5e,2026-10-18T18:45:00Z,Lyon,Nice,1xBet,spreads,-1.5,2.86,1.5,1.5
