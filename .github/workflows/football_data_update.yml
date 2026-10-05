@@ -1,16 +1,16 @@
-name: 5 League Auto Update
+name: 5 League Odds Auto Update
 
 on:
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "30 */6 * * *"
   workflow_dispatch:
 
 jobs:
-  update:
+  update-odds:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Python
@@ -21,15 +21,15 @@ jobs:
       - name: Install requirements
         run: pip install -r requirements.txt
 
-      - name: Update football data
+      - name: Update 5 League odds
         env:
-          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
-        run: python update_football_data.py
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: python update_odds_data.py
 
-      - name: Save updated data
+      - name: Save updated odds
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/
-          git diff --cached --quiet || git commit -m "Auto update football results"
+          git add data/odds/
+          git diff --cached --quiet || git commit -m "Auto update 5 league odds"
           git push
