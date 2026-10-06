@@ -71,23 +71,37 @@ La Liga,2026-09-20,FINISHED,7,Valencia CF,Real Sociedad de Fútbol,2,3,AWAY_TEAM
 La Liga,2026-10-09,TIMED,8,Málaga CF,RCD Espanyol de Barcelona,,,,564706,,,,,,,,NO_ODDS_MATCH
 La Liga,2026-10-10,TIMED,8,Rayo Vallecano de Madrid,Athletic Club,,,,564698,,,,,,,,NO_ODDS_MATCH
 La Liga,2026-10-10,TIMED,8,Deportivo Alavés,Club Atlético de Madrid,,,,564699,,,,,,,,NO_ODDS_MATCH
-La Liga,2026-10-10,TIMED,8,FC Barcelona,Getafe CF,,,,564700,,,,,,,,NO_ODDS_MATCH
-La Liga,2026-10-10,TIMED,8,Real Madrid CF,Villarreal CF,,,,564702,,,,,,,,NO_ODDS_MATCH
+La Liga,2026-10-10,TIMED,8,FC Barcelona,Getafe CF,,,,564700,edb80d633a1906e5865ab70cc9b540ea,Pinnacle,spreads,-3.0,2.05,3.0,1.83,MATCHED
+La Liga,2026-10-10,TIMED,8,FC Barcelona,Getafe CF,,,,564700,edb80d633a1906e5865ab70cc9b540ea,1xBet,spreads,-2.5,1.67,2.5,2.39,MATCHED
+La Liga,2026-10-10,TIMED,8,FC Barcelona,Getafe CF,,,,564700,edb80d633a1906e5865ab70cc9b540ea,Coolbet,spreads,-3.0,2.07,3.0,1.83,MATCHED
+La Liga,2026-10-10,TIMED,8,FC Barcelona,Getafe CF,,,,564700,edb80d633a1906e5865ab70cc9b540ea,Matchbook,spreads,-3.0,2.1,3.0,1.86,MATCHED
+La Liga,2026-10-10,TIMED,8,FC Barcelona,Getafe CF,,,,564700,edb80d633a1906e5865ab70cc9b540ea,BetOnline.ag,spreads,-3.0,2.0,3.0,1.83,MATCHED
+La Liga,2026-10-10,TIMED,8,Real Madrid CF,Villarreal CF,,,,564702,551f242223b1625f458d1a2ea212a0c3,Pinnacle,spreads,-1.5,1.93,1.5,1.97,MATCHED
+La Liga,2026-10-10,TIMED,8,Real Madrid CF,Villarreal CF,,,,564702,551f242223b1625f458d1a2ea212a0c3,1xBet,spreads,-1.5,1.91,1.5,2.03,MATCHED
+La Liga,2026-10-10,TIMED,8,Real Madrid CF,Villarreal CF,,,,564702,551f242223b1625f458d1a2ea212a0c3,Coolbet,spreads,-1.5,1.95,1.5,1.93,MATCHED
+La Liga,2026-10-10,TIMED,8,Real Madrid CF,Villarreal CF,,,,564702,551f242223b1625f458d1a2ea212a0c3,Matchbook,spreads,-1.5,1.93,1.5,1.97,MATCHED
+La Liga,2026-10-10,TIMED,8,Real Madrid CF,Villarreal CF,,,,564702,551f242223b1625f458d1a2ea212a0c3,BetOnline.ag,spreads,-1.5,1.91,1.5,1.93,MATCHED
 La Liga,2026-10-11,TIMED,8,Elche CF,RC Celta de Vigo,,,,564703,,,,,,,,NO_ODDS_MATCH
 La Liga,2026-10-11,TIMED,8,Real Sociedad de Fútbol,RC Deportivo La Coruña,,,,564707,,,,,,,,NO_ODDS_MATCH
 La Liga,2026-10-11,TIMED,8,Real Betis Balompié,CA Osasuna,,,,564701,,,,,,,,NO_ODDS_MATCH
-La Liga,2026-10-11,TIMED,8,Real Racing Club de Santander,Valencia CF,,,,564705,,,,,,,,NO_ODDS_MATCH
+La Liga,2026-10-11,TIMED,8,Real Racing Club de Santander,Valencia CF,,,,564705,66a4f4201806b928c9007116727fdd61,Pinnacle,spreads,-0.25,1.93,0.25,1.98,MATCHED
+La Liga,2026-10-11,TIMED,8,Real Racing Club de Santander,Valencia CF,,,,564705,66a4f4201806b928c9007116727fdd61,1xBet,spreads,0.0,1.71,0.0,2.33,MATCHED
+La Liga,2026-10-11,TIMED,8,Real Racing Club de Santander,Valencia CF,,,,564705,66a4f4201806b928c9007116727fdd61,Coolbet,spreads,-1.0,3.3,1.0,1.38,MATCHED
+La Liga,2026-10-11,TIMED,8,Real Racing Club de Santander,Valencia CF,,,,564705,66a4f4201806b928c9007116727fdd61,Matchbook,spreads,-0.25,1.96,0.25,2.0,MATCHED
+La Liga,2026-10-11,TIMED,8,Real Racing Club de Santander,Valencia CF,,,,564705,66a4f4201806b928c9007116727fdd61,BetOnline.ag,spreads,-0.5,2.19,0.5,1.69,MATCHED
 La Liga,2026-10-12,TIMED,8,Levante UD,Sevilla FC,,,,564704,,,,,,,,NO_ODDS_MATCH
 La Liga,2026-10-16,TIMED,9,RC Deportivo La Coruña,Levante UD,,,,564716,,,,,,,,NO_ODDS_MATCH
 La Liga,2026-10-17,TIMED,9,RCD Espanyol de Barcelona,Club Atlético de Madrid,,,,564710,,,,,,,,NO_ODDS_MATCH
-La Liga,2026-10-17,TIMED,9,Villarreal CF,Elche CF,,,,564708,,,,,,,,NO_ODDS_MATCH
+La Liga,2026-10-17,TIMED,9,Villarreal CF,Elche CF,,,,564708,aef660734585649651415961a9d177c6,Pinnacle,spreads,-1.25,2.01,1.25,1.85,MATCHED
+La Liga,2026-10-17,TIMED,9,Villarreal CF,Elche CF,,,,564708,aef660734585649651415961a9d177c6,1xBet,spreads,-1.5,2.28,1.5,1.74,MATCHED
 La Liga,2026-10-17,TIMED,9,Real Betis Balompié,FC Barcelona,,,,564713,,,,,,,,NO_ODDS_MATCH
 La Liga,2026-10-17,TIMED,9,Valencia CF,Athletic Club,,,,564711,,,,,,,,NO_ODDS_MATCH
 La Liga,2026-10-18,TIMED,9,CA Osasuna,Real Racing Club de Santander,,,,564715,1f566f17c50fe5162724ec2863d2207b,Pinnacle,spreads,-0.5,1.92,0.5,1.93,MATCHED
 La Liga,2026-10-18,TIMED,9,CA Osasuna,Real Racing Club de Santander,,,,564715,1f566f17c50fe5162724ec2863d2207b,1xBet,spreads,0.0,1.4,0.0,3.35,MATCHED
 La Liga,2026-10-18,TIMED,9,RC Celta de Vigo,Deportivo Alavés,,,,564712,,,,,,,,NO_ODDS_MATCH
 La Liga,2026-10-18,TIMED,9,Málaga CF,Real Sociedad de Fútbol,,,,564714,,,,,,,,NO_ODDS_MATCH
-La Liga,2026-10-18,TIMED,9,Real Madrid CF,Sevilla FC,,,,564709,,,,,,,,NO_ODDS_MATCH
+La Liga,2026-10-18,TIMED,9,Real Madrid CF,Sevilla FC,,,,564709,eccd63bf768e2f2a358b871d3f33a63d,Pinnacle,spreads,-1.75,1.77,1.75,1.92,MATCHED
+La Liga,2026-10-18,TIMED,9,Real Madrid CF,Sevilla FC,,,,564709,eccd63bf768e2f2a358b871d3f33a63d,1xBet,spreads,-1.5,1.77,1.5,2.22,MATCHED
 La Liga,2026-10-19,TIMED,9,Getafe CF,Rayo Vallecano de Madrid,,,,564717,,,,,,,,NO_ODDS_MATCH
 La Liga,2026-10-21,TIMED,6,Levante UD,Athletic Club,0,0,DRAW,564685,,,,,,,,NO_ODDS_MATCH
 La Liga,2026-10-23,TIMED,10,Deportivo Alavés,Málaga CF,,,,564719,,,,,,,,NO_ODDS_MATCH
@@ -438,7 +452,11 @@ Serie A,2026-10-11,TIMED,6,US Lecce,Bologna FC 1909,,,,558581,,,,,,,,NO_ODDS_MAT
 Serie A,2026-10-11,TIMED,6,SS Lazio,AC Monza,,,,558583,,,,,,,,NO_ODDS_MATCH
 Serie A,2026-10-11,TIMED,6,US Sassuolo Calcio,AC Milan,,,,558580,,,,,,,,NO_ODDS_MATCH
 Serie A,2026-10-11,TIMED,6,Cagliari Calcio,Juventus FC,,,,558584,,,,,,,,NO_ODDS_MATCH
-Serie A,2026-10-12,TIMED,6,Atalanta BC,Venezia FC,,,,558579,,,,,,,,NO_ODDS_MATCH
+Serie A,2026-10-12,TIMED,6,Atalanta BC,Venezia FC,,,,558579,0f2e7ff90b994f31d5cd48a9680943e1,Pinnacle,spreads,-1.0,1.95,1.0,1.93,MATCHED
+Serie A,2026-10-12,TIMED,6,Atalanta BC,Venezia FC,,,,558579,0f2e7ff90b994f31d5cd48a9680943e1,1xBet,spreads,-1.5,2.6,1.5,1.59,MATCHED
+Serie A,2026-10-12,TIMED,6,Atalanta BC,Venezia FC,,,,558579,0f2e7ff90b994f31d5cd48a9680943e1,Coolbet,spreads,-1.0,1.96,1.0,1.92,MATCHED
+Serie A,2026-10-12,TIMED,6,Atalanta BC,Venezia FC,,,,558579,0f2e7ff90b994f31d5cd48a9680943e1,Matchbook,spreads,-1.0,1.93,1.0,1.95,MATCHED
+Serie A,2026-10-12,TIMED,6,Atalanta BC,Venezia FC,,,,558579,0f2e7ff90b994f31d5cd48a9680943e1,GTbets,spreads,-1.5,2.44,1.5,1.54,MATCHED
 Serie A,2026-10-12,TIMED,6,Torino FC,Udinese Calcio,,,,558587,,,,,,,,NO_ODDS_MATCH
 Serie A,2026-10-16,TIMED,7,Frosinone Calcio,US Sassuolo Calcio,,,,558573,,,,,,,,NO_ODDS_MATCH
 Serie A,2026-10-17,TIMED,7,Venezia FC,SSC Napoli,,,,558575,,,,,,,,NO_ODDS_MATCH
@@ -809,18 +827,31 @@ Ligue 1,2026-09-20,FINISHED,5,Olympique de Marseille,Paris Saint-Germain FC,1,2,
 Ligue 1,2026-10-09,TIMED,6,Racing Club de Lens,Olympique Lyonnais,,,,559669,,,,,,,,NO_ODDS_MATCH
 Ligue 1,2026-10-10,TIMED,6,Lille OSC,Le Havre AC,,,,559674,,,,,,,,NO_ODDS_MATCH
 Ligue 1,2026-10-10,TIMED,6,Stade Brestois 29,Angers SCO,,,,559666,,,,,,,,NO_ODDS_MATCH
-Ligue 1,2026-10-10,TIMED,6,FC Lorient,Paris FC,,,,559668,,,,,,,,NO_ODDS_MATCH
-Ligue 1,2026-10-10,TIMED,6,Paris Saint-Germain FC,Le Mans FC,,,,559672,,,,,,,,NO_ODDS_MATCH
-Ligue 1,2026-10-10,TIMED,6,AS Monaco FC,Toulouse FC,,,,559673,,,,,,,,NO_ODDS_MATCH
+Ligue 1,2026-10-10,TIMED,6,FC Lorient,Paris FC,,,,559668,3aa72885e0aa107c62843749f7930a9a,Pinnacle,spreads,0.25,1.91,-0.25,2.0,MATCHED
+Ligue 1,2026-10-10,TIMED,6,FC Lorient,Paris FC,,,,559668,3aa72885e0aa107c62843749f7930a9a,1xBet,spreads,0.0,2.27,0.0,1.74,MATCHED
+Ligue 1,2026-10-10,TIMED,6,FC Lorient,Paris FC,,,,559668,3aa72885e0aa107c62843749f7930a9a,GTbets,spreads,0.5,1.62,-0.5,2.26,MATCHED
+Ligue 1,2026-10-10,TIMED,6,FC Lorient,Paris FC,,,,559668,3aa72885e0aa107c62843749f7930a9a,BetOnline.ag,spreads,0.0,2.24,0.0,1.65,MATCHED
+Ligue 1,2026-10-10,TIMED,6,Paris Saint-Germain FC,Le Mans FC,,,,559672,2849460eb4d15adbb20ec15927a0fd4a,Pinnacle,spreads,-2.75,1.84,2.75,2.04,MATCHED
+Ligue 1,2026-10-10,TIMED,6,Paris Saint-Germain FC,Le Mans FC,,,,559672,2849460eb4d15adbb20ec15927a0fd4a,1xBet,spreads,-2.5,1.73,2.5,2.29,MATCHED
+Ligue 1,2026-10-10,TIMED,6,Paris Saint-Germain FC,Le Mans FC,,,,559672,2849460eb4d15adbb20ec15927a0fd4a,Coolbet,spreads,-3.0,2.0,3.0,1.85,MATCHED
+Ligue 1,2026-10-10,TIMED,6,Paris Saint-Germain FC,Le Mans FC,,,,559672,2849460eb4d15adbb20ec15927a0fd4a,GTbets,spreads,-2.5,1.65,2.5,2.2,MATCHED
+Ligue 1,2026-10-10,TIMED,6,Paris Saint-Germain FC,Le Mans FC,,,,559672,2849460eb4d15adbb20ec15927a0fd4a,BetOnline.ag,spreads,-3.0,2.04,3.0,1.8,MATCHED
+Ligue 1,2026-10-10,TIMED,6,AS Monaco FC,Toulouse FC,,,,559673,c2c64ebfc5810226f807c1920d580392,Pinnacle,spreads,-1.0,2.04,1.0,1.87,MATCHED
+Ligue 1,2026-10-10,TIMED,6,AS Monaco FC,Toulouse FC,,,,559673,c2c64ebfc5810226f807c1920d580392,1xBet,spreads,-1.5,2.77,1.5,1.53,MATCHED
+Ligue 1,2026-10-10,TIMED,6,AS Monaco FC,Toulouse FC,,,,559673,c2c64ebfc5810226f807c1920d580392,Coolbet,spreads,-1.0,2.04,1.0,1.85,MATCHED
+Ligue 1,2026-10-10,TIMED,6,AS Monaco FC,Toulouse FC,,,,559673,c2c64ebfc5810226f807c1920d580392,GTbets,spreads,-0.5,1.6,0.5,2.28,MATCHED
+Ligue 1,2026-10-10,TIMED,6,AS Monaco FC,Toulouse FC,,,,559673,c2c64ebfc5810226f807c1920d580392,BetOnline.ag,spreads,-1.0,2.02,1.0,1.81,MATCHED
 Ligue 1,2026-10-11,TIMED,6,OGC Nice,RC Strasbourg Alsace,,,,559670,,,,,,,,NO_ODDS_MATCH
 Ligue 1,2026-10-11,TIMED,6,Stade Rennais FC 1901,AJ Auxerre,,,,559667,,,,,,,,NO_ODDS_MATCH
 Ligue 1,2026-10-11,TIMED,6,ES Troyes AC,Olympique de Marseille,,,,559671,,,,,,,,NO_ODDS_MATCH
-Ligue 1,2026-10-16,TIMED,7,Le Mans FC,Toulouse FC,,,,559661,,,,,,,,NO_ODDS_MATCH
+Ligue 1,2026-10-16,TIMED,7,Le Mans FC,Toulouse FC,,,,559661,66c168c030f3faad3983fcadc3060009,Pinnacle,spreads,0.25,1.88,-0.25,1.98,MATCHED
+Ligue 1,2026-10-16,TIMED,7,Le Mans FC,Toulouse FC,,,,559661,66c168c030f3faad3983fcadc3060009,1xBet,spreads,0.0,2.34,0.0,1.7,MATCHED
 Ligue 1,2026-10-17,TIMED,7,RC Strasbourg Alsace,Paris Saint-Germain FC,,,,559662,,,,,,,,NO_ODDS_MATCH
 Ligue 1,2026-10-17,TIMED,7,ES Troyes AC,Racing Club de Lens,,,,559659,,,,,,,,NO_ODDS_MATCH
 Ligue 1,2026-10-17,TIMED,7,Lille OSC,Stade Brestois 29,,,,559660,,,,,,,,NO_ODDS_MATCH
 Ligue 1,2026-10-18,TIMED,7,Angers SCO,Olympique de Marseille,,,,559664,,,,,,,,NO_ODDS_MATCH
-Ligue 1,2026-10-18,TIMED,7,FC Lorient,AS Monaco FC,,,,559657,,,,,,,,NO_ODDS_MATCH
+Ligue 1,2026-10-18,TIMED,7,FC Lorient,AS Monaco FC,,,,559657,53f5fe7ed0ba0fbf6345c73270e4cd00,Pinnacle,spreads,0.25,1.99,-0.25,1.86,MATCHED
+Ligue 1,2026-10-18,TIMED,7,FC Lorient,AS Monaco FC,,,,559657,53f5fe7ed0ba0fbf6345c73270e4cd00,1xBet,spreads,0.0,2.65,0.0,1.57,MATCHED
 Ligue 1,2026-10-18,TIMED,7,Paris FC,Stade Rennais FC 1901,,,,559658,,,,,,,,NO_ODDS_MATCH
 Ligue 1,2026-10-18,TIMED,7,Le Havre AC,AJ Auxerre,,,,559663,,,,,,,,NO_ODDS_MATCH
 Ligue 1,2026-10-18,TIMED,7,Olympique Lyonnais,OGC Nice,,,,559665,,,,,,,,NO_ODDS_MATCH
@@ -1103,7 +1134,12 @@ Bundesliga,2026-09-19,FINISHED,4,VfB Stuttgart,Borussia Dortmund,0,1,AWAY_TEAM,5
 Bundesliga,2026-09-20,FINISHED,4,Bayer 04 Leverkusen,RB Leipzig,2,0,HOME_TEAM,565807,,,,,,,,NO_ODDS_MATCH
 Bundesliga,2026-09-20,FINISHED,4,FC Schalke 04,SV 07 Elversberg,0,0,DRAW,565805,,,,,,,,NO_ODDS_MATCH
 Bundesliga,2026-09-20,FINISHED,4,SC Paderborn 07,TSG 1899 Hoffenheim,3,1,HOME_TEAM,565803,,,,,,,,NO_ODDS_MATCH
-Bundesliga,2026-10-09,TIMED,5,Borussia Dortmund,SV Werder Bremen,,,,565820,,,,,,,,NO_ODDS_MATCH
+Bundesliga,2026-10-09,TIMED,5,Borussia Dortmund,SV Werder Bremen,,,,565820,3fb63658405d468954f57745cd115118,Pinnacle,spreads,-1.5,2.0,1.5,1.9,MATCHED
+Bundesliga,2026-10-09,TIMED,5,Borussia Dortmund,SV Werder Bremen,,,,565820,3fb63658405d468954f57745cd115118,1xBet,spreads,-1.5,2.0,1.5,1.94,MATCHED
+Bundesliga,2026-10-09,TIMED,5,Borussia Dortmund,SV Werder Bremen,,,,565820,3fb63658405d468954f57745cd115118,Coolbet,spreads,-1.5,1.97,1.5,1.88,MATCHED
+Bundesliga,2026-10-09,TIMED,5,Borussia Dortmund,SV Werder Bremen,,,,565820,3fb63658405d468954f57745cd115118,Matchbook,spreads,-1.5,1.99,1.5,1.89,MATCHED
+Bundesliga,2026-10-09,TIMED,5,Borussia Dortmund,SV Werder Bremen,,,,565820,3fb63658405d468954f57745cd115118,GTbets,spreads,-1.5,1.92,1.5,1.85,MATCHED
+Bundesliga,2026-10-09,TIMED,5,Borussia Dortmund,SV Werder Bremen,,,,565820,3fb63658405d468954f57745cd115118,BetOnline.ag,spreads,-1.5,1.96,1.5,1.87,MATCHED
 Bundesliga,2026-10-10,TIMED,5,1. FSV Mainz 05,Bayer 04 Leverkusen,,,,565812,,,,,,,,NO_ODDS_MATCH
 Bundesliga,2026-10-10,TIMED,5,SC Paderborn 07,VfB Stuttgart,,,,565813,,,,,,,,NO_ODDS_MATCH
 Bundesliga,2026-10-10,TIMED,5,1. FC Union Berlin,SV 07 Elversberg,,,,565817,,,,,,,,NO_ODDS_MATCH
@@ -1435,11 +1471,41 @@ EPL,2026-09-20,FINISHED,5,AFC Bournemouth,Liverpool FC,0,1,AWAY_TEAM,560582,,,,,
 EPL,2026-09-20,FINISHED,5,Leeds United FC,Crystal Palace FC,0,0,DRAW,560585,,,,,,,,NO_ODDS_MATCH
 EPL,2026-09-20,FINISHED,5,Manchester City FC,Sunderland AFC,5,3,HOME_TEAM,560590,,,,,,,,NO_ODDS_MATCH
 EPL,2026-09-20,FINISHED,5,Fulham FC,Manchester United FC,1,1,DRAW,560583,,,,,,,,NO_ODDS_MATCH
-EPL,2026-10-10,TIMED,6,Arsenal FC,Leeds United FC,,,,560593,,,,,,,,NO_ODDS_MATCH
-EPL,2026-10-10,TIMED,6,Sunderland AFC,Brighton & Hove Albion FC,,,,560592,,,,,,,,NO_ODDS_MATCH
-EPL,2026-10-10,TIMED,6,Chelsea FC,AFC Bournemouth,,,,560595,,,,,,,,NO_ODDS_MATCH
-EPL,2026-10-10,TIMED,6,Ipswich Town FC,Fulham FC,,,,560599,,,,,,,,NO_ODDS_MATCH
-EPL,2026-10-10,TIMED,6,Aston Villa FC,Brentford FC,,,,560601,,,,,,,,NO_ODDS_MATCH
+EPL,2026-10-10,TIMED,6,Arsenal FC,Leeds United FC,,,,560593,b870dcfba5e5920d3f1551a3aa1ea435,1xBet,spreads,-1.5,2.23,1.5,1.76,MATCHED
+EPL,2026-10-10,TIMED,6,Arsenal FC,Leeds United FC,,,,560593,b870dcfba5e5920d3f1551a3aa1ea435,MyBookie.ag,spreads,-1.5,2.02,1.5,1.71,MATCHED
+EPL,2026-10-10,TIMED,6,Arsenal FC,Leeds United FC,,,,560593,b870dcfba5e5920d3f1551a3aa1ea435,Pinnacle,spreads,-1.25,1.93,1.25,1.98,MATCHED
+EPL,2026-10-10,TIMED,6,Arsenal FC,Leeds United FC,,,,560593,b870dcfba5e5920d3f1551a3aa1ea435,Coolbet,spreads,-1.5,2.19,1.5,1.73,MATCHED
+EPL,2026-10-10,TIMED,6,Arsenal FC,Leeds United FC,,,,560593,b870dcfba5e5920d3f1551a3aa1ea435,BetOnline.ag,spreads,-1.5,2.22,1.5,1.67,MATCHED
+EPL,2026-10-10,TIMED,6,Arsenal FC,Leeds United FC,,,,560593,b870dcfba5e5920d3f1551a3aa1ea435,Matchbook,spreads,-1.25,1.91,1.25,2.0,MATCHED
+EPL,2026-10-10,TIMED,6,Arsenal FC,Leeds United FC,,,,560593,b870dcfba5e5920d3f1551a3aa1ea435,GTbets,spreads,-1.5,2.12,1.5,1.7,MATCHED
+EPL,2026-10-10,TIMED,6,Sunderland AFC,Brighton & Hove Albion FC,,,,560592,380b8f24ec5430fb545a7490c1017285,1xBet,spreads,0.0,2.17,0.0,1.81,MATCHED
+EPL,2026-10-10,TIMED,6,Sunderland AFC,Brighton & Hove Albion FC,,,,560592,380b8f24ec5430fb545a7490c1017285,MyBookie.ag,spreads,0.5,1.56,-0.5,2.27,MATCHED
+EPL,2026-10-10,TIMED,6,Sunderland AFC,Brighton & Hove Albion FC,,,,560592,380b8f24ec5430fb545a7490c1017285,Pinnacle,spreads,0.25,1.85,-0.25,2.06,MATCHED
+EPL,2026-10-10,TIMED,6,Sunderland AFC,Brighton & Hove Albion FC,,,,560592,380b8f24ec5430fb545a7490c1017285,Coolbet,spreads,1.0,1.29,-1.0,3.85,MATCHED
+EPL,2026-10-10,TIMED,6,Sunderland AFC,Brighton & Hove Albion FC,,,,560592,380b8f24ec5430fb545a7490c1017285,BetOnline.ag,spreads,0.0,2.06,0.0,1.78,MATCHED
+EPL,2026-10-10,TIMED,6,Sunderland AFC,Brighton & Hove Albion FC,,,,560592,380b8f24ec5430fb545a7490c1017285,Matchbook,spreads,0.25,1.87,-0.25,2.1,MATCHED
+EPL,2026-10-10,TIMED,6,Sunderland AFC,Brighton & Hove Albion FC,,,,560592,380b8f24ec5430fb545a7490c1017285,GTbets,spreads,-0.5,2.86,0.5,1.41,MATCHED
+EPL,2026-10-10,TIMED,6,Chelsea FC,AFC Bournemouth,,,,560595,45d4a466e32cd2b4ea535207923ceaf5,MyBookie.ag,spreads,-0.5,1.66,0.5,2.09,MATCHED
+EPL,2026-10-10,TIMED,6,Chelsea FC,AFC Bournemouth,,,,560595,45d4a466e32cd2b4ea535207923ceaf5,1xBet,spreads,-1.5,2.82,1.5,1.51,MATCHED
+EPL,2026-10-10,TIMED,6,Chelsea FC,AFC Bournemouth,,,,560595,45d4a466e32cd2b4ea535207923ceaf5,Pinnacle,spreads,-0.75,1.95,0.75,1.95,MATCHED
+EPL,2026-10-10,TIMED,6,Chelsea FC,AFC Bournemouth,,,,560595,45d4a466e32cd2b4ea535207923ceaf5,Coolbet,spreads,-1.0,2.27,1.0,1.68,MATCHED
+EPL,2026-10-10,TIMED,6,Chelsea FC,AFC Bournemouth,,,,560595,45d4a466e32cd2b4ea535207923ceaf5,BetOnline.ag,spreads,-0.5,1.74,0.5,2.12,MATCHED
+EPL,2026-10-10,TIMED,6,Chelsea FC,AFC Bournemouth,,,,560595,45d4a466e32cd2b4ea535207923ceaf5,Matchbook,spreads,-0.75,1.94,0.75,2.02,MATCHED
+EPL,2026-10-10,TIMED,6,Chelsea FC,AFC Bournemouth,,,,560595,45d4a466e32cd2b4ea535207923ceaf5,GTbets,spreads,-0.5,1.69,0.5,2.13,MATCHED
+EPL,2026-10-10,TIMED,6,Ipswich Town FC,Fulham FC,,,,560599,288b4ff00c79daa712c911c564fe1be7,1xBet,spreads,0.0,2.03,0.0,1.92,MATCHED
+EPL,2026-10-10,TIMED,6,Ipswich Town FC,Fulham FC,,,,560599,288b4ff00c79daa712c911c564fe1be7,MyBookie.ag,spreads,0.5,1.53,-0.5,2.35,MATCHED
+EPL,2026-10-10,TIMED,6,Ipswich Town FC,Fulham FC,,,,560599,288b4ff00c79daa712c911c564fe1be7,Pinnacle,spreads,0.0,2.03,-0.0,1.88,MATCHED
+EPL,2026-10-10,TIMED,6,Ipswich Town FC,Fulham FC,,,,560599,288b4ff00c79daa712c911c564fe1be7,Coolbet,spreads,1.0,1.26,-1.0,4.1,MATCHED
+EPL,2026-10-10,TIMED,6,Ipswich Town FC,Fulham FC,,,,560599,288b4ff00c79daa712c911c564fe1be7,BetOnline.ag,spreads,0.0,1.99,0.0,1.85,MATCHED
+EPL,2026-10-10,TIMED,6,Ipswich Town FC,Fulham FC,,,,560599,288b4ff00c79daa712c911c564fe1be7,Matchbook,spreads,0.0,2.06,0.0,1.92,MATCHED
+EPL,2026-10-10,TIMED,6,Ipswich Town FC,Fulham FC,,,,560599,288b4ff00c79daa712c911c564fe1be7,GTbets,spreads,0.5,1.54,-0.5,2.44,MATCHED
+EPL,2026-10-10,TIMED,6,Aston Villa FC,Brentford FC,,,,560601,02e6c0ccb11bb7ce78989ce49d67110b,1xBet,spreads,0.0,1.98,0.0,1.96,MATCHED
+EPL,2026-10-10,TIMED,6,Aston Villa FC,Brentford FC,,,,560601,02e6c0ccb11bb7ce78989ce49d67110b,MyBookie.ag,spreads,0.5,1.51,-0.5,2.4,MATCHED
+EPL,2026-10-10,TIMED,6,Aston Villa FC,Brentford FC,,,,560601,02e6c0ccb11bb7ce78989ce49d67110b,Pinnacle,spreads,0.0,1.98,-0.0,1.93,MATCHED
+EPL,2026-10-10,TIMED,6,Aston Villa FC,Brentford FC,,,,560601,02e6c0ccb11bb7ce78989ce49d67110b,Coolbet,spreads,1.0,1.25,-1.0,4.25,MATCHED
+EPL,2026-10-10,TIMED,6,Aston Villa FC,Brentford FC,,,,560601,02e6c0ccb11bb7ce78989ce49d67110b,BetOnline.ag,spreads,0.0,1.95,0.0,1.88,MATCHED
+EPL,2026-10-10,TIMED,6,Aston Villa FC,Brentford FC,,,,560601,02e6c0ccb11bb7ce78989ce49d67110b,Matchbook,spreads,0.0,2.02,0.0,1.95,MATCHED
+EPL,2026-10-10,TIMED,6,Aston Villa FC,Brentford FC,,,,560601,02e6c0ccb11bb7ce78989ce49d67110b,GTbets,spreads,-0.5,2.61,0.5,1.48,MATCHED
 EPL,2026-10-10,TIMED,6,Manchester United FC,Tottenham Hotspur FC,,,,560600,22c9b2c43cbe1334381269550dab78e6,1xBet,spreads,-1.5,2.86,1.5,1.5,MATCHED
 EPL,2026-10-10,TIMED,6,Manchester United FC,Tottenham Hotspur FC,,,,560600,22c9b2c43cbe1334381269550dab78e6,MyBookie.ag,spreads,-0.5,1.67,0.5,2.08,MATCHED
 EPL,2026-10-10,TIMED,6,Manchester United FC,Tottenham Hotspur FC,,,,560600,22c9b2c43cbe1334381269550dab78e6,Pinnacle,spreads,-0.75,1.91,0.75,2.0,MATCHED
@@ -1447,22 +1513,64 @@ EPL,2026-10-10,TIMED,6,Manchester United FC,Tottenham Hotspur FC,,,,560600,22c9b
 EPL,2026-10-10,TIMED,6,Manchester United FC,Tottenham Hotspur FC,,,,560600,22c9b2c43cbe1334381269550dab78e6,BetOnline.ag,spreads,-0.5,1.72,0.5,2.14,MATCHED
 EPL,2026-10-10,TIMED,6,Manchester United FC,Tottenham Hotspur FC,,,,560600,22c9b2c43cbe1334381269550dab78e6,Matchbook,spreads,-0.75,1.9,0.75,2.02,MATCHED
 EPL,2026-10-10,TIMED,6,Manchester United FC,Tottenham Hotspur FC,,,,560600,22c9b2c43cbe1334381269550dab78e6,GTbets,spreads,-1.5,2.71,1.5,1.45,MATCHED
-EPL,2026-10-11,TIMED,6,Hull City AFC,Everton FC,,,,560594,,,,,,,,NO_ODDS_MATCH
-EPL,2026-10-11,TIMED,6,Crystal Palace FC,Nottingham Forest FC,,,,560596,,,,,,,,NO_ODDS_MATCH
-EPL,2026-10-11,TIMED,6,Liverpool FC,Manchester City FC,,,,560598,,,,,,,,NO_ODDS_MATCH
-EPL,2026-10-12,TIMED,6,Coventry City FC,Newcastle United FC,,,,560597,,,,,,,,NO_ODDS_MATCH
-EPL,2026-10-17,TIMED,7,Everton FC,Chelsea FC,,,,560603,,,,,,,,NO_ODDS_MATCH
-EPL,2026-10-17,TIMED,7,Fulham FC,Hull City AFC,,,,560602,,,,,,,,NO_ODDS_MATCH
-EPL,2026-10-17,TIMED,7,Manchester City FC,Ipswich Town FC,,,,560610,,,,,,,,NO_ODDS_MATCH
-EPL,2026-10-17,TIMED,7,Brentford FC,Liverpool FC,,,,560611,,,,,,,,NO_ODDS_MATCH
+EPL,2026-10-11,TIMED,6,Hull City AFC,Everton FC,,,,560594,0bdae4d304810578e47386606bff7106,1xBet,spreads,0.0,2.74,0.0,1.54,MATCHED
+EPL,2026-10-11,TIMED,6,Hull City AFC,Everton FC,,,,560594,0bdae4d304810578e47386606bff7106,MyBookie.ag,spreads,0.5,1.69,-0.5,2.04,MATCHED
+EPL,2026-10-11,TIMED,6,Hull City AFC,Everton FC,,,,560594,0bdae4d304810578e47386606bff7106,Pinnacle,spreads,0.25,2.11,-0.25,1.81,MATCHED
+EPL,2026-10-11,TIMED,6,Hull City AFC,Everton FC,,,,560594,0bdae4d304810578e47386606bff7106,Coolbet,spreads,1.0,1.39,-1.0,3.15,MATCHED
+EPL,2026-10-11,TIMED,6,Hull City AFC,Everton FC,,,,560594,0bdae4d304810578e47386606bff7106,BetOnline.ag,spreads,0.5,1.78,-0.5,2.06,MATCHED
+EPL,2026-10-11,TIMED,6,Hull City AFC,Everton FC,,,,560594,0bdae4d304810578e47386606bff7106,Matchbook,spreads,0.25,2.1,-0.25,1.86,MATCHED
+EPL,2026-10-11,TIMED,6,Hull City AFC,Everton FC,,,,560594,0bdae4d304810578e47386606bff7106,GTbets,spreads,0.5,1.75,-0.5,2.05,MATCHED
+EPL,2026-10-11,TIMED,6,Crystal Palace FC,Nottingham Forest FC,,,,560596,86effab5c6e7bfd58c8e88b1fb7c6ba9,1xBet,spreads,0.0,1.96,0.0,1.98,MATCHED
+EPL,2026-10-11,TIMED,6,Crystal Palace FC,Nottingham Forest FC,,,,560596,86effab5c6e7bfd58c8e88b1fb7c6ba9,MyBookie.ag,spreads,-0.5,2.49,0.5,1.47,MATCHED
+EPL,2026-10-11,TIMED,6,Crystal Palace FC,Nottingham Forest FC,,,,560596,86effab5c6e7bfd58c8e88b1fb7c6ba9,Pinnacle,spreads,0.0,1.93,-0.0,1.97,MATCHED
+EPL,2026-10-11,TIMED,6,Crystal Palace FC,Nottingham Forest FC,,,,560596,86effab5c6e7bfd58c8e88b1fb7c6ba9,Coolbet,spreads,-1.0,4.65,1.0,1.22,MATCHED
+EPL,2026-10-11,TIMED,6,Crystal Palace FC,Nottingham Forest FC,,,,560596,86effab5c6e7bfd58c8e88b1fb7c6ba9,BetOnline.ag,spreads,0.0,1.89,0.0,1.94,MATCHED
+EPL,2026-10-11,TIMED,6,Crystal Palace FC,Nottingham Forest FC,,,,560596,86effab5c6e7bfd58c8e88b1fb7c6ba9,Matchbook,spreads,0.0,1.96,0.0,2.02,MATCHED
+EPL,2026-10-11,TIMED,6,Crystal Palace FC,Nottingham Forest FC,,,,560596,86effab5c6e7bfd58c8e88b1fb7c6ba9,GTbets,spreads,0.5,1.45,-0.5,2.68,MATCHED
+EPL,2026-10-11,TIMED,6,Liverpool FC,Manchester City FC,,,,560598,6dbab232dd8d2aed0cb1d6f7978fb7b1,1xBet,spreads,0.0,1.96,0.0,1.98,MATCHED
+EPL,2026-10-11,TIMED,6,Liverpool FC,Manchester City FC,,,,560598,6dbab232dd8d2aed0cb1d6f7978fb7b1,MyBookie.ag,spreads,-0.5,2.43,0.5,1.5,MATCHED
+EPL,2026-10-11,TIMED,6,Liverpool FC,Manchester City FC,,,,560598,6dbab232dd8d2aed0cb1d6f7978fb7b1,Pinnacle,spreads,0.0,1.97,-0.0,1.93,MATCHED
+EPL,2026-10-11,TIMED,6,Liverpool FC,Manchester City FC,,,,560598,6dbab232dd8d2aed0cb1d6f7978fb7b1,Coolbet,spreads,-1.0,4.05,1.0,1.27,MATCHED
+EPL,2026-10-11,TIMED,6,Liverpool FC,Manchester City FC,,,,560598,6dbab232dd8d2aed0cb1d6f7978fb7b1,BetOnline.ag,spreads,0.0,1.92,0.0,1.92,MATCHED
+EPL,2026-10-11,TIMED,6,Liverpool FC,Manchester City FC,,,,560598,6dbab232dd8d2aed0cb1d6f7978fb7b1,Matchbook,spreads,0.0,1.99,0.0,1.99,MATCHED
+EPL,2026-10-11,TIMED,6,Liverpool FC,Manchester City FC,,,,560598,6dbab232dd8d2aed0cb1d6f7978fb7b1,GTbets,spreads,-0.5,2.47,0.5,1.53,MATCHED
+EPL,2026-10-12,TIMED,6,Coventry City FC,Newcastle United FC,,,,560597,acd5bd945dd953ad1e300df5bfe696f9,1xBet,spreads,0.0,2.52,0.0,1.62,MATCHED
+EPL,2026-10-12,TIMED,6,Coventry City FC,Newcastle United FC,,,,560597,acd5bd945dd953ad1e300df5bfe696f9,MyBookie.ag,spreads,0.5,1.68,-0.5,2.06,MATCHED
+EPL,2026-10-12,TIMED,6,Coventry City FC,Newcastle United FC,,,,560597,acd5bd945dd953ad1e300df5bfe696f9,Pinnacle,spreads,0.25,2.0,-0.25,1.88,MATCHED
+EPL,2026-10-12,TIMED,6,Coventry City FC,Newcastle United FC,,,,560597,acd5bd945dd953ad1e300df5bfe696f9,Coolbet,spreads,1.0,1.41,-1.0,3.1,MATCHED
+EPL,2026-10-12,TIMED,6,Coventry City FC,Newcastle United FC,,,,560597,acd5bd945dd953ad1e300df5bfe696f9,BetOnline.ag,spreads,0.5,1.69,-0.5,2.19,MATCHED
+EPL,2026-10-12,TIMED,6,Coventry City FC,Newcastle United FC,,,,560597,acd5bd945dd953ad1e300df5bfe696f9,Matchbook,spreads,0.25,2.04,-0.25,1.94,MATCHED
+EPL,2026-10-12,TIMED,6,Coventry City FC,Newcastle United FC,,,,560597,acd5bd945dd953ad1e300df5bfe696f9,GTbets,spreads,-0.5,3.11,0.5,1.35,MATCHED
+EPL,2026-10-17,TIMED,7,Everton FC,Chelsea FC,,,,560603,764e6513cb3f348881503df70ccb90e0,1xBet,spreads,0.0,2.14,0.0,1.82,MATCHED
+EPL,2026-10-17,TIMED,7,Everton FC,Chelsea FC,,,,560603,764e6513cb3f348881503df70ccb90e0,MyBookie.ag,spreads,0.5,1.6,-0.5,2.2,MATCHED
+EPL,2026-10-17,TIMED,7,Everton FC,Chelsea FC,,,,560603,764e6513cb3f348881503df70ccb90e0,Pinnacle,spreads,0.0,2.07,-0.0,1.8,MATCHED
+EPL,2026-10-17,TIMED,7,Fulham FC,Hull City AFC,,,,560602,7895f97f2f9577f3b13287a3d086859d,1xBet,spreads,-1.5,2.89,1.5,1.49,MATCHED
+EPL,2026-10-17,TIMED,7,Fulham FC,Hull City AFC,,,,560602,7895f97f2f9577f3b13287a3d086859d,MyBookie.ag,spreads,-0.5,1.65,0.5,2.12,MATCHED
+EPL,2026-10-17,TIMED,7,Fulham FC,Hull City AFC,,,,560602,7895f97f2f9577f3b13287a3d086859d,Pinnacle,spreads,-0.75,1.86,0.75,1.99,MATCHED
+EPL,2026-10-17,TIMED,7,Manchester City FC,Ipswich Town FC,,,,560610,bf2142d1ca76ba2fc9e61afce80f86c0,1xBet,spreads,-1.5,1.71,1.5,2.32,MATCHED
+EPL,2026-10-17,TIMED,7,Manchester City FC,Ipswich Town FC,,,,560610,bf2142d1ca76ba2fc9e61afce80f86c0,MyBookie.ag,spreads,-1.5,1.61,1.5,2.18,MATCHED
+EPL,2026-10-17,TIMED,7,Manchester City FC,Ipswich Town FC,,,,560610,bf2142d1ca76ba2fc9e61afce80f86c0,Pinnacle,spreads,-1.75,1.8,1.75,2.05,MATCHED
+EPL,2026-10-17,TIMED,7,Brentford FC,Liverpool FC,,,,560611,8f1945e7272bc7e89016439f5ab321c7,1xBet,spreads,0.0,2.11,0.0,1.84,MATCHED
+EPL,2026-10-17,TIMED,7,Brentford FC,Liverpool FC,,,,560611,8f1945e7272bc7e89016439f5ab321c7,MyBookie.ag,spreads,0.5,1.58,-0.5,2.24,MATCHED
+EPL,2026-10-17,TIMED,7,Brentford FC,Liverpool FC,,,,560611,8f1945e7272bc7e89016439f5ab321c7,Pinnacle,spreads,0.0,2.06,-0.0,1.81,MATCHED
 EPL,2026-10-17,TIMED,7,Newcastle United FC,Aston Villa FC,,,,560607,d1bbbdcd3d430e70091b518369b559cf,MyBookie.ag,spreads,-0.5,2.0,0.5,1.72,MATCHED
 EPL,2026-10-17,TIMED,7,Newcastle United FC,Aston Villa FC,,,,560607,d1bbbdcd3d430e70091b518369b559cf,1xBet,spreads,0.0,1.63,0.0,2.49,MATCHED
 EPL,2026-10-17,TIMED,7,Newcastle United FC,Aston Villa FC,,,,560607,d1bbbdcd3d430e70091b518369b559cf,Pinnacle,spreads,-0.25,1.85,0.25,2.01,MATCHED
-EPL,2026-10-18,TIMED,7,AFC Bournemouth,Sunderland AFC,,,,560604,,,,,,,,NO_ODDS_MATCH
-EPL,2026-10-18,TIMED,7,Leeds United FC,Manchester United FC,,,,560605,,,,,,,,NO_ODDS_MATCH
-EPL,2026-10-18,TIMED,7,Brighton & Hove Albion FC,Crystal Palace FC,,,,560609,,,,,,,,NO_ODDS_MATCH
-EPL,2026-10-18,TIMED,7,Nottingham Forest FC,Arsenal FC,,,,560608,,,,,,,,NO_ODDS_MATCH
-EPL,2026-10-19,TIMED,7,Tottenham Hotspur FC,Coventry City FC,,,,560606,,,,,,,,NO_ODDS_MATCH
+EPL,2026-10-18,TIMED,7,AFC Bournemouth,Sunderland AFC,,,,560604,dfd5d6648be46426e418801584d46a68,MyBookie.ag,spreads,-0.5,1.96,0.5,1.76,MATCHED
+EPL,2026-10-18,TIMED,7,AFC Bournemouth,Sunderland AFC,,,,560604,dfd5d6648be46426e418801584d46a68,1xBet,spreads,0.0,1.52,0.0,2.79,MATCHED
+EPL,2026-10-18,TIMED,7,AFC Bournemouth,Sunderland AFC,,,,560604,dfd5d6648be46426e418801584d46a68,Pinnacle,spreads,-0.5,2.02,0.5,1.84,MATCHED
+EPL,2026-10-18,TIMED,7,Leeds United FC,Manchester United FC,,,,560605,676b3b0b609e9cf565da450786618d26,MyBookie.ag,spreads,0.5,1.59,-0.5,2.22,MATCHED
+EPL,2026-10-18,TIMED,7,Leeds United FC,Manchester United FC,,,,560605,676b3b0b609e9cf565da450786618d26,1xBet,spreads,0.0,2.17,0.0,1.81,MATCHED
+EPL,2026-10-18,TIMED,7,Leeds United FC,Manchester United FC,,,,560605,676b3b0b609e9cf565da450786618d26,Pinnacle,spreads,0.25,1.81,-0.25,2.06,MATCHED
+EPL,2026-10-18,TIMED,7,Brighton & Hove Albion FC,Crystal Palace FC,,,,560609,9fc08b390a49c4434f7cf631a0bb88fb,MyBookie.ag,spreads,-0.5,1.6,0.5,2.19,MATCHED
+EPL,2026-10-18,TIMED,7,Brighton & Hove Albion FC,Crystal Palace FC,,,,560609,9fc08b390a49c4434f7cf631a0bb88fb,1xBet,spreads,-1.5,2.68,1.5,1.56,MATCHED
+EPL,2026-10-18,TIMED,7,Brighton & Hove Albion FC,Crystal Palace FC,,,,560609,9fc08b390a49c4434f7cf631a0bb88fb,Pinnacle,spreads,-0.75,1.81,0.75,2.06,MATCHED
+EPL,2026-10-18,TIMED,7,Nottingham Forest FC,Arsenal FC,,,,560608,f696a248965373d9071dc0662e5c58a8,MyBookie.ag,spreads,0.5,2.25,-0.5,1.57,MATCHED
+EPL,2026-10-18,TIMED,7,Nottingham Forest FC,Arsenal FC,,,,560608,f696a248965373d9071dc0662e5c58a8,1xBet,spreads,1.5,1.53,-1.5,2.77,MATCHED
+EPL,2026-10-18,TIMED,7,Nottingham Forest FC,Arsenal FC,,,,560608,f696a248965373d9071dc0662e5c58a8,Pinnacle,spreads,1.0,1.79,-1.0,2.08,MATCHED
+EPL,2026-10-19,TIMED,7,Tottenham Hotspur FC,Coventry City FC,,,,560606,9baaf4e48b041cfef04e70e42532502e,1xBet,spreads,-1.5,2.39,1.5,1.67,MATCHED
+EPL,2026-10-19,TIMED,7,Tottenham Hotspur FC,Coventry City FC,,,,560606,9baaf4e48b041cfef04e70e42532502e,MyBookie.ag,spreads,-1.5,2.19,1.5,1.61,MATCHED
+EPL,2026-10-19,TIMED,7,Tottenham Hotspur FC,Coventry City FC,,,,560606,9baaf4e48b041cfef04e70e42532502e,Pinnacle,spreads,-1.0,1.81,1.0,2.05,MATCHED
 EPL,2026-10-23,TIMED,8,Ipswich Town FC,Nottingham Forest FC,,,,560620,,,,,,,,NO_ODDS_MATCH
 EPL,2026-10-24,TIMED,8,Aston Villa FC,Manchester City FC,,,,560614,,,,,,,,NO_ODDS_MATCH
 EPL,2026-10-24,TIMED,8,Arsenal FC,Everton FC,,,,560616,,,,,,,,NO_ODDS_MATCH
