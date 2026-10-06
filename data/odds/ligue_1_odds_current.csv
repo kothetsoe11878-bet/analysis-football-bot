@@ -1,5 +1,5 @@
 ﻿match_id,commence_time,home_team,away_team,bookmaker,market,home_handicap,home_price,away_handicap,away_price
-17694e68f399fdf9c5030021ec9bb595,2026-10-09T18:45:00Z,RC Lens,Lyon,Pinnacle,spreads,0.0,1.86,-0.0,2.06
+17694e68f399fdf9c5030021ec9bb595,2026-10-09T18:45:00Z,RC Lens,Lyon,Pinnacle,spreads,0.0,1.85,-0.0,2.07
 17694e68f399fdf9c5030021ec9bb595,2026-10-09T18:45:00Z,RC Lens,Lyon,1xBet,spreads,0.0,1.81,0.0,2.15
 17694e68f399fdf9c5030021ec9bb595,2026-10-09T18:45:00Z,RC Lens,Lyon,Coolbet,spreads,-1.0,3.8,1.0,1.29
 17694e68f399fdf9c5030021ec9bb595,2026-10-09T18:45:00Z,RC Lens,Lyon,GTbets,spreads,-0.5,2.36,0.5,1.58
@@ -37,7 +37,7 @@ c2c64ebfc5810226f807c1920d580392,2026-10-10T18:45:00Z,AS Monaco,Toulouse,BetOnli
 34f584ab922e220dc4f3b81217959d6d,2026-10-11T15:15:00Z,Rennes,Auxerre,Coolbet,spreads,-1.5,2.15,1.5,1.74
 34f584ab922e220dc4f3b81217959d6d,2026-10-11T15:15:00Z,Rennes,Auxerre,GTbets,spreads,-1.5,2.11,1.5,1.71
 34f584ab922e220dc4f3b81217959d6d,2026-10-11T15:15:00Z,Rennes,Auxerre,BetOnline.ag,spreads,-1.5,2.16,1.5,1.71
-cb7067ac191abf32ad49dad45e46f639,2026-10-11T18:45:00Z,Troyes,Marseille,Pinnacle,spreads,0.5,1.99,-0.5,1.9
+cb7067ac191abf32ad49dad45e46f639,2026-10-11T18:45:00Z,Troyes,Marseille,Pinnacle,spreads,0.5,2.0,-0.5,1.91
 cb7067ac191abf32ad49dad45e46f639,2026-10-11T18:45:00Z,Troyes,Marseille,1xBet,spreads,0.0,3.06,0.0,1.45
 cb7067ac191abf32ad49dad45e46f639,2026-10-11T18:45:00Z,Troyes,Marseille,Coolbet,spreads,1.0,1.52,-1.0,2.62
 cb7067ac191abf32ad49dad45e46f639,2026-10-11T18:45:00Z,Troyes,Marseille,GTbets,spreads,0.5,1.94,-0.5,1.83

@@ -1,22 +1,22 @@
 ﻿match_id,commence_time,home_team,away_team,bookmaker,market,home_handicap,home_price,away_handicap,away_price
 b870dcfba5e5920d3f1551a3aa1ea435,2026-10-10T11:30:00Z,Arsenal,Leeds United,1xBet,spreads,-1.5,2.23,1.5,1.76
 b870dcfba5e5920d3f1551a3aa1ea435,2026-10-10T11:30:00Z,Arsenal,Leeds United,MyBookie.ag,spreads,-1.5,2.02,1.5,1.71
-b870dcfba5e5920d3f1551a3aa1ea435,2026-10-10T11:30:00Z,Arsenal,Leeds United,Pinnacle,spreads,-1.25,1.9,1.25,2.0
+b870dcfba5e5920d3f1551a3aa1ea435,2026-10-10T11:30:00Z,Arsenal,Leeds United,Pinnacle,spreads,-1.25,1.91,1.25,2.0
 b870dcfba5e5920d3f1551a3aa1ea435,2026-10-10T11:30:00Z,Arsenal,Leeds United,Coolbet,spreads,-1.5,2.19,1.5,1.73
 b870dcfba5e5920d3f1551a3aa1ea435,2026-10-10T11:30:00Z,Arsenal,Leeds United,BetOnline.ag,spreads,-1.5,2.22,1.5,1.67
-b870dcfba5e5920d3f1551a3aa1ea435,2026-10-10T11:30:00Z,Arsenal,Leeds United,Matchbook,spreads,-1.25,1.9,1.25,2.0
+b870dcfba5e5920d3f1551a3aa1ea435,2026-10-10T11:30:00Z,Arsenal,Leeds United,Matchbook,spreads,-1.25,1.89,1.25,2.0
 b870dcfba5e5920d3f1551a3aa1ea435,2026-10-10T11:30:00Z,Arsenal,Leeds United,GTbets,spreads,-1.5,2.12,1.5,1.7
 02e6c0ccb11bb7ce78989ce49d67110b,2026-10-10T14:00:00Z,Aston Villa,Brentford,1xBet,spreads,0.0,1.98,0.0,1.96
 02e6c0ccb11bb7ce78989ce49d67110b,2026-10-10T14:00:00Z,Aston Villa,Brentford,MyBookie.ag,spreads,0.5,1.51,-0.5,2.4
 02e6c0ccb11bb7ce78989ce49d67110b,2026-10-10T14:00:00Z,Aston Villa,Brentford,Pinnacle,spreads,0.0,1.98,-0.0,1.93
 02e6c0ccb11bb7ce78989ce49d67110b,2026-10-10T14:00:00Z,Aston Villa,Brentford,Coolbet,spreads,1.0,1.25,-1.0,4.25
 02e6c0ccb11bb7ce78989ce49d67110b,2026-10-10T14:00:00Z,Aston Villa,Brentford,BetOnline.ag,spreads,0.0,1.95,0.0,1.88
-02e6c0ccb11bb7ce78989ce49d67110b,2026-10-10T14:00:00Z,Aston Villa,Brentford,Matchbook,spreads,0.0,1.98,0.0,1.95
+02e6c0ccb11bb7ce78989ce49d67110b,2026-10-10T14:00:00Z,Aston Villa,Brentford,Matchbook,spreads,0.0,2.02,0.0,1.95
 02e6c0ccb11bb7ce78989ce49d67110b,2026-10-10T14:00:00Z,Aston Villa,Brentford,GTbets,spreads,0.5,1.52,-0.5,2.48
 45d4a466e32cd2b4ea535207923ceaf5,2026-10-10T14:00:00Z,Chelsea,Bournemouth,MyBookie.ag,spreads,-0.5,1.66,0.5,2.09
 45d4a466e32cd2b4ea535207923ceaf5,2026-10-10T14:00:00Z,Chelsea,Bournemouth,1xBet,spreads,-1.5,2.82,1.5,1.51
-45d4a466e32cd2b4ea535207923ceaf5,2026-10-10T14:00:00Z,Chelsea,Bournemouth,Pinnacle,spreads,-0.75,1.93,0.75,1.97
-45d4a466e32cd2b4ea535207923ceaf5,2026-10-10T14:00:00Z,Chelsea,Bournemouth,Coolbet,spreads,-1.0,2.24,1.0,1.7
+45d4a466e32cd2b4ea535207923ceaf5,2026-10-10T14:00:00Z,Chelsea,Bournemouth,Pinnacle,spreads,-0.75,1.93,0.75,1.96
+45d4a466e32cd2b4ea535207923ceaf5,2026-10-10T14:00:00Z,Chelsea,Bournemouth,Coolbet,spreads,-1.0,2.27,1.0,1.68
 45d4a466e32cd2b4ea535207923ceaf5,2026-10-10T14:00:00Z,Chelsea,Bournemouth,BetOnline.ag,spreads,-0.5,1.74,0.5,2.12
 45d4a466e32cd2b4ea535207923ceaf5,2026-10-10T14:00:00Z,Chelsea,Bournemouth,Matchbook,spreads,-0.75,1.94,0.75,2.02
 45d4a466e32cd2b4ea535207923ceaf5,2026-10-10T14:00:00Z,Chelsea,Bournemouth,GTbets,spreads,-0.5,1.69,0.5,2.13
@@ -32,7 +32,7 @@ b870dcfba5e5920d3f1551a3aa1ea435,2026-10-10T11:30:00Z,Arsenal,Leeds United,GTbet
 288b4ff00c79daa712c911c564fe1be7,2026-10-10T14:00:00Z,Ipswich Town,Fulham,Pinnacle,spreads,0.0,2.03,-0.0,1.88
 288b4ff00c79daa712c911c564fe1be7,2026-10-10T14:00:00Z,Ipswich Town,Fulham,Coolbet,spreads,1.0,1.26,-1.0,4.1
 288b4ff00c79daa712c911c564fe1be7,2026-10-10T14:00:00Z,Ipswich Town,Fulham,BetOnline.ag,spreads,0.0,1.99,0.0,1.85
-288b4ff00c79daa712c911c564fe1be7,2026-10-10T14:00:00Z,Ipswich Town,Fulham,Matchbook,spreads,0.0,2.06,0.0,1.91
+288b4ff00c79daa712c911c564fe1be7,2026-10-10T14:00:00Z,Ipswich Town,Fulham,Matchbook,spreads,0.0,2.06,0.0,1.92
 288b4ff00c79daa712c911c564fe1be7,2026-10-10T14:00:00Z,Ipswich Town,Fulham,GTbets,spreads,0.5,1.54,-0.5,2.44
 22c9b2c43cbe1334381269550dab78e6,2026-10-10T16:30:00Z,Manchester United,Tottenham Hotspur,1xBet,spreads,-1.5,2.86,1.5,1.5
 22c9b2c43cbe1334381269550dab78e6,2026-10-10T16:30:00Z,Manchester United,Tottenham Hotspur,MyBookie.ag,spreads,-0.5,1.67,0.5,2.08
@@ -58,7 +58,7 @@ b870dcfba5e5920d3f1551a3aa1ea435,2026-10-10T11:30:00Z,Arsenal,Leeds United,GTbet
 6dbab232dd8d2aed0cb1d6f7978fb7b1,2026-10-11T15:30:00Z,Liverpool,Manchester City,1xBet,spreads,0.0,1.96,0.0,1.98
 6dbab232dd8d2aed0cb1d6f7978fb7b1,2026-10-11T15:30:00Z,Liverpool,Manchester City,MyBookie.ag,spreads,-0.5,2.43,0.5,1.5
 6dbab232dd8d2aed0cb1d6f7978fb7b1,2026-10-11T15:30:00Z,Liverpool,Manchester City,Pinnacle,spreads,0.0,1.97,-0.0,1.93
-6dbab232dd8d2aed0cb1d6f7978fb7b1,2026-10-11T15:30:00Z,Liverpool,Manchester City,Coolbet,spreads,-1.0,4.0,1.0,1.27
+6dbab232dd8d2aed0cb1d6f7978fb7b1,2026-10-11T15:30:00Z,Liverpool,Manchester City,Coolbet,spreads,-1.0,4.05,1.0,1.27
 6dbab232dd8d2aed0cb1d6f7978fb7b1,2026-10-11T15:30:00Z,Liverpool,Manchester City,BetOnline.ag,spreads,0.0,1.92,0.0,1.92
 6dbab232dd8d2aed0cb1d6f7978fb7b1,2026-10-11T15:30:00Z,Liverpool,Manchester City,Matchbook,spreads,0.0,1.99,0.0,1.99
 6dbab232dd8d2aed0cb1d6f7978fb7b1,2026-10-11T15:30:00Z,Liverpool,Manchester City,GTbets,spreads,-0.5,2.47,0.5,1.53
@@ -67,6 +67,8 @@ acd5bd945dd953ad1e300df5bfe696f9,2026-10-12T19:00:00Z,Coventry City,Newcastle Un
 acd5bd945dd953ad1e300df5bfe696f9,2026-10-12T19:00:00Z,Coventry City,Newcastle United,Pinnacle,spreads,0.25,2.0,-0.25,1.88
 acd5bd945dd953ad1e300df5bfe696f9,2026-10-12T19:00:00Z,Coventry City,Newcastle United,Coolbet,spreads,1.0,1.41,-1.0,3.1
 acd5bd945dd953ad1e300df5bfe696f9,2026-10-12T19:00:00Z,Coventry City,Newcastle United,BetOnline.ag,spreads,0.5,1.69,-0.5,2.19
+acd5bd945dd953ad1e300df5bfe696f9,2026-10-12T19:00:00Z,Coventry City,Newcastle United,Matchbook,spreads,0.25,2.02,-0.25,1.94
+acd5bd945dd953ad1e300df5bfe696f9,2026-10-12T19:00:00Z,Coventry City,Newcastle United,GTbets,spreads,0.5,1.72,-0.5,2.08
 764e6513cb3f348881503df70ccb90e0,2026-10-17T11:30:00Z,Everton,Chelsea,1xBet,spreads,0.0,2.14,0.0,1.82
 764e6513cb3f348881503df70ccb90e0,2026-10-17T11:30:00Z,Everton,Chelsea,MyBookie.ag,spreads,0.5,1.6,-0.5,2.2
 764e6513cb3f348881503df70ccb90e0,2026-10-17T11:30:00Z,Everton,Chelsea,Pinnacle,spreads,0.0,2.07,-0.0,1.8
@@ -95,5 +97,5 @@ f696a248965373d9071dc0662e5c58a8,2026-10-18T15:30:00Z,Nottingham Forest,Arsenal,
 f696a248965373d9071dc0662e5c58a8,2026-10-18T15:30:00Z,Nottingham Forest,Arsenal,1xBet,spreads,1.5,1.53,-1.5,2.77
 f696a248965373d9071dc0662e5c58a8,2026-10-18T15:30:00Z,Nottingham Forest,Arsenal,Pinnacle,spreads,1.0,1.79,-1.0,2.08
 9baaf4e48b041cfef04e70e42532502e,2026-10-19T19:00:00Z,Tottenham Hotspur,Coventry City,1xBet,spreads,-1.5,2.39,1.5,1.67
-9baaf4e48b041cfef04e70e42532502e,2026-10-19T19:00:00Z,Tottenham Hotspur,Coventry City,MyBookie.ag,spreads,-1.5,2.2,1.5,1.6
+9baaf4e48b041cfef04e70e42532502e,2026-10-19T19:00:00Z,Tottenham Hotspur,Coventry City,MyBookie.ag,spreads,-1.5,2.19,1.5,1.61
 9baaf4e48b041cfef04e70e42532502e,2026-10-19T19:00:00Z,Tottenham Hotspur,Coventry City,Pinnacle,spreads,-1.0,1.81,1.0,2.05
