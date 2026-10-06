@@ -15,13 +15,13 @@
 418f8c26d46eaabd829f2e265673b855,2026-10-10T13:30:00Z,FSV Mainz 05,Bayer Leverkusen,1xBet,spreads,0.0,2.25,0.0,1.75
 418f8c26d46eaabd829f2e265673b855,2026-10-10T13:30:00Z,FSV Mainz 05,Bayer Leverkusen,Coolbet,spreads,1.0,1.35,-1.0,3.35
 418f8c26d46eaabd829f2e265673b855,2026-10-10T13:30:00Z,FSV Mainz 05,Bayer Leverkusen,Matchbook,spreads,0.25,1.93,-0.25,1.95
-418f8c26d46eaabd829f2e265673b855,2026-10-10T13:30:00Z,FSV Mainz 05,Bayer Leverkusen,GTbets,spreads,0.5,1.65,-0.5,2.21
+418f8c26d46eaabd829f2e265673b855,2026-10-10T13:30:00Z,FSV Mainz 05,Bayer Leverkusen,GTbets,spreads,-0.5,2.86,0.5,1.41
 418f8c26d46eaabd829f2e265673b855,2026-10-10T13:30:00Z,FSV Mainz 05,Bayer Leverkusen,BetOnline.ag,spreads,0.5,1.69,-0.5,2.19
 2fd48be0a24ed906187067d4170bf010,2026-10-10T13:30:00Z,Union Berlin,Elversberg,Pinnacle,spreads,-0.25,2.05,0.25,1.86
 2fd48be0a24ed906187067d4170bf010,2026-10-10T13:30:00Z,Union Berlin,Elversberg,1xBet,spreads,0.0,1.73,0.0,2.29
 2fd48be0a24ed906187067d4170bf010,2026-10-10T13:30:00Z,Union Berlin,Elversberg,Coolbet,spreads,-1.0,3.4,1.0,1.34
 2fd48be0a24ed906187067d4170bf010,2026-10-10T13:30:00Z,Union Berlin,Elversberg,Matchbook,spreads,-0.25,2.02,0.25,1.85
-2fd48be0a24ed906187067d4170bf010,2026-10-10T13:30:00Z,Union Berlin,Elversberg,GTbets,spreads,-0.5,2.22,0.5,1.64
+2fd48be0a24ed906187067d4170bf010,2026-10-10T13:30:00Z,Union Berlin,Elversberg,GTbets,spreads,0.5,1.43,-0.5,2.76
 2fd48be0a24ed906187067d4170bf010,2026-10-10T13:30:00Z,Union Berlin,Elversberg,BetOnline.ag,spreads,0.0,1.73,0.0,2.13
 f03c08c0ae5fd66c2d2df2053115bb94,2026-10-10T13:30:00Z,TSG Hoffenheim,Hamburger SV,Pinnacle,spreads,-1.25,1.89,1.25,2.02
 f03c08c0ae5fd66c2d2df2053115bb94,2026-10-10T13:30:00Z,TSG Hoffenheim,Hamburger SV,1xBet,spreads,-1.5,2.19,1.5,1.79
@@ -33,7 +33,7 @@ f03c08c0ae5fd66c2d2df2053115bb94,2026-10-10T13:30:00Z,TSG Hoffenheim,Hamburger S
 9aade3e736c3d113dab19e641c43e272,2026-10-10T13:30:00Z,SC Paderborn,VfB Stuttgart,1xBet,spreads,1.5,1.62,-1.5,2.51
 9aade3e736c3d113dab19e641c43e272,2026-10-10T13:30:00Z,SC Paderborn,VfB Stuttgart,Coolbet,spreads,1.0,1.88,-1.0,1.97
 9aade3e736c3d113dab19e641c43e272,2026-10-10T13:30:00Z,SC Paderborn,VfB Stuttgart,Matchbook,spreads,1.0,1.91,-1.0,1.97
-9aade3e736c3d113dab19e641c43e272,2026-10-10T13:30:00Z,SC Paderborn,VfB Stuttgart,GTbets,spreads,0.5,2.34,-0.5,1.58
+9aade3e736c3d113dab19e641c43e272,2026-10-10T13:30:00Z,SC Paderborn,VfB Stuttgart,GTbets,spreads,1.5,1.56,-1.5,2.4
 9aade3e736c3d113dab19e641c43e272,2026-10-10T13:30:00Z,SC Paderborn,VfB Stuttgart,BetOnline.ag,spreads,1.0,1.9,-1.0,1.93
 01cb7a67c8ae71201ec27297455fc0e8,2026-10-10T16:30:00Z,RB Leipzig,Eintracht Frankfurt,Pinnacle,spreads,-1.0,1.87,1.0,2.04
 01cb7a67c8ae71201ec27297455fc0e8,2026-10-10T16:30:00Z,RB Leipzig,Eintracht Frankfurt,1xBet,spreads,-1.5,2.33,1.5,1.71
@@ -45,13 +45,13 @@ a8801462cb97a43570956e4b3ef4aedf,2026-10-11T13:30:00Z,1. FC Köln,Borussia Monch
 a8801462cb97a43570956e4b3ef4aedf,2026-10-11T13:30:00Z,1. FC Köln,Borussia Monchengladbach,1xBet,spreads,0.0,1.55,0.0,2.69
 a8801462cb97a43570956e4b3ef4aedf,2026-10-11T13:30:00Z,1. FC Köln,Borussia Monchengladbach,Coolbet,spreads,-1.0,2.85,1.0,1.45
 a8801462cb97a43570956e4b3ef4aedf,2026-10-11T13:30:00Z,1. FC Köln,Borussia Monchengladbach,Matchbook,spreads,-0.5,2.04,0.5,1.86
-a8801462cb97a43570956e4b3ef4aedf,2026-10-11T13:30:00Z,1. FC Köln,Borussia Monchengladbach,GTbets,spreads,-0.5,1.97,0.5,1.81
+a8801462cb97a43570956e4b3ef4aedf,2026-10-11T13:30:00Z,1. FC Köln,Borussia Monchengladbach,GTbets,spreads,0.5,1.32,-0.5,3.29
 a8801462cb97a43570956e4b3ef4aedf,2026-10-11T13:30:00Z,1. FC Köln,Borussia Monchengladbach,BetOnline.ag,spreads,-0.5,2.05,0.5,1.79
 eaf509fb37413b7d055cd394667792b3,2026-10-11T15:30:00Z,SC Freiburg,FC Schalke 04,Pinnacle,spreads,-0.75,1.85,0.75,2.07
 eaf509fb37413b7d055cd394667792b3,2026-10-11T15:30:00Z,SC Freiburg,FC Schalke 04,1xBet,spreads,-1.5,2.68,1.5,1.56
 eaf509fb37413b7d055cd394667792b3,2026-10-11T15:30:00Z,SC Freiburg,FC Schalke 04,Coolbet,spreads,-1.0,2.1,1.0,1.78
 eaf509fb37413b7d055cd394667792b3,2026-10-11T15:30:00Z,SC Freiburg,FC Schalke 04,Matchbook,spreads,-0.75,1.83,0.75,2.06
-eaf509fb37413b7d055cd394667792b3,2026-10-11T15:30:00Z,SC Freiburg,FC Schalke 04,GTbets,spreads,-0.5,1.62,0.5,2.27
+eaf509fb37413b7d055cd394667792b3,2026-10-11T15:30:00Z,SC Freiburg,FC Schalke 04,GTbets,spreads,-1.5,2.59,1.5,1.49
 eaf509fb37413b7d055cd394667792b3,2026-10-11T15:30:00Z,SC Freiburg,FC Schalke 04,BetOnline.ag,spreads,-1.0,2.1,1.0,1.75
 947bd5d924835af090d9cdc7bbdf10f6,2026-10-16T18:30:00Z,Eintracht Frankfurt,1. FC Köln,Pinnacle,spreads,-0.5,1.89,0.5,1.96
 947bd5d924835af090d9cdc7bbdf10f6,2026-10-16T18:30:00Z,Eintracht Frankfurt,1. FC Köln,1xBet,spreads,0.0,1.55,0.0,2.71
