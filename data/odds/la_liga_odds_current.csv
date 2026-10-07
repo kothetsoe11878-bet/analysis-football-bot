@@ -1,58 +1,59 @@
 ﻿match_id,commence_time,home_team,away_team,bookmaker,market,home_handicap,home_price,away_handicap,away_price
-4e4c6763037ffc0e1dfe92ed16287b6d,2026-10-09T19:00:00Z,Málaga,Espanyol,Pinnacle,spreads,0.0,1.97,-0.0,1.93
+4e4c6763037ffc0e1dfe92ed16287b6d,2026-10-09T19:00:00Z,Málaga,Espanyol,Pinnacle,spreads,0.0,2.0,-0.0,1.91
 4e4c6763037ffc0e1dfe92ed16287b6d,2026-10-09T19:00:00Z,Málaga,Espanyol,1xBet,spreads,0.0,1.95,0.0,1.99
-4e4c6763037ffc0e1dfe92ed16287b6d,2026-10-09T19:00:00Z,Málaga,Espanyol,Coolbet,spreads,-1.0,4.85,1.0,1.22
-4e4c6763037ffc0e1dfe92ed16287b6d,2026-10-09T19:00:00Z,Málaga,Espanyol,Matchbook,spreads,0.0,2.0,0.0,1.94
+4e4c6763037ffc0e1dfe92ed16287b6d,2026-10-09T19:00:00Z,Málaga,Espanyol,Coolbet,spreads,1.0,1.21,-1.0,4.95
+4e4c6763037ffc0e1dfe92ed16287b6d,2026-10-09T19:00:00Z,Málaga,Espanyol,Matchbook,spreads,0.0,2.0,0.0,1.97
 4e4c6763037ffc0e1dfe92ed16287b6d,2026-10-09T19:00:00Z,Málaga,Espanyol,BetOnline.ag,spreads,0.0,1.93,0.0,1.9
-349c47668fdd909039a9408c14cad8bc,2026-10-10T12:00:00Z,Rayo Vallecano,Athletic Bilbao,Pinnacle,spreads,0.25,1.83,-0.25,2.09
-349c47668fdd909039a9408c14cad8bc,2026-10-10T12:00:00Z,Rayo Vallecano,Athletic Bilbao,1xBet,spreads,0.0,2.23,0.0,1.76
-349c47668fdd909039a9408c14cad8bc,2026-10-10T12:00:00Z,Rayo Vallecano,Athletic Bilbao,Coolbet,spreads,1.0,1.28,-1.0,4.0
-349c47668fdd909039a9408c14cad8bc,2026-10-10T12:00:00Z,Rayo Vallecano,Athletic Bilbao,Matchbook,spreads,0.25,1.87,-0.25,2.08
-349c47668fdd909039a9408c14cad8bc,2026-10-10T12:00:00Z,Rayo Vallecano,Athletic Bilbao,BetOnline.ag,spreads,0.0,2.17,0.0,1.7
-3869391e3dbdcaa74153b11df56a3fe5,2026-10-10T14:15:00Z,Alavés,Atlético Madrid,Pinnacle,spreads,0.5,2.07,-0.5,1.85
+349c47668fdd909039a9408c14cad8bc,2026-10-10T12:00:00Z,Rayo Vallecano,Athletic Bilbao,Pinnacle,spreads,0.0,2.05,-0.0,1.87
+349c47668fdd909039a9408c14cad8bc,2026-10-10T12:00:00Z,Rayo Vallecano,Athletic Bilbao,1xBet,spreads,0.0,2.14,0.0,1.82
+349c47668fdd909039a9408c14cad8bc,2026-10-10T12:00:00Z,Rayo Vallecano,Athletic Bilbao,Coolbet,spreads,1.0,1.27,-1.0,4.15
+349c47668fdd909039a9408c14cad8bc,2026-10-10T12:00:00Z,Rayo Vallecano,Athletic Bilbao,Matchbook,spreads,0.0,2.08,0.0,1.89
+349c47668fdd909039a9408c14cad8bc,2026-10-10T12:00:00Z,Rayo Vallecano,Athletic Bilbao,BetOnline.ag,spreads,0.0,2.04,0.0,1.8
+3869391e3dbdcaa74153b11df56a3fe5,2026-10-10T14:15:00Z,Alavés,Atlético Madrid,Pinnacle,spreads,0.5,2.03,-0.5,1.88
 3869391e3dbdcaa74153b11df56a3fe5,2026-10-10T14:15:00Z,Alavés,Atlético Madrid,1xBet,spreads,0.0,3.15,0.0,1.43
-3869391e3dbdcaa74153b11df56a3fe5,2026-10-10T14:15:00Z,Alavés,Atlético Madrid,Coolbet,spreads,1.0,1.57,-1.0,2.55
-3869391e3dbdcaa74153b11df56a3fe5,2026-10-10T14:15:00Z,Alavés,Atlético Madrid,Matchbook,spreads,0.5,2.12,-0.5,1.86
+3869391e3dbdcaa74153b11df56a3fe5,2026-10-10T14:15:00Z,Alavés,Atlético Madrid,Coolbet,spreads,1.0,1.53,-1.0,2.66
+3869391e3dbdcaa74153b11df56a3fe5,2026-10-10T14:15:00Z,Alavés,Atlético Madrid,Matchbook,spreads,0.5,2.04,-0.5,1.91
 3869391e3dbdcaa74153b11df56a3fe5,2026-10-10T14:15:00Z,Alavés,Atlético Madrid,BetOnline.ag,spreads,0.5,1.99,-0.5,1.85
-edb80d633a1906e5865ab70cc9b540ea,2026-10-10T16:30:00Z,Barcelona,Getafe,Pinnacle,spreads,-3.0,2.05,3.0,1.83
+edb80d633a1906e5865ab70cc9b540ea,2026-10-10T16:30:00Z,Barcelona,Getafe,Pinnacle,spreads,-2.75,1.84,2.75,2.04
 edb80d633a1906e5865ab70cc9b540ea,2026-10-10T16:30:00Z,Barcelona,Getafe,1xBet,spreads,-2.5,1.67,2.5,2.39
-edb80d633a1906e5865ab70cc9b540ea,2026-10-10T16:30:00Z,Barcelona,Getafe,Coolbet,spreads,-3.0,2.07,3.0,1.83
-edb80d633a1906e5865ab70cc9b540ea,2026-10-10T16:30:00Z,Barcelona,Getafe,Matchbook,spreads,-3.0,2.1,3.0,1.86
+edb80d633a1906e5865ab70cc9b540ea,2026-10-10T16:30:00Z,Barcelona,Getafe,Coolbet,spreads,-3.0,2.0,3.0,1.9
+edb80d633a1906e5865ab70cc9b540ea,2026-10-10T16:30:00Z,Barcelona,Getafe,Matchbook,spreads,-2.75,1.84,2.75,2.02
 edb80d633a1906e5865ab70cc9b540ea,2026-10-10T16:30:00Z,Barcelona,Getafe,BetOnline.ag,spreads,-3.0,2.0,3.0,1.83
-551f242223b1625f458d1a2ea212a0c3,2026-10-10T19:00:00Z,Real Madrid,Villarreal,Pinnacle,spreads,-1.5,1.93,1.5,1.97
+551f242223b1625f458d1a2ea212a0c3,2026-10-10T19:00:00Z,Real Madrid,Villarreal,Pinnacle,spreads,-1.5,1.89,1.5,2.01
 551f242223b1625f458d1a2ea212a0c3,2026-10-10T19:00:00Z,Real Madrid,Villarreal,1xBet,spreads,-1.5,1.91,1.5,2.03
-551f242223b1625f458d1a2ea212a0c3,2026-10-10T19:00:00Z,Real Madrid,Villarreal,Coolbet,spreads,-1.5,1.95,1.5,1.93
-551f242223b1625f458d1a2ea212a0c3,2026-10-10T19:00:00Z,Real Madrid,Villarreal,Matchbook,spreads,-1.5,1.93,1.5,1.97
-551f242223b1625f458d1a2ea212a0c3,2026-10-10T19:00:00Z,Real Madrid,Villarreal,BetOnline.ag,spreads,-1.5,1.91,1.5,1.93
+551f242223b1625f458d1a2ea212a0c3,2026-10-10T19:00:00Z,Real Madrid,Villarreal,Coolbet,spreads,-1.5,1.88,1.5,2.01
+551f242223b1625f458d1a2ea212a0c3,2026-10-10T19:00:00Z,Real Madrid,Villarreal,Matchbook,spreads,-1.5,1.94,1.5,1.99
+551f242223b1625f458d1a2ea212a0c3,2026-10-10T19:00:00Z,Real Madrid,Villarreal,BetOnline.ag,spreads,-1.5,1.86,1.5,1.97
 7daf7edaf572eba3ac86196c663d67d3,2026-10-11T12:00:00Z,Elche CF,Celta Vigo,Pinnacle,spreads,0.0,1.98,-0.0,1.93
 7daf7edaf572eba3ac86196c663d67d3,2026-10-11T12:00:00Z,Elche CF,Celta Vigo,1xBet,spreads,0.0,2.06,0.0,1.89
-7daf7edaf572eba3ac86196c663d67d3,2026-10-11T12:00:00Z,Elche CF,Celta Vigo,Coolbet,spreads,1.0,1.23,-1.0,4.65
-7daf7edaf572eba3ac86196c663d67d3,2026-10-11T12:00:00Z,Elche CF,Celta Vigo,Matchbook,spreads,0.0,2.02,0.0,1.9
+7daf7edaf572eba3ac86196c663d67d3,2026-10-11T12:00:00Z,Elche CF,Celta Vigo,Coolbet,spreads,-1.0,4.85,1.0,1.21
+7daf7edaf572eba3ac86196c663d67d3,2026-10-11T12:00:00Z,Elche CF,Celta Vigo,Matchbook,spreads,0.0,2.02,0.0,1.92
 7daf7edaf572eba3ac86196c663d67d3,2026-10-11T12:00:00Z,Elche CF,Celta Vigo,BetOnline.ag,spreads,0.0,1.95,0.0,1.88
 2997b68cc93f62d8a1dee9f06bedbefd,2026-10-11T14:15:00Z,Real Sociedad,Deportivo La Coruña,Pinnacle,spreads,-0.75,1.89,0.75,2.01
 2997b68cc93f62d8a1dee9f06bedbefd,2026-10-11T14:15:00Z,Real Sociedad,Deportivo La Coruña,1xBet,spreads,-1.5,2.99,1.5,1.47
-2997b68cc93f62d8a1dee9f06bedbefd,2026-10-11T14:15:00Z,Real Sociedad,Deportivo La Coruña,Coolbet,spreads,-1.0,2.29,1.0,1.68
-2997b68cc93f62d8a1dee9f06bedbefd,2026-10-11T14:15:00Z,Real Sociedad,Deportivo La Coruña,Matchbook,spreads,-0.75,1.88,0.75,2.06
+2997b68cc93f62d8a1dee9f06bedbefd,2026-10-11T14:15:00Z,Real Sociedad,Deportivo La Coruña,Coolbet,spreads,-1.0,2.2,1.0,1.74
+2997b68cc93f62d8a1dee9f06bedbefd,2026-10-11T14:15:00Z,Real Sociedad,Deportivo La Coruña,Matchbook,spreads,-0.75,1.89,0.75,2.04
 2997b68cc93f62d8a1dee9f06bedbefd,2026-10-11T14:15:00Z,Real Sociedad,Deportivo La Coruña,BetOnline.ag,spreads,-0.5,1.69,0.5,2.19
-984691837d31fd0c59c088f377f55f75,2026-10-11T16:30:00Z,Real Betis,CA Osasuna,Pinnacle,spreads,-1.0,2.09,1.0,1.83
+984691837d31fd0c59c088f377f55f75,2026-10-11T16:30:00Z,Real Betis,CA Osasuna,Pinnacle,spreads,-1.0,2.01,1.0,1.89
 984691837d31fd0c59c088f377f55f75,2026-10-11T16:30:00Z,Real Betis,CA Osasuna,1xBet,spreads,-1.5,2.74,1.5,1.54
-984691837d31fd0c59c088f377f55f75,2026-10-11T16:30:00Z,Real Betis,CA Osasuna,Coolbet,spreads,-1.0,2.13,1.0,1.79
-984691837d31fd0c59c088f377f55f75,2026-10-11T16:30:00Z,Real Betis,CA Osasuna,Matchbook,spreads,-1.0,2.06,1.0,1.87
-984691837d31fd0c59c088f377f55f75,2026-10-11T16:30:00Z,Real Betis,CA Osasuna,BetOnline.ag,spreads,-1.0,2.05,1.0,1.79
-66a4f4201806b928c9007116727fdd61,2026-10-11T19:00:00Z,Real Racing Club de Santander,Valencia,Pinnacle,spreads,-0.25,1.93,0.25,1.98
-66a4f4201806b928c9007116727fdd61,2026-10-11T19:00:00Z,Real Racing Club de Santander,Valencia,1xBet,spreads,0.0,1.71,0.0,2.33
-66a4f4201806b928c9007116727fdd61,2026-10-11T19:00:00Z,Real Racing Club de Santander,Valencia,Coolbet,spreads,-1.0,3.3,1.0,1.38
-66a4f4201806b928c9007116727fdd61,2026-10-11T19:00:00Z,Real Racing Club de Santander,Valencia,Matchbook,spreads,-0.25,1.96,0.25,2.0
-66a4f4201806b928c9007116727fdd61,2026-10-11T19:00:00Z,Real Racing Club de Santander,Valencia,BetOnline.ag,spreads,-0.5,2.19,0.5,1.69
-529fc26c7774d5b469932e275c668921,2026-10-12T19:00:00Z,Levante,Sevilla,Pinnacle,spreads,0.0,1.94,-0.0,1.94
+984691837d31fd0c59c088f377f55f75,2026-10-11T16:30:00Z,Real Betis,CA Osasuna,Coolbet,spreads,-1.0,2.0,1.0,1.88
+984691837d31fd0c59c088f377f55f75,2026-10-11T16:30:00Z,Real Betis,CA Osasuna,Matchbook,spreads,-1.0,2.0,1.0,1.93
+984691837d31fd0c59c088f377f55f75,2026-10-11T16:30:00Z,Real Betis,CA Osasuna,BetOnline.ag,spreads,-1.0,2.0,1.0,1.84
+66a4f4201806b928c9007116727fdd61,2026-10-11T19:00:00Z,Real Racing Club de Santander,Valencia,Pinnacle,spreads,-0.25,2.03,0.25,1.88
+66a4f4201806b928c9007116727fdd61,2026-10-11T19:00:00Z,Real Racing Club de Santander,Valencia,1xBet,spreads,0.0,1.78,0.0,2.2
+66a4f4201806b928c9007116727fdd61,2026-10-11T19:00:00Z,Real Racing Club de Santander,Valencia,Coolbet,spreads,-1.0,3.45,1.0,1.35
+66a4f4201806b928c9007116727fdd61,2026-10-11T19:00:00Z,Real Racing Club de Santander,Valencia,Matchbook,spreads,-0.25,2.08,0.25,1.86
+66a4f4201806b928c9007116727fdd61,2026-10-11T19:00:00Z,Real Racing Club de Santander,Valencia,BetOnline.ag,spreads,-0.5,2.25,0.5,1.65
+529fc26c7774d5b469932e275c668921,2026-10-12T19:00:00Z,Levante,Sevilla,Pinnacle,spreads,0.0,1.96,-0.0,1.94
 529fc26c7774d5b469932e275c668921,2026-10-12T19:00:00Z,Levante,Sevilla,1xBet,spreads,0.0,1.96,0.0,1.98
-529fc26c7774d5b469932e275c668921,2026-10-12T19:00:00Z,Levante,Sevilla,Coolbet,spreads,-1.0,4.45,1.0,1.24
-529fc26c7774d5b469932e275c668921,2026-10-12T19:00:00Z,Levante,Sevilla,Matchbook,spreads,0.0,2.0,0.0,1.94
+529fc26c7774d5b469932e275c668921,2026-10-12T19:00:00Z,Levante,Sevilla,Coolbet,spreads,1.0,1.23,-1.0,4.65
+529fc26c7774d5b469932e275c668921,2026-10-12T19:00:00Z,Levante,Sevilla,Matchbook,spreads,0.0,2.0,0.0,1.96
+529fc26c7774d5b469932e275c668921,2026-10-12T19:00:00Z,Levante,Sevilla,BetOnline.ag,spreads,0.0,1.92,0.0,1.92
 19ee731602634e5c9e3106630e087464,2026-10-16T19:00:00Z,Deportivo La Coruña,Levante,Pinnacle,spreads,-0.25,1.81,0.25,2.06
 19ee731602634e5c9e3106630e087464,2026-10-16T19:00:00Z,Deportivo La Coruña,Levante,1xBet,spreads,0.0,1.58,0.0,2.62
 6436925dd15916d7041ba32b60000d48,2026-10-17T12:00:00Z,Espanyol,Atlético Madrid,Pinnacle,spreads,0.5,2.0,-0.5,1.85
 6436925dd15916d7041ba32b60000d48,2026-10-17T12:00:00Z,Espanyol,Atlético Madrid,1xBet,spreads,0.0,3.41,0.0,1.39
-aef660734585649651415961a9d177c6,2026-10-17T14:15:00Z,Villarreal,Elche CF,Pinnacle,spreads,-1.25,2.01,1.25,1.85
+aef660734585649651415961a9d177c6,2026-10-17T14:15:00Z,Villarreal,Elche CF,Pinnacle,spreads,-1.25,2.0,1.25,1.85
 aef660734585649651415961a9d177c6,2026-10-17T14:15:00Z,Villarreal,Elche CF,1xBet,spreads,-1.5,2.28,1.5,1.74
 846e496fc232b2fc20214754836727d0,2026-10-17T16:30:00Z,Real Betis,Barcelona,Pinnacle,spreads,1.5,1.81,-1.5,1.89
 846e496fc232b2fc20214754836727d0,2026-10-17T16:30:00Z,Real Betis,Barcelona,1xBet,spreads,1.5,1.81,-1.5,2.16
