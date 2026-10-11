@@ -3,26 +3,59 @@ name: SS2 Data Bridge Auto Update
 on:
   workflow_dispatch:
 
+  workflow_run:
+    workflows: ["5 League Odds Auto Update"]
+    types:
+      - completed
+
+permissions:
+  contents: write
+
 jobs:
   bridge:
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.x"
+          python-version: "3.12"
 
-      - name: Run SS2 Data Bridge
-        run: python convert_to_ss2.py
+      - name: Install Python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install openpyxl
 
-      - name: Save SS2 bridge data
+      - name: Build SS2 bridge
+        run: |
+          python convert_to_ss2.py
+
+      - name: Update SS2 Excel workbooks
+        run: |
+          python update_ss2_workbooks.py
+
+      - name: Show updated SS2 files
+        run: |
+          echo "===== SS2 DIRECTORY ====="
+          ls -lh data/ss2/
+          echo "========================="
+
+      - name: Commit SS2 updates
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/ss2/
-          git diff --cached --quiet || git commit -m "Update SS2 bridge data"
+
+          git add data/ss2/*.xlsx
+          git add data/ss2/ss2_bridge_current.csv
+
+          git diff --cached --quiet || git commit -m "Auto update SS2 workbooks"
+
           git push
