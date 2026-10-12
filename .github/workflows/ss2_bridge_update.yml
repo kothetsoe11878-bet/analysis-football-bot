@@ -3,6 +3,10 @@ name: SS2 Data Bridge Auto Update
 on:
   workflow_dispatch:
 
+  schedule:
+    - cron: "0 3 * * 2"
+    - cron: "0 3 * * 3"
+
   workflow_run:
     workflows: ["5 League Odds Auto Update"]
     types:
@@ -14,9 +18,9 @@ permissions:
 jobs:
   bridge:
     if: >
-      github.event_name == 'workflow_dispatch' ||
-      github.event.workflow_run.conclusion == 'success'
-
+  github.event_name == 'workflow_dispatch' ||
+  github.event_name == 'schedule' ||
+  github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
 
     steps:
