@@ -4,62 +4,132 @@ on:
   workflow_dispatch:
 
   schedule:
+    # Tuesday 09:00 Myanmar Time = 03:00 UTC
     - cron: "0 3 * * 2"
+
+    # Wednesday 09:00 Myanmar Time = 03:00 UTC
     - cron: "0 3 * * 3"
 
   workflow_run:
-    workflows: ["5 League Odds Auto Update"]
+    workflows:
+      - "5 League Odds Auto Update"
     types:
       - completed
+
 
 permissions:
   contents: write
 
+
 jobs:
+
   bridge:
+
+    # Run when:
+    # 1. Manually started
+    # 2. Scheduled Tuesday/Wednesday
+    # 3. 5 League Odds Auto Update completed successfully
+
     if: >
-  github.event_name == 'workflow_dispatch' ||
-  github.event_name == 'schedule' ||
-  github.event.workflow_run.conclusion == 'success'
+      github.event_name == 'workflow_dispatch' ||
+      github.event_name == 'schedule' ||
+      (
+        github.event_name == 'workflow_run' &&
+        github.event.workflow_run.conclusion == 'success'
+      )
+
     runs-on: ubuntu-latest
 
     steps:
 
+      # --------------------------------------------------
+      # 1. Checkout repository
+      # --------------------------------------------------
+
       - name: Checkout repository
         uses: actions/checkout@v4
+
+
+      # --------------------------------------------------
+      # 2. Setup Python
+      # --------------------------------------------------
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
+
+      # --------------------------------------------------
+      # 3. Install required package
+      # --------------------------------------------------
+
       - name: Install Python packages
         run: |
           python -m pip install --upgrade pip
           pip install openpyxl
 
+
+      # --------------------------------------------------
+      # 4. Build SS2 bridge
+      # --------------------------------------------------
+
       - name: Build SS2 bridge
         run: |
           python convert_to_ss2.py
+
+
+      # --------------------------------------------------
+      # 5. Update both SS2 Excel workbooks
+      # --------------------------------------------------
 
       - name: Update SS2 Excel workbooks
         run: |
           python update_ss2_workbooks.py
 
-      - name: Show updated SS2 files
+
+      # --------------------------------------------------
+      # 6. Check output files
+      # --------------------------------------------------
+
+      - name: Check SS2 files
         run: |
-          echo "===== SS2 DIRECTORY ====="
+          echo "======================================"
+          echo "SS2 FILES"
+          echo "======================================"
+
           ls -lh data/ss2/
-          echo "========================="
+
+          echo "======================================"
+          echo "BRIDGE FILE"
+          echo "======================================"
+
+          ls -lh data/ss2/ss2_bridge_current.csv
+
+
+      # --------------------------------------------------
+      # 7. Commit updated SS2 files
+      # --------------------------------------------------
 
       - name: Commit SS2 updates
         run: |
+
           git config user.name "github-actions[bot]"
+
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add data/ss2/*.xlsx
+
           git add data/ss2/ss2_bridge_current.csv
 
-          git diff --cached --quiet || git commit -m "Auto update SS2 workbooks"
+          if git diff --cached --quiet; then
 
-          git push
+            echo "No SS2 changes to commit."
+
+          else
+
+            git commit -m "Auto update SS2 workbooks"
+
+            git push
+
+          fi
