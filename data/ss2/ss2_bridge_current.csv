@@ -11,6 +11,14 @@ EPL,2026-10-10,560601,Aston Villa FC,Brentford FC,H,,0.0,D,1.96,2-2,PUSH,Pinnacl
 EPL,2026-10-10,560601,Brentford FC,Aston Villa FC,A,,0.0,D,1.94,2-2,PUSH,Pinnacle
 EPL,2026-10-10,560600,Manchester United FC,Tottenham Hotspur FC,H,↑,0.75,1+50,1.93,1-1,LOSS,Pinnacle
 EPL,2026-10-10,560600,Tottenham Hotspur FC,Manchester United FC,A,,0.75,1+50,1.97,1-1,WIN,Pinnacle
+EPL,2026-10-11,560594,Hull City AFC,Everton FC,H,,0.5,L-100,1.84,2-2,WIN,Pinnacle
+EPL,2026-10-11,560594,Everton FC,Hull City AFC,A,↑,0.5,L-100,2.08,2-2,LOSS,Pinnacle
+EPL,2026-10-11,560596,Crystal Palace FC,Nottingham Forest FC,H,,0.0,D,1.93,3-1,WIN,Pinnacle
+EPL,2026-10-11,560596,Nottingham Forest FC,Crystal Palace FC,A,,0.0,D,1.97,3-1,LOSS,Pinnacle
+EPL,2026-10-11,560598,Liverpool FC,Manchester City FC,H,,0.0,D,1.97,0-3,LOSS,Pinnacle
+EPL,2026-10-11,560598,Manchester City FC,Liverpool FC,A,,0.0,D,1.93,0-3,WIN,Pinnacle
+EPL,2026-10-12,560597,Coventry City FC,Newcastle United FC,H,,0.25,L-50,2.09,4-1,WIN,Pinnacle
+EPL,2026-10-12,560597,Newcastle United FC,Coventry City FC,A,↑,0.25,L-50,1.83,4-1,LOSS,Pinnacle
 La_Liga,2026-10-09,564706,Málaga CF,RCD Espanyol de Barcelona,H,,0.0,D,2.0,1-1,PUSH,Pinnacle
 La_Liga,2026-10-09,564706,RCD Espanyol de Barcelona,Málaga CF,A,,0.0,D,1.91,1-1,PUSH,Pinnacle
 La_Liga,2026-10-10,564698,Rayo Vallecano de Madrid,Athletic Club,H,,0.0,D,2.05,0-0,PUSH,Pinnacle
