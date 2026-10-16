@@ -73,12 +73,12 @@
 564699,2026-10-10T14:15:00Z,FINISHED,8,Deportivo Alavés,Club Atlético de Madrid,1,2,AWAY_TEAM
 564700,2026-10-10T16:30:00Z,FINISHED,8,FC Barcelona,Getafe CF,3,0,HOME_TEAM
 564702,2026-10-10T19:00:00Z,FINISHED,8,Real Madrid CF,Villarreal CF,1,0,HOME_TEAM
-564703,2026-10-11T12:00:00Z,TIMED,8,Elche CF,RC Celta de Vigo,,,
-564707,2026-10-11T14:15:00Z,TIMED,8,Real Sociedad de Fútbol,RC Deportivo La Coruña,,,
-564701,2026-10-11T16:30:00Z,TIMED,8,Real Betis Balompié,CA Osasuna,,,
-564705,2026-10-11T19:00:00Z,TIMED,8,Real Racing Club de Santander,Valencia CF,,,
-564704,2026-10-12T19:00:00Z,TIMED,8,Levante UD,Sevilla FC,,,
-564716,2026-10-16T19:00:00Z,TIMED,9,RC Deportivo La Coruña,Levante UD,,,
+564703,2026-10-11T12:00:00Z,FINISHED,8,Elche CF,RC Celta de Vigo,0,0,DRAW
+564707,2026-10-11T14:15:00Z,FINISHED,8,Real Sociedad de Fútbol,RC Deportivo La Coruña,3,2,HOME_TEAM
+564701,2026-10-11T16:30:00Z,FINISHED,8,Real Betis Balompié,CA Osasuna,5,2,HOME_TEAM
+564705,2026-10-11T19:00:00Z,FINISHED,8,Real Racing Club de Santander,Valencia CF,2,2,DRAW
+564704,2026-10-12T19:00:00Z,FINISHED,8,Levante UD,Sevilla FC,3,3,DRAW
+564716,2026-10-16T19:00:00Z,IN_PLAY,9,RC Deportivo La Coruña,Levante UD,1,0,HOME_TEAM
 564710,2026-10-17T12:00:00Z,TIMED,9,RCD Espanyol de Barcelona,Club Atlético de Madrid,,,
 564708,2026-10-17T14:15:00Z,TIMED,9,Villarreal CF,Elche CF,,,
 564713,2026-10-17T16:30:00Z,TIMED,9,Real Betis Balompié,FC Barcelona,,,
@@ -109,16 +109,16 @@
 564728,2026-11-01T17:30:00Z,TIMED,11,Elche CF,Valencia CF,,,
 564729,2026-11-01T20:00:00Z,TIMED,11,Athletic Club,Real Sociedad de Fútbol,,,
 564731,2026-11-02T20:00:00Z,TIMED,11,RC Deportivo La Coruña,CA Osasuna,,,
-564738,2026-11-08T00:00:00Z,SCHEDULED,12,Elche CF,Real Betis Balompié,,,
-564739,2026-11-08T00:00:00Z,SCHEDULED,12,CA Osasuna,Athletic Club,,,
-564740,2026-11-08T00:00:00Z,SCHEDULED,12,Sevilla FC,Deportivo Alavés,,,
-564741,2026-11-08T00:00:00Z,SCHEDULED,12,Valencia CF,Real Madrid CF,,,
-564742,2026-11-08T00:00:00Z,SCHEDULED,12,RC Celta de Vigo,Levante UD,,,
-564743,2026-11-08T00:00:00Z,SCHEDULED,12,Real Sociedad de Fútbol,Rayo Vallecano de Madrid,,,
-564744,2026-11-08T00:00:00Z,SCHEDULED,12,Málaga CF,Real Racing Club de Santander,,,
-564745,2026-11-08T00:00:00Z,SCHEDULED,12,RCD Espanyol de Barcelona,RC Deportivo La Coruña,,,
-564746,2026-11-08T00:00:00Z,SCHEDULED,12,Club Atlético de Madrid,FC Barcelona,,,
-564747,2026-11-08T00:00:00Z,SCHEDULED,12,Villarreal CF,Getafe CF,,,
+564740,2026-11-06T20:00:00Z,TIMED,12,Sevilla FC,Deportivo Alavés,,,
+564744,2026-11-07T13:00:00Z,TIMED,12,Málaga CF,Real Racing Club de Santander,,,
+564745,2026-11-07T15:15:00Z,TIMED,12,RCD Espanyol de Barcelona,RC Deportivo La Coruña,,,
+564739,2026-11-07T17:30:00Z,TIMED,12,CA Osasuna,Athletic Club,,,
+564741,2026-11-07T20:00:00Z,TIMED,12,Valencia CF,Real Madrid CF,,,
+564738,2026-11-08T13:00:00Z,TIMED,12,Elche CF,Real Betis Balompié,,,
+564743,2026-11-08T15:15:00Z,TIMED,12,Real Sociedad de Fútbol,Rayo Vallecano de Madrid,,,
+564742,2026-11-08T17:30:00Z,TIMED,12,RC Celta de Vigo,Levante UD,,,
+564747,2026-11-08T17:30:00Z,TIMED,12,Villarreal CF,Getafe CF,,,
+564746,2026-11-08T20:00:00Z,TIMED,12,Club Atlético de Madrid,FC Barcelona,,,
 564748,2026-11-22T00:00:00Z,SCHEDULED,13,Athletic Club,RCD Espanyol de Barcelona,,,
 564749,2026-11-22T00:00:00Z,SCHEDULED,13,FC Barcelona,Villarreal CF,,,
 564750,2026-11-22T00:00:00Z,SCHEDULED,13,Real Racing Club de Santander,Real Sociedad de Fútbol,,,
