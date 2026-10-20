@@ -19,6 +19,26 @@ EPL,2026-10-11,560598,Liverpool FC,Manchester City FC,H,,0.0,D,1.97,0-3,LOSS,Pin
 EPL,2026-10-11,560598,Manchester City FC,Liverpool FC,A,,0.0,D,1.93,0-3,WIN,Pinnacle
 EPL,2026-10-12,560597,Coventry City FC,Newcastle United FC,H,,0.25,L-50,2.09,4-1,WIN,Pinnacle
 EPL,2026-10-12,560597,Newcastle United FC,Coventry City FC,A,↑,0.25,L-50,1.83,4-1,LOSS,Pinnacle
+EPL,2026-10-17,560603,Everton FC,Chelsea FC,H,,0.0,D,2.07,0-2,LOSS,Pinnacle
+EPL,2026-10-17,560603,Chelsea FC,Everton FC,A,,0.0,D,1.8,0-2,WIN,Pinnacle
+EPL,2026-10-17,560602,Fulham FC,Hull City AFC,H,↑,0.75,1+50,1.86,1-0,HALF_WIN,Pinnacle
+EPL,2026-10-17,560602,Hull City AFC,Fulham FC,A,,0.75,1+50,1.99,1-0,HALF_LOSS,Pinnacle
+EPL,2026-10-17,560610,Manchester City FC,Ipswich Town FC,H,↑,1.75,2+50,1.8,3-2,LOSS,Pinnacle
+EPL,2026-10-17,560610,Ipswich Town FC,Manchester City FC,A,,1.75,2+50,2.05,3-2,WIN,Pinnacle
+EPL,2026-10-17,560611,Brentford FC,Liverpool FC,H,,0.0,D,2.06,1-2,LOSS,Pinnacle
+EPL,2026-10-17,560611,Liverpool FC,Brentford FC,A,,0.0,D,1.81,1-2,WIN,Pinnacle
+EPL,2026-10-17,560607,Newcastle United FC,Aston Villa FC,H,↑,0.25,L-50,1.85,0-1,LOSS,Pinnacle
+EPL,2026-10-17,560607,Aston Villa FC,Newcastle United FC,A,,0.25,L-50,2.01,0-1,WIN,Pinnacle
+EPL,2026-10-18,560604,AFC Bournemouth,Sunderland AFC,H,↑,0.5,L-100,2.02,2-0,WIN,Pinnacle
+EPL,2026-10-18,560604,Sunderland AFC,AFC Bournemouth,A,,0.5,L-100,1.84,2-0,LOSS,Pinnacle
+EPL,2026-10-18,560605,Leeds United FC,Manchester United FC,H,,0.25,L-50,1.81,1-1,HALF_WIN,Pinnacle
+EPL,2026-10-18,560605,Manchester United FC,Leeds United FC,A,↑,0.25,L-50,2.06,1-1,HALF_LOSS,Pinnacle
+EPL,2026-10-18,560609,Brighton & Hove Albion FC,Crystal Palace FC,H,↑,0.75,1+50,1.81,5-0,WIN,Pinnacle
+EPL,2026-10-18,560609,Crystal Palace FC,Brighton & Hove Albion FC,A,,0.75,1+50,2.06,5-0,LOSS,Pinnacle
+EPL,2026-10-18,560608,Nottingham Forest FC,Arsenal FC,H,,1.0,1D,1.79,0-1,PUSH,Pinnacle
+EPL,2026-10-18,560608,Arsenal FC,Nottingham Forest FC,A,↑,1.0,1D,2.08,0-1,PUSH,Pinnacle
+EPL,2026-10-19,560606,Tottenham Hotspur FC,Coventry City FC,H,↑,1.0,1D,1.81,3-1,WIN,Pinnacle
+EPL,2026-10-19,560606,Coventry City FC,Tottenham Hotspur FC,A,,1.0,1D,2.05,3-1,LOSS,Pinnacle
 La_Liga,2026-10-09,564706,Málaga CF,RCD Espanyol de Barcelona,H,,0.0,D,2.0,1-1,PUSH,Pinnacle
 La_Liga,2026-10-09,564706,RCD Espanyol de Barcelona,Málaga CF,A,,0.0,D,1.91,1-1,PUSH,Pinnacle
 La_Liga,2026-10-10,564698,Rayo Vallecano de Madrid,Athletic Club,H,,0.0,D,2.05,0-0,PUSH,Pinnacle
@@ -29,6 +49,16 @@ La_Liga,2026-10-10,564702,Real Madrid CF,Villarreal CF,H,↑,1.5,1L-100,1.89,1-0
 La_Liga,2026-10-10,564702,Villarreal CF,Real Madrid CF,A,,1.5,1L-100,2.01,1-0,WIN,Pinnacle
 La_Liga,2026-10-11,564705,Real Racing Club de Santander,Valencia CF,H,↑,0.25,L-50,2.03,2-2,HALF_LOSS,Pinnacle
 La_Liga,2026-10-11,564705,Valencia CF,Real Racing Club de Santander,A,,0.25,L-50,1.88,2-2,HALF_WIN,Pinnacle
+La_Liga,2026-10-17,564708,Villarreal CF,Elche CF,H,↑,1.25,1L-50,2.0,0-0,LOSS,Pinnacle
+La_Liga,2026-10-17,564708,Elche CF,Villarreal CF,A,,1.25,1L-50,1.85,0-0,WIN,Pinnacle
+La_Liga,2026-10-17,564711,Valencia CF,Athletic Club,H,,0.25,L-50,2.07,0-0,HALF_WIN,Pinnacle
+La_Liga,2026-10-17,564711,Athletic Club,Valencia CF,A,↑,0.25,L-50,1.81,0-0,HALF_LOSS,Pinnacle
+La_Liga,2026-10-18,564715,CA Osasuna,Real Racing Club de Santander,H,↑,0.5,L-100,1.92,2-0,WIN,Pinnacle
+La_Liga,2026-10-18,564715,Real Racing Club de Santander,CA Osasuna,A,,0.5,L-100,1.93,2-0,LOSS,Pinnacle
+La_Liga,2026-10-18,564709,Real Madrid CF,Sevilla FC,H,↑,1.75,2+50,1.77,4-1,WIN,Pinnacle
+La_Liga,2026-10-18,564709,Sevilla FC,Real Madrid CF,A,,1.75,2+50,1.92,4-1,LOSS,Pinnacle
+La_Liga,2026-10-19,564717,Getafe CF,Rayo Vallecano de Madrid,H,,0.0,D,1.95,1-1,PUSH,Pinnacle
+La_Liga,2026-10-19,564717,Rayo Vallecano de Madrid,Getafe CF,A,,0.0,D,1.75,1-1,PUSH,Pinnacle
 Serie_A,2026-10-10,558588,Genoa CFC,ACF Fiorentina,H,,0.25,L-50,1.88,2-1,WIN,Pinnacle
 Serie_A,2026-10-10,558588,ACF Fiorentina,Genoa CFC,A,↑,0.25,L-50,2.03,2-1,LOSS,Pinnacle
 Serie_A,2026-10-11,558585,Como 1907,AS Roma,H,,0.0,D,1.89,0-0,PUSH,Pinnacle
@@ -41,12 +71,32 @@ Serie_A,2026-10-12,558579,Atalanta BC,Venezia FC,H,↑,1.0,1D,1.96,3-1,WIN,Pinna
 Serie_A,2026-10-12,558579,Venezia FC,Atalanta BC,A,,1.0,1D,1.94,3-1,LOSS,Pinnacle
 Serie_A,2026-10-12,558587,Torino FC,Udinese Calcio,H,↑,0.25,L-50,2.01,2-1,WIN,Pinnacle
 Serie_A,2026-10-12,558587,Udinese Calcio,Torino FC,A,,0.25,L-50,1.89,2-1,LOSS,Pinnacle
+Serie_A,2026-10-17,558575,Venezia FC,SSC Napoli,H,,0.75,1+50,1.94,1-0,WIN,Pinnacle
+Serie_A,2026-10-17,558575,SSC Napoli,Venezia FC,A,↑,0.75,1+50,1.91,1-0,LOSS,Pinnacle
+Serie_A,2026-10-17,558572,AS Roma,Genoa CFC,H,↑,1.5,1L-100,1.96,2-0,WIN,Pinnacle
+Serie_A,2026-10-17,558572,Genoa CFC,AS Roma,A,,1.5,1L-100,1.89,2-0,LOSS,Pinnacle
+Serie_A,2026-10-18,558574,Udinese Calcio,US Lecce,H,↑,0.5,L-100,1.86,0-3,LOSS,Pinnacle
+Serie_A,2026-10-18,558574,US Lecce,Udinese Calcio,A,,0.5,L-100,1.99,0-3,WIN,Pinnacle
+Serie_A,2026-10-18,558577,ACF Fiorentina,Como 1907,H,,0.25,L-50,2.05,1-3,LOSS,Pinnacle
+Serie_A,2026-10-18,558577,Como 1907,ACF Fiorentina,A,↑,0.25,L-50,1.81,1-3,WIN,Pinnacle
+Serie_A,2026-10-18,558569,AC Milan,Atalanta BC,H,↑,0.5,L-100,1.86,3-2,WIN,Pinnacle
+Serie_A,2026-10-18,558569,Atalanta BC,AC Milan,A,,0.5,L-100,1.99,3-2,LOSS,Pinnacle
+Serie_A,2026-10-18,558570,Juventus FC,SS Lazio,H,↑,0.75,1+50,1.83,0-3,LOSS,Pinnacle
+Serie_A,2026-10-18,558570,SS Lazio,Juventus FC,A,,0.75,1+50,2.02,0-3,WIN,Pinnacle
+Serie_A,2026-10-19,558576,AC Monza,Cagliari Calcio,H,↑,0.25,L-50,1.92,4-0,WIN,Pinnacle
+Serie_A,2026-10-19,558576,Cagliari Calcio,AC Monza,A,,0.25,L-50,1.93,4-0,LOSS,Pinnacle
+Serie_A,2026-10-19,558578,Parma Calcio 1913,Torino FC,H,,0.25,L-50,1.78,0-3,LOSS,Pinnacle
+Serie_A,2026-10-19,558578,Torino FC,Parma Calcio 1913,A,↑,0.25,L-50,2.09,0-3,WIN,Pinnacle
 Bundesliga,2026-10-09,565820,Borussia Dortmund,SV Werder Bremen,H,↑,1.5,1L-100,1.99,2-2,LOSS,Pinnacle
 Bundesliga,2026-10-09,565820,SV Werder Bremen,Borussia Dortmund,A,,1.5,1L-100,1.92,2-2,WIN,Pinnacle
 Bundesliga,2026-10-10,565815,RB Leipzig,Eintracht Frankfurt,H,↑,1.0,1D,1.91,6-0,WIN,Pinnacle
 Bundesliga,2026-10-10,565815,Eintracht Frankfurt,RB Leipzig,A,,1.0,1D,2.0,6-0,LOSS,Pinnacle
 Bundesliga,2026-10-11,565816,SC Freiburg,FC Schalke 04,H,↑,0.75,1+50,1.87,2-1,HALF_WIN,Pinnacle
 Bundesliga,2026-10-11,565816,FC Schalke 04,SC Freiburg,A,,0.75,1+50,2.04,2-1,HALF_LOSS,Pinnacle
+Bundesliga,2026-10-16,565828,Eintracht Frankfurt,1. FC Köln,H,↑,0.5,L-100,1.89,1-0,WIN,Pinnacle
+Bundesliga,2026-10-16,565828,1. FC Köln,Eintracht Frankfurt,A,,0.5,L-100,1.96,1-0,LOSS,Pinnacle
+Bundesliga,2026-10-17,565822,Hamburger SV,VfB Stuttgart,H,,0.5,L-100,2.03,1-0,WIN,Pinnacle
+Bundesliga,2026-10-17,565822,VfB Stuttgart,Hamburger SV,A,↑,0.5,L-100,1.83,1-0,LOSS,Pinnacle
 Ligue_1,2026-10-10,559674,Lille OSC,Le Havre AC,H,↑,1.25,1L-50,1.98,1-0,HALF_LOSS,Pinnacle
 Ligue_1,2026-10-10,559674,Le Havre AC,Lille OSC,A,,1.25,1L-50,1.93,1-0,HALF_WIN,Pinnacle
 Ligue_1,2026-10-10,559666,Stade Brestois 29,Angers SCO,H,↑,0.5,L-100,2.02,5-1,WIN,Pinnacle
@@ -59,3 +109,17 @@ Ligue_1,2026-10-10,559673,AS Monaco FC,Toulouse FC,H,↑,1.0,1D,2.02,2-2,LOSS,Pi
 Ligue_1,2026-10-10,559673,Toulouse FC,AS Monaco FC,A,,1.0,1D,1.88,2-2,WIN,Pinnacle
 Ligue_1,2026-10-11,559670,OGC Nice,RC Strasbourg Alsace,H,↑,0.25,L-50,2.06,2-1,WIN,Pinnacle
 Ligue_1,2026-10-11,559670,RC Strasbourg Alsace,OGC Nice,A,,0.25,L-50,1.85,2-1,LOSS,Pinnacle
+Ligue_1,2026-10-16,559661,Le Mans FC,Toulouse FC,H,,0.25,L-50,1.88,0-3,LOSS,Pinnacle
+Ligue_1,2026-10-16,559661,Toulouse FC,Le Mans FC,A,↑,0.25,L-50,1.98,0-3,WIN,Pinnacle
+Ligue_1,2026-10-17,559662,RC Strasbourg Alsace,Paris Saint-Germain FC,H,,1.25,1L-50,2.03,1-3,LOSS,Pinnacle
+Ligue_1,2026-10-17,559662,Paris Saint-Germain FC,RC Strasbourg Alsace,A,↑,1.25,1L-50,1.83,1-3,WIN,Pinnacle
+Ligue_1,2026-10-17,559660,Lille OSC,Stade Brestois 29,H,↑,1.0,1D,2.05,1-1,LOSS,Pinnacle
+Ligue_1,2026-10-17,559660,Stade Brestois 29,Lille OSC,A,,1.0,1D,1.81,1-1,WIN,Pinnacle
+Ligue_1,2026-10-18,559664,Angers SCO,Olympique de Marseille,H,,0.25,L-50,1.99,2-5,LOSS,Pinnacle
+Ligue_1,2026-10-18,559664,Olympique de Marseille,Angers SCO,A,↑,0.25,L-50,1.86,2-5,WIN,Pinnacle
+Ligue_1,2026-10-18,559657,FC Lorient,AS Monaco FC,H,,0.25,L-50,1.99,1-0,WIN,Pinnacle
+Ligue_1,2026-10-18,559657,AS Monaco FC,FC Lorient,A,↑,0.25,L-50,1.86,1-0,LOSS,Pinnacle
+Ligue_1,2026-10-18,559663,Le Havre AC,AJ Auxerre,H,↑,0.25,L-50,2.11,1-3,LOSS,Pinnacle
+Ligue_1,2026-10-18,559663,AJ Auxerre,Le Havre AC,A,,0.25,L-50,1.78,1-3,WIN,Pinnacle
+Ligue_1,2026-10-18,559665,Olympique Lyonnais,OGC Nice,H,↑,0.75,1+50,1.83,2-1,HALF_WIN,Pinnacle
+Ligue_1,2026-10-18,559665,OGC Nice,Olympique Lyonnais,A,,0.75,1+50,2.03,2-1,HALF_LOSS,Pinnacle
