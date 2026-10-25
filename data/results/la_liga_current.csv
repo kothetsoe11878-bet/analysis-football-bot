@@ -90,10 +90,10 @@
 564717,2026-10-19T19:00:00Z,FINISHED,9,Getafe CF,Rayo Vallecano de Madrid,1,1,DRAW
 564685,2026-10-21T18:00:00Z,FINISHED,6,Levante UD,Athletic Club,3,1,HOME_TEAM
 564719,2026-10-23T19:00:00Z,FINISHED,10,Deportivo Alavés,Málaga CF,1,1,DRAW
-564718,2026-10-24T12:00:00Z,TIMED,10,Rayo Vallecano de Madrid,Elche CF,,,
-564727,2026-10-24T14:15:00Z,FINISHED,10,Real Racing Club de Santander,RCD Espanyol de Barcelona,2,1,HOME_TEAM
+564718,2026-10-24T12:00:00Z,IN_PLAY,10,Rayo Vallecano de Madrid,Elche CF,,,
+564727,2026-10-24T14:15:00Z,TIMED,10,Real Racing Club de Santander,RCD Espanyol de Barcelona,,,
 564722,2026-10-24T16:30:00Z,TIMED,10,Valencia CF,Villarreal CF,,,
-564724,2026-10-24T19:00:00Z,IN_PLAY,10,Club Atlético de Madrid,RC Deportivo La Coruña,1,0,HOME_TEAM
+564724,2026-10-24T19:00:00Z,TIMED,10,Club Atlético de Madrid,RC Deportivo La Coruña,,,
 564720,2026-10-25T13:00:00Z,TIMED,10,Athletic Club,Getafe CF,,,
 564725,2026-10-25T15:15:00Z,TIMED,10,RC Celta de Vigo,Real Betis Balompié,,,
 564726,2026-10-25T17:30:00Z,TIMED,10,Real Sociedad de Fútbol,Levante UD,,,
