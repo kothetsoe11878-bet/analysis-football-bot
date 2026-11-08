@@ -112,7 +112,7 @@
 564744,2026-11-07T13:00:00Z,FINISHED,12,Málaga CF,Real Racing Club de Santander,1,2,AWAY_TEAM
 564745,2026-11-07T15:15:00Z,FINISHED,12,RCD Espanyol de Barcelona,RC Deportivo La Coruña,0,0,DRAW
 564739,2026-11-07T17:30:00Z,FINISHED,12,CA Osasuna,Athletic Club,1,1,DRAW
-564741,2026-11-07T20:00:00Z,IN_PLAY,12,Valencia CF,Real Madrid CF,0,2,AWAY_TEAM
+564741,2026-11-07T20:00:00Z,FINISHED,12,Valencia CF,Real Madrid CF,0,3,AWAY_TEAM
 564738,2026-11-08T13:00:00Z,TIMED,12,Elche CF,Real Betis Balompié,,,
 564743,2026-11-08T15:15:00Z,TIMED,12,Real Sociedad de Fútbol,Rayo Vallecano de Madrid,,,
 564742,2026-11-08T17:30:00Z,TIMED,12,RC Celta de Vigo,Levante UD,,,
@@ -138,6 +138,8 @@
 564758,2026-11-29T17:30:00Z,TIMED,14,RC Celta de Vigo,Villarreal CF,,,
 564764,2026-11-29T20:00:00Z,TIMED,14,Real Sociedad de Fútbol,Sevilla FC,,,
 564763,2026-11-30T20:00:00Z,TIMED,14,RCD Espanyol de Barcelona,Getafe CF,,,
+564855,2026-12-02T18:00:00Z,TIMED,23,Real Sociedad de Fútbol,Real Madrid CF,,,
+564857,2026-12-02T20:30:00Z,TIMED,23,FC Barcelona,Club Atlético de Madrid,,,
 564768,2026-12-06T00:00:00Z,SCHEDULED,15,CA Osasuna,Elche CF,,,
 564769,2026-12-06T00:00:00Z,SCHEDULED,15,Sevilla FC,Málaga CF,,,
 564770,2026-12-06T00:00:00Z,SCHEDULED,15,Deportivo Alavés,RCD Espanyol de Barcelona,,,
@@ -226,9 +228,7 @@
 564852,2027-02-07T00:00:00Z,SCHEDULED,23,RCD Espanyol de Barcelona,Rayo Vallecano de Madrid,,,
 564853,2027-02-07T00:00:00Z,SCHEDULED,23,Getafe CF,Villarreal CF,,,
 564854,2027-02-07T00:00:00Z,SCHEDULED,23,RC Deportivo La Coruña,Málaga CF,,,
-564855,2027-02-07T00:00:00Z,SCHEDULED,23,Real Sociedad de Fútbol,Real Madrid CF,,,
 564856,2027-02-07T00:00:00Z,SCHEDULED,23,Valencia CF,Real Racing Club de Santander,,,
-564857,2027-02-07T00:00:00Z,SCHEDULED,23,FC Barcelona,Club Atlético de Madrid,,,
 564858,2027-02-14T00:00:00Z,SCHEDULED,24,Sevilla FC,RCD Espanyol de Barcelona,,,
 564859,2027-02-14T00:00:00Z,SCHEDULED,24,CA Osasuna,Club Atlético de Madrid,,,
 564860,2027-02-14T00:00:00Z,SCHEDULED,24,RC Celta de Vigo,Rayo Vallecano de Madrid,,,
