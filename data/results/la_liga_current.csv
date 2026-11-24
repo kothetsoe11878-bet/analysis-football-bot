@@ -127,7 +127,7 @@
 564750,2026-11-22T15:15:00Z,FINISHED,13,Real Racing Club de Santander,Real Sociedad de Fútbol,3,2,HOME_TEAM
 564752,2026-11-22T17:30:00Z,FINISHED,13,CA Osasuna,Málaga CF,1,0,HOME_TEAM
 564753,2026-11-22T20:00:00Z,FINISHED,13,Getafe CF,Club Atlético de Madrid,0,3,AWAY_TEAM
-564757,2026-11-23T20:00:00Z,TIMED,13,Levante UD,Elche CF,,,
+564757,2026-11-23T20:00:00Z,FINISHED,13,Levante UD,Elche CF,1,1,DRAW
 564765,2026-11-27T20:00:00Z,TIMED,14,Levante UD,Real Racing Club de Santander,,,
 564760,2026-11-28T13:00:00Z,TIMED,14,Real Betis Balompié,Rayo Vallecano de Madrid,,,
 564767,2026-11-28T15:15:00Z,TIMED,14,Málaga CF,Athletic Club,,,
@@ -151,16 +151,16 @@
 564771,2026-12-06T20:00:00Z,TIMED,15,Club Atlético de Madrid,Real Betis Balompié,,,
 564769,2026-12-07T20:00:00Z,TIMED,15,Sevilla FC,Málaga CF,,,
 564698,2026-12-09T19:00:00Z,CANCELLED,8,Rayo Vallecano de Madrid,Athletic Club,0,0,DRAW
-564778,2026-12-13T00:00:00Z,SCHEDULED,16,RCD Espanyol de Barcelona,RC Celta de Vigo,,,
-564779,2026-12-13T00:00:00Z,SCHEDULED,16,Málaga CF,FC Barcelona,,,
-564780,2026-12-13T00:00:00Z,SCHEDULED,16,Real Madrid CF,CA Osasuna,,,
-564781,2026-12-13T00:00:00Z,SCHEDULED,16,RC Deportivo La Coruña,Athletic Club,,,
-564782,2026-12-13T00:00:00Z,SCHEDULED,16,Levante UD,Deportivo Alavés,,,
-564783,2026-12-13T00:00:00Z,SCHEDULED,16,Elche CF,Sevilla FC,,,
-564784,2026-12-13T00:00:00Z,SCHEDULED,16,Villarreal CF,Rayo Vallecano de Madrid,,,
-564785,2026-12-13T00:00:00Z,SCHEDULED,16,Real Betis Balompié,Real Racing Club de Santander,,,
-564786,2026-12-13T00:00:00Z,SCHEDULED,16,Real Sociedad de Fútbol,Getafe CF,,,
-564787,2026-12-13T00:00:00Z,SCHEDULED,16,Club Atlético de Madrid,Valencia CF,,,
+564783,2026-12-11T20:00:00Z,TIMED,16,Elche CF,Sevilla FC,,,
+564782,2026-12-12T13:00:00Z,TIMED,16,Levante UD,Deportivo Alavés,,,
+564784,2026-12-12T15:15:00Z,TIMED,16,Villarreal CF,Rayo Vallecano de Madrid,,,
+564779,2026-12-12T17:30:00Z,TIMED,16,Málaga CF,FC Barcelona,,,
+564785,2026-12-12T20:00:00Z,TIMED,16,Real Betis Balompié,Real Racing Club de Santander,,,
+564787,2026-12-13T13:00:00Z,TIMED,16,Club Atlético de Madrid,Valencia CF,,,
+564781,2026-12-13T15:15:00Z,TIMED,16,RC Deportivo La Coruña,Athletic Club,,,
+564786,2026-12-13T17:30:00Z,TIMED,16,Real Sociedad de Fútbol,Getafe CF,,,
+564780,2026-12-13T20:00:00Z,TIMED,16,Real Madrid CF,CA Osasuna,,,
+564778,2026-12-14T20:00:00Z,TIMED,16,RCD Espanyol de Barcelona,RC Celta de Vigo,,,
 564788,2026-12-20T00:00:00Z,SCHEDULED,17,Athletic Club,Real Betis Balompié,,,
 564789,2026-12-20T00:00:00Z,SCHEDULED,17,Getafe CF,Levante UD,,,
 564790,2026-12-20T00:00:00Z,SCHEDULED,17,Deportivo Alavés,Elche CF,,,
